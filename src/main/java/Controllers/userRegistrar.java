@@ -1,4 +1,4 @@
 package Controllers;
 
-public class userRegistrar {
+public class UserRegistrar {
 }
