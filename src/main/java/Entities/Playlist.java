@@ -23,7 +23,7 @@ public class Playlist{
 
     public Song getSongAtIndex(int i){
         if(i < this.getPlaylistLength()){
-            playlist.get(i);
+            return playlist.get(i);
         }
     }
 
