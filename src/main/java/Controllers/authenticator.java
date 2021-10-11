@@ -1,4 +1,4 @@
 package Controllers;
 
-public class authenticator {
+public class Authenticator {
 }
