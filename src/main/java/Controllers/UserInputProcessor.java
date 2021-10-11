@@ -10,7 +10,7 @@ public class UserInputProcessor {
     /**
      * A static method that splits the user input into a String Array
      *
-     * @param userInput a sentence which the user wants to turn into a Playlist. 
+     * @param userInput a sentence which the user wants to turn into a Playlist.
      * @return a list of the words that make up the userInput
      */
     public static String[] splitUserInput (String userInput) {
