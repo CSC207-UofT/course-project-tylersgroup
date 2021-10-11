@@ -3,7 +3,7 @@
 *
 * UserManager manages all the users who use the program.
 */
-
+package UseCases;
 
 import java.util.*;
 
