@@ -1,4 +1,4 @@
-//getPlaylists()
+package Entities;//getPlaylists()
 //getUsername()
 //getPassword()
 //getFriendsList()
@@ -43,7 +43,4 @@ public class User {
 
     public void setBlacklist(List<Song> blacklist) {this.blacklist = blacklist;}
 
-    public void addPlaylist(Playlist playlist){this.playlistList.add(playlist);}
-
-    public void removePlaylist(Playlist playlist){this.playlistList.add(playlist);}
 }
