@@ -5,22 +5,22 @@
 */
 package UseCases;
 
+import Entities.User;
 import java.util.*;
 
 public class UserManager {
-    //private Map<String, User> users;
-    private Map<String, String> users;
+    private Map<String, User> users;
 
     public UserManager(){
-        //users = new HashMap<String, User>();
-        users = new HashMap<String, String>();
+        users = new HashMap<String, User>();
     }
     public boolean addUser(String username, String password){
         if (this.users.containsKey(username)){
             return false;
         }
         else{
-            this.users.put(username, password);
+            User newUser = new User(username, password);
+            this.users.put(username, newUser);
             return true;
         }
     }
@@ -35,7 +35,7 @@ public class UserManager {
     }
 
 
-    public String getUser(String username){
+    public User getUser(String username){
         return users.get(username);
     }
 }

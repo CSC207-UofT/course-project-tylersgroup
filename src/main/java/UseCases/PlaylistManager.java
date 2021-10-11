@@ -6,6 +6,7 @@ package UseCases;/*
 
 
 import Entities.User;
+import Entities.Playlist;
 
 import java.util.*;
 
@@ -22,12 +23,11 @@ public class PlaylistManager {
         // Iterate through the songs in order and see if it matches the input string ??
     }
 
-    //
+
     public void addPlaylist(Playlist playlist, User user){
         user.getPlaylistList().add(playlist);
     }
 
-    //TODO: not sure why I am getting the error here .remove(playlist)
     public void removePlaylist(Playlist playlist, User user){
         user.getPlaylistList().remove(playlist);
     }
