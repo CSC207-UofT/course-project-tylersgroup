@@ -1,3 +1,5 @@
+package Entities;
+
 import java.util.*;
 
 public class Playlist{
@@ -7,7 +9,6 @@ public class Playlist{
     /**
      * Construct a Playlist object, with the following parameters:
      *
-     * @param playlistName Name of the playlist, may be unnamed
      *
      */
     //constructor
@@ -23,8 +24,9 @@ public class Playlist{
 
     public Song getSongAtIndex(int i){
         if(i < this.getPlaylistLength()){
-            playlist.get(i);
+            return playlist.get(i);
         }
+        return null;
     }
 
     public String getPlaylistName(){
@@ -43,7 +45,6 @@ public class Playlist{
         return playlist.size();
     }
 
-    @Override
     public int compareTo(Playlist other){
         //compare playlists by lengths? Maybe later we can do some funky compareTo with like how "popular" it is
         if(this.getPlaylistLength() > other.getPlaylistLength()){
