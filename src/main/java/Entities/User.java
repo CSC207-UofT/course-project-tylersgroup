@@ -1,4 +1,5 @@
-package Entities;//getPlaylists()
+package Entities;
+//getPlaylists()
 //getUsername()
 //getPassword()
 //getFriendsList()
@@ -17,15 +18,15 @@ public class User {
     //private List<Song> blacklist;
     /**
      * Construct a User object, with the following parameters:
-     *
      * @param username Username of the User
      * @param password Password of the User
-     * @param playlistList a list of playlist that the User has
      */
 
+    // constructor
     public User(String username, String password){
         this.username = username;
         this.password = password;
+        this.playlistList = new ArrayList<>();
     }
 
     public String getUsername() {return username;}
@@ -34,9 +35,7 @@ public class User {
 
     public List<Playlist> getPlaylistList() {return playlistList;}
 
-    public void setPlaylistList(){this.playlistList = new ArrayList<Playlist>();}
-
-    public void setPlaylistList(List<Playlist> playlistList) {this.playlistList = playlistList;}
+    public void updatePlaylistList(List<Playlist> playlistList) {this.playlistList = playlistList;}
 
 
     //public List<User> getFriendsList() {return friendsList;
@@ -46,4 +45,9 @@ public class User {
     //public void setBlacklist(){this.blacklist = new ArrayList<Song>();}
     //public void setBlacklist(List<Song> blacklist) {this.blacklist = blacklist;}
 
+    @Override
+    public String toString(){
+        //return string representation of the user containing its username and the number of playlists it contains
+        return "This user " + this.username + " has " + this.playlistList.size() + " playlist(s).";
+    }
 }
