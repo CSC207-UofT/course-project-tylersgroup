@@ -1,28 +1,53 @@
 package FWDrivers.views;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
-public abstract class view {
-    private final ArrayList<String> menuOptions;
-    private final String header;
+public abstract class View {
+    LinkedHashMap<String, View> menuOptions;
+    String header;
+    String footer;
+    boolean menuView;
 
     /**
      * Abstract constructor for the view class.
-     * @param menuOptions Stores the menu options available to the user in each view window.
-     * @param header Stores the text displayed at the top of the UI in the current view.
+     * Instantiates the basic variables needed for any view object.
+     *
      */
-    public view(ArrayList<String> menuOptions, String header){
-
-        this.menuOptions = menuOptions;
-        this.header = header;
+    public View(){
+        header = "";
+        footer = "";
+        this.menuOptions = new LinkedHashMap<>();
+        this.menuView = true;
     }
 
     public String getHeader(){
         return this.header;
     }
 
-    public ArrayList<String> getMenuOptions(){
+    public LinkedHashMap<String, View> getMenuOptions(){
         return this.menuOptions;
     }
 
+    public String getFooter() {
+        return this.footer;
+    }
+
+    public boolean isMenuView(){
+        return this.menuView;
+    }
+
+
+    @Override
+    public String toString(){
+        StringBuilder out = new StringBuilder(this.header);
+
+        for(int i = 0; i < this.menuOptions.size();){
+            out.append("\n\t").append(i).append(") ").append(menuOptions.keySet().toArray()[i]);
+            i++;
+        }
+        out.append("\n");
+        out.append(this.footer);
+
+        return out.toString();
+    }
 }
