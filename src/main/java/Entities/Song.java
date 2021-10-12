@@ -50,6 +50,20 @@ public class Song {
         this.popularity = popularity;
     }
 
+    /**
+     * Temporary song constructor only for name and artist for phase 0
+     *
+     */
+    Song(String name, String artist){
+        this.name = name;
+        this.artist = artist;
+        this.duration = -1;
+        this.album = "temp";
+        this.genre = "temp";
+        this.explicit = false;
+        this.popularity = -1;
+    }
+
     public String getName() {
         return name;
     }
