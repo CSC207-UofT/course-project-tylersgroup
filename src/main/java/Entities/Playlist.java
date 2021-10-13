@@ -9,6 +9,7 @@ public class Playlist{
     /**
      * Construct a Playlist object, with the following parameters:
      *
+     * @param playlistName Name of the playlist, may be unnamed
      *
      */
     //constructor
@@ -26,8 +27,9 @@ public class Playlist{
     public Song getSongAtIndex(int i){
         if(i < this.getPlaylistLength()){
             return playlist.get(i);
+        } else {
+            return null;
         }
-        return null;
     }
 
     public String getPlaylistName(){
@@ -46,6 +48,15 @@ public class Playlist{
         return playlist.size();
     }
 
+    /**
+     * Adds song into end of playlist
+     * @return boolean true if song was successfully added into playlist
+     */
+    public boolean addSong(Song song){
+        return playlist.add(song);
+    }
+
+    @Override
     public int compareTo(Playlist other){
         //compare playlists by lengths? Maybe later we can do some funky compareTo with like how "popular" it is
         if(this.getPlaylistLength() > other.getPlaylistLength()){
