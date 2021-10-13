@@ -27,7 +27,7 @@ public class Song {
     /**
      * Constructs a song which has an associated album.
      */
-    Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
+    public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
         this.name = name;
         this.artist = artist;
         this.duration = duration;

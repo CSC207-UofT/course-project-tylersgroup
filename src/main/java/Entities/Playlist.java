@@ -12,12 +12,13 @@ public class Playlist{
      *
      */
     //constructor
-    Playlist(){
+    public Playlist(){
         this.playlist = new ArrayList<Song>();
         this.playlistName = "Unnamed Playlist";
     }
 
-    Playlist(String name){
+
+    public Playlist(String name){
         this.playlist = new ArrayList<Song>();
         this.playlistName = name;
     }
