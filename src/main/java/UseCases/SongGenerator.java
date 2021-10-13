@@ -3,14 +3,11 @@ package UseCases;
 import Entities.Song;
 import Entities.User;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Optional;
 
 public class SongGenerator {
-    private String potentialSong;
+    private final String potentialSong;
     private boolean songExistence;
     private String artist;
 
@@ -22,13 +19,13 @@ public class SongGenerator {
 
     public void CSVReader(){
 
-        String path = "filename"; // csvFile name goes here
+        String path = "sample_data.csv"; // csvFile name goes here
         String line = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (this.potentialSong == data[0]) {
+                if (this.potentialSong.equals(data[0])) {
                     this.songExistence = true;
                     this.artist = data[1];
                     break;
