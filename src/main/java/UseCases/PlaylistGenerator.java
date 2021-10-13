@@ -13,7 +13,7 @@ public class PlaylistGenerator {
     public static Playlist generatePlaylist( ArrayList<String> words){
         Playlist newPlaylist = new Playlist();
         for (String s : words) {
-            Song song = SongGenerator(s); //create a song entity for that song
+            Song song = SongGenerator.generateSong(); //create a song entity for that song
             // recieve the song entities and instantiate a playlist entity
             newPlaylist.addSong(song);
         }

@@ -7,14 +7,14 @@ import java.io.*;
 import java.util.Optional;
 
 public class SongGenerator {
-    private final String potentialSong;
-    private boolean songExistence;
-    private String artist;
+    static String potentialSong;
+    static boolean songExistence;
+    static String artist;
 
     public SongGenerator(String potentialSong){
-        this.potentialSong = potentialSong;
-        this.songExistence = false;
-        this.artist = "";
+        SongGenerator.potentialSong = potentialSong;
+        SongGenerator.songExistence = false;
+        SongGenerator.artist = "";
     }
 
     public void CSVReader(){
@@ -25,9 +25,9 @@ public class SongGenerator {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (this.potentialSong.equals(data[0])) {
-                    this.songExistence = true;
-                    this.artist = data[1];
+                if (SongGenerator.potentialSong.equals(data[0])) {
+                    SongGenerator.songExistence = true;
+                    SongGenerator.artist = data[1];
                     break;
                 }
             }
@@ -35,9 +35,9 @@ public class SongGenerator {
             e.printStackTrace();
         }
     }
-    public Optional<Entities.Song> generateSong(){
-        if(this.songExistence){
-            Song song = new Song(this.potentialSong, this.artist);
+    public static Optional<Entities.Song> generateSong(){
+        if(SongGenerator.songExistence){
+            Song song = new Song(SongGenerator.potentialSong, SongGenerator.artist);
             Optional<Song> opt = Optional.ofNullable(song);
             return opt;
         }
