@@ -13,7 +13,7 @@ public class Playlist{
      *
      */
     //constructor
-    Playlist(){
+    public Playlist(){
         this.playlist = new ArrayList<Song>();
         this.playlistName = "Unnamed Playlist";
     }
