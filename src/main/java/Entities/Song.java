@@ -27,6 +27,7 @@ public class Song {
     /**
      * Constructs a song which has an associated album.
      */
+
     Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
         this.name = name;
         this.artist = artist;
@@ -48,6 +49,32 @@ public class Song {
         this.genre = genre;
         this.explicit = explicit;
         this.popularity = popularity;
+    }
+    /**
+     * Constructs a song with just name and artist
+     */
+    public Song(String name, String artist){
+        this.name = name;
+        this.artist = artist;
+        this.duration = 0;
+        this.album = "";
+        this.genre = "";
+        this.explicit = false;
+        this.popularity = 0;
+    }
+
+    /**
+     * Temporary song constructor only for name and artist for phase 0
+     *
+     */
+    Song(String name, String artist){
+        this.name = name;
+        this.artist = artist;
+        this.duration = -1;
+        this.album = "temp";
+        this.genre = "temp";
+        this.explicit = false;
+        this.popularity = -1;
     }
 
     public String getName() {
