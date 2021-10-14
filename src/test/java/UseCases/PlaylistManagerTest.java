@@ -1,4 +1,4 @@
-/*
+package UseCases;/*
 Unit tests for PlaylistManager.java
 */
 import UseCases.PlaylistManager;
