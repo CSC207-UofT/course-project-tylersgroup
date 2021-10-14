@@ -69,8 +69,8 @@ public class Song {
         this.name = name;
         this.artist = artist;
         this.duration = -1;
-        this.album = "temp";
-        this.genre = "temp";
+        this.album = "sample album";
+        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
