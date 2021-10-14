@@ -12,9 +12,8 @@ public class HomeScreenView extends View{
         super.header = "Successful login!" + "\n" + "Please select what you would like to do from the options below:";
         super.footer = "Please input one of the numbers available: ";
         super.menuOptions = new LinkedHashMap<>();
-        super.menuOptions.put("Generate a new playlist", new genPlaylistView());
-        super.menuOptions.put("Manage Playlists", new managePlaylistView());
-        super.menuOptions.put("Account settings", new accSettingsView());
-        super.menuOptions.put("Exit", null);
+        super.menuOptions.put("Generate a new playlist", new GenPlaylistView());
+        //super.menuOptions.put("Manage Playlists", new ManagePlaylistView());
+        //super.menuOptions.put("Account settings", new AccSettingsView());
     }
 }
