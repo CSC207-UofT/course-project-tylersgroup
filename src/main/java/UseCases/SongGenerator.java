@@ -1,23 +1,16 @@
 package UseCases;
 
 import Entities.Song;
-import Entities.User;
 
 import java.io.*;
-import java.util.Optional;
+import java.util.Objects;
 
 public class SongGenerator {
-    private final String potentialSong;
-    private boolean songExistence;
-    private String artist;
 
-    public SongGenerator(String potentialSong){
-        this.potentialSong = potentialSong;
-        this.songExistence = false;
-        this.artist = "";
+    public SongGenerator(){
     }
 
-    public void CSVReader(){
+    public static String CSVReader(String s){
 
         String path = "sample_data.csv"; // csvFile name goes here
         String line = "";
@@ -25,21 +18,19 @@ public class SongGenerator {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (this.potentialSong.equals(data[0])) {
-                    this.songExistence = true;
-                    this.artist = data[1];
-                    break;
+                if (s.equals(data[0])) {
+                    return data[1];
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "";
     }
-    public Optional<Entities.Song> generateSong(){
-        if(this.songExistence){
-            Song song = new Song(this.potentialSong, this.artist);
-            Optional<Song> opt = Optional.ofNullable(song);
-            return opt;
+    public static Song generateSong(String s){
+        String artist = SongGenerator.CSVReader(s);
+        if (!Objects.equals(artist, "")){
+            return new Song(s, artist);
         }
         return null;
     }

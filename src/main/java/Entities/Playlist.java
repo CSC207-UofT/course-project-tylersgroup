@@ -8,9 +8,6 @@ public class Playlist{
 
     /**
      * Construct a Playlist object, with the following parameters:
-     *
-     * @param playlistName Name of the playlist, may be unnamed
-     *
      */
     //constructor
     public Playlist(){
@@ -56,20 +53,21 @@ public class Playlist{
         return playlist.add(song);
     }
 
-    @Override
-    public int compareTo(Playlist other){
-        //compare playlists by lengths? Maybe later we can do some funky compareTo with like how "popular" it is
-        if(this.getPlaylistLength() > other.getPlaylistLength()){
-            return 1;
-        }
-        else if(this.getPlaylistLength() < other.getPlaylistLength()){
-            return -1;
-        }
-        else{
-            //equal lengths
-            return 0;
-        }
-    }
+    //TODO: Override should implement Comparable. Uncomment this method for now
+//    @Override
+//    public int compareTo(Playlist other){
+//        //compare playlists by lengths? Maybe later we can do some funky compareTo with like how "popular" it is
+//        if(this.getPlaylistLength() > other.getPlaylistLength()){
+//            return 1;
+//        }
+//        else if(this.getPlaylistLength() < other.getPlaylistLength()){
+//            return -1;
+//        }
+//        else{
+//            //equal lengths
+//            return 0;
+//        }
+//    }
 
     @Override
     public String toString(){

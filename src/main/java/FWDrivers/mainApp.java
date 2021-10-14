@@ -1,5 +1,6 @@
 package FWDrivers;
 
+import FWDrivers.views.HomeScreenView;
 import FWDrivers.views.SplashScreenView;
 
 import java.util.Scanner;
@@ -15,13 +16,14 @@ public class mainApp {
 
     public static void main(String[] args){
         // Create an appState object with the SplashScreen view as the starting point for the program.
-        appState appState = new appState(new SplashScreenView());
+        appState appState = new appState(new HomeScreenView());
 
         // Create a stateChanger object to handle how user input changes the program state.
         stateChanger stateChanger = new stateChanger();
 
         Scanner input = new Scanner(System.in);
         //Reading in the user's choices and executing them while the program is running.
+        System.out.println("SKELETON PROGRAM PHASE 0: ONLY GENERATE PLAYLIST SUPPORTED.");
         while (appState.isRunning()){
             System.out.println(appState.getCurrView());
             String userIn = input.nextLine();
