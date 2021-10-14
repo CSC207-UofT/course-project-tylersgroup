@@ -1,4 +1,4 @@
-/*
+package UseCases;/*
 Unit tests for UserManager.java
  */
 import UseCases.UserManager;
