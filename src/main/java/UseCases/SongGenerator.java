@@ -3,10 +3,11 @@ package UseCases;
 import Entities.Song;
 
 import java.io.*;
+import java.util.Objects;
 
 public class SongGenerator {
 
-    public SongGenerator(String potentialSong){
+    public SongGenerator(){
     }
 
     public static String CSVReader(String s){
@@ -28,7 +29,7 @@ public class SongGenerator {
     }
     public static Song generateSong(String s){
         String artist = SongGenerator.CSVReader(s);
-        if (artist != ""){
+        if (!Objects.equals(artist, "")){
             return new Song(s, artist);
         }
         return null;
