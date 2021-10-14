@@ -17,8 +17,4 @@ public class UserInputProcessor {
         return userInput.split("\\s+");
     }
 
-//    public static void main(String[] args) {
-//        String [] test = UserInputProcessor.splitUserInput("hi there my name is june");
-//        System.out.println(Arrays.toString(test));
-//    }
 }
