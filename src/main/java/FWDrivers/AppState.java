@@ -2,7 +2,7 @@ package FWDrivers;
 
 import FWDrivers.views.View;
 
-public class appState implements IappState{
+public class AppState implements IappState{
 
     private static boolean running;
     private static View currentView;
@@ -12,7 +12,7 @@ public class appState implements IappState{
      * splash screen, login, create new account, create new playlist, manage saved playlists,
      * and account settings.
      */
-    public appState(View view){
+    public AppState(View view){
         running = true;
         currentView = view;
 
