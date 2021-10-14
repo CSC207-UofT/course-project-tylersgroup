@@ -21,7 +21,7 @@ public class UserManagerTest {
     }
 
     @Test
-    public void testAddUserSuccess(){
+    public void test(){
         boolean success = manager.addUser("TestUser1","User1Password");
         assert(success);
     }
