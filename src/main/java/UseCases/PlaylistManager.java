@@ -21,10 +21,6 @@ public class PlaylistManager {
         playlists = new ArrayList<Playlist>();
     }
 
-    public void checkOrder(Playlist playlist){
-        // Iterate through the songs in order and see if it matches the input string ??
-    }
-
     public boolean addPlaylist(Playlist playlist, User user){
         return user.getPlaylistList().add(playlist);
     }
