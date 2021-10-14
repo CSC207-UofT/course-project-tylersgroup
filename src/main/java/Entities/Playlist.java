@@ -98,10 +98,10 @@ public class Playlist{
     @Override
     public String toString(){
         //return string representation of playlist, just print string reps of songs in order
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for(int i=0; i<this.getPlaylistLength(); i++){
-            s = i + ") " + this.getSongAtIndex(i).toString() + "\n";
+            s.append(i).append(") ").append(this.getSongAtIndex(i).toString()).append("\n");
         }
-        return s;
+        return s.toString();
     }
 }
