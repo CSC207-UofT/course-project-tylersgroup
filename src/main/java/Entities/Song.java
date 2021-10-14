@@ -20,19 +20,12 @@ public class Song {
      * @param genre Genre of song
      * @param explicit Boolean representing whether the song is family friendly or not
      * @param popularity Int representing spot in charts
-     */
-
-    //Song within an album
+     **/
 
     /**
      * Constructs a song which has an associated album.
      */
-<<<<<<< HEAD
     public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
-=======
-
-    Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
->>>>>>> f94e1d0f68ce935c7ade07e95b6e9f7d95c33f20
         this.name = name;
         this.artist = artist;
         this.duration = duration;
@@ -45,7 +38,7 @@ public class Song {
     /**
      * Constructs a song that is a single (no associated album)
      */
-    Song(String name, String artist, int duration, String genre, boolean explicit, int popularity) {
+    public Song(String name, String artist, int duration, String genre, boolean explicit, int popularity) {
         this.name = name;
         this.artist = artist;
         this.duration = duration;
@@ -54,24 +47,25 @@ public class Song {
         this.explicit = explicit;
         this.popularity = popularity;
     }
-    /**
-     * Constructs a song with just name and artist
-     */
-    public Song(String name, String artist){
-        this.name = name;
-        this.artist = artist;
-        this.duration = 0;
-        this.album = "";
-        this.genre = "";
-        this.explicit = false;
-        this.popularity = 0;
-    }
+
+//    /**
+//     * Constructs a song with just name and artist
+//     **/
+//    public Song(String name, String artist){
+//        this.name = name;
+//        this.artist = artist;
+//        this.duration = 0;
+//        this.album = "";
+//        this.genre = "";
+//        this.explicit = false;
+//        this.popularity = 0;
+//    }
 
     /**
      * Temporary song constructor only for name and artist for phase 0
      *
      */
-    Song(String name, String artist){
+    public Song(String name, String artist){
         this.name = name;
         this.artist = artist;
         this.duration = -1;
@@ -115,9 +109,10 @@ public class Song {
     }
 
     /**
-     * @Override toString
+     * Override toString
      * return song as a string in the form of: *Name*, *album name*, by *artist name*.
      **/
+    @Override
     public String toString() {
         return name + ", " + album + ", by: " + artist + ".";
     }
