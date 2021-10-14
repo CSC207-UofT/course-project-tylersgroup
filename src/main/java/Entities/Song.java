@@ -84,7 +84,7 @@ public class Song {
     }
 
     public String getArtist() {
-        // retruns artist name
+        // returns artist name
         return artist;
     }
 
@@ -113,7 +113,7 @@ public class Song {
      * return song as a string in the form of: *Name*, *album name*, by *artist name*.
      **/
     @Override
-    public String toString() {
+    public String toString(){
         return name + ", " + album + ", by: " + artist + ".";
     }
 }
