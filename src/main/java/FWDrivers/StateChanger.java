@@ -2,6 +2,8 @@ package FWDrivers;
 
 
 import Controllers.createPlaylistHandler;
+import FWDrivers.views.GenPlaylistView;
+import FWDrivers.views.HomeScreenView;
 import FWDrivers.views.ITextField;
 import FWDrivers.views.View;
 
@@ -18,7 +20,7 @@ public class StateChanger {
         // Exits the program if the user types "exit".
 
         if (!input.equals("exit")) {
-            
+
             View currentView = state.getCurrView();
             //TODO: ADD bad user input handling.
             if (currentView.isMenuView()) {
@@ -30,6 +32,8 @@ public class StateChanger {
                 // Handles user input in non-menu views
                 createPlaylistHandler playlistHandler = new createPlaylistHandler();
                 String out = playlistHandler.makePlaylist(input);
+
+                //((GenPlaylistView) currentView).modifyFooter(out);
                 // Type cast to ITextField that has the textField methods necessary for text input.
                 //ITextField currentView1 = (ITextField) currentView;
                 // Check what footer was last print to screen, if no more footers to parse, pass to next view.
@@ -43,9 +47,11 @@ public class StateChanger {
 //                    i++;
 //                }
                 System.out.println(out);
+                //state.changeCurView(currentView);
 //                if (currentView.getFooter().equals(footers[footers.length - 1]) && playlistHandler.getComplete()){
 //                    state.changeCurView(currentView1.getNextView());
 //                }
+                //((GenPlaylistView) currentView).updateNextView(new HomeScreenView());
             }
         } else{
             state.stopProgram();
