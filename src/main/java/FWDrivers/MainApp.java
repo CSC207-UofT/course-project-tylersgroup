@@ -29,9 +29,9 @@ public class MainApp {
             //TODO: Add a try/catch block for invalid user inputs
             stateChanger.changeState(userIn, appState);
 
-            }
+        }
         input.close();
         System.out.println("Thanks for using the spottyApp!");
-        }
-
     }
+
+}
