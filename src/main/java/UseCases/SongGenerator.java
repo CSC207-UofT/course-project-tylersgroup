@@ -5,9 +5,6 @@ import Entities.Song;
 import java.io.*;
 
 public class SongGenerator {
-    static String potentialSong;
-    static boolean songExistence;
-    static String artist;
 
     public SongGenerator(String potentialSong){
     }
