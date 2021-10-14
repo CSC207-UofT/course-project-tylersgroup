@@ -19,7 +19,7 @@ public class stateChanger {
         if (!input.equals("exit")) {
             
             View currentView = state.getCurrView();
-            
+            //TODO: ADD bad user input handling.
             if (currentView.isMenuView()) {
                 View newView = (View) currentView.getMenuOptions().values().toArray()[Integer.parseInt(input)];
                 state.changeCurView(newView);
