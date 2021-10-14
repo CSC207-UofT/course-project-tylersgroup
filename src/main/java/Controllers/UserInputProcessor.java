@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class UserInputProcessor {
     public UserInputProcessor () {
-        // empty constructor because I'm not sure what to put here
     }
 
     /**
@@ -16,5 +15,4 @@ public class UserInputProcessor {
     public static String[] splitUserInput (String userInput) {
         return userInput.split("\\s+");
     }
-
 }
