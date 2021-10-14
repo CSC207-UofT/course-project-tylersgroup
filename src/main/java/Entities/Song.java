@@ -27,8 +27,12 @@ public class Song {
     /**
      * Constructs a song which has an associated album.
      */
+<<<<<<< HEAD
+    public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
+=======
 
     Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
+>>>>>>> f94e1d0f68ce935c7ade07e95b6e9f7d95c33f20
         this.name = name;
         this.artist = artist;
         this.duration = duration;

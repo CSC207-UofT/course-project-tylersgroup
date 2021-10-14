@@ -18,7 +18,8 @@ public class Playlist{
         this.playlistName = "Unnamed Playlist";
     }
 
-    Playlist(String name){
+
+    public Playlist(String name){
         this.playlist = new ArrayList<Song>();
         this.playlistName = name;
     }
@@ -26,6 +27,8 @@ public class Playlist{
     public Song getSongAtIndex(int i){
         if(i < this.getPlaylistLength()){
             return playlist.get(i);
+        } else {
+            return null;
         }
     }
 
