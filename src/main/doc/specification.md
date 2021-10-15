@@ -1,10 +1,5 @@
 # Specification
 
-#### **Entity classes**: Playlist, User, Song etc.
-#### **Use case classes**: UserManager, PlaylistManager, PlaylistGenerator etc.
-#### **Controller**: ProcessUserInput etc.
-#### **Basic Command Line interface**: `exit` Exit the program
-
 
 Spotify allows the functionality to create ordered playlists to sort and save songs which are then shareable with other users. This then led to people creating playlists where the title of each song creates a sentence.
 
