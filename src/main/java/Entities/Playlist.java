@@ -10,7 +10,7 @@ public class Playlist{
      * Construct a Playlist object with no name given
      */
     public Playlist(){
-        this.playlist = new ArrayList<Song>();
+        this.playlist = new ArrayList<>();
         this.playlistName = "Unnamed Playlist";
     }
 
@@ -21,7 +21,7 @@ public class Playlist{
      * @param name is the name of the playlist
      */
     public Playlist(String name){
-        this.playlist = new ArrayList<Song>();
+        this.playlist = new ArrayList<>();
         this.playlistName = name;
     }
 
