@@ -16,10 +16,10 @@ public class PlaylistManager {
 
     public PlaylistManager(){}
 
-    public static boolean addPlaylist(Playlist playlist, User user){
+    public boolean addPlaylist(Playlist playlist, User user){
         return user.getPlaylistList().add(playlist);
     }
 
-    public static boolean removePlaylist(Playlist playlist, User user){ return user.getPlaylistList().remove(playlist);
+    public boolean removePlaylist(Playlist playlist, User user){ return user.getPlaylistList().remove(playlist);
     }
 }
