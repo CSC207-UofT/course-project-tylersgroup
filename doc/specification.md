@@ -1,6 +1,8 @@
 # Specification
 
 
+##Introduction
+
 Spotify allows the functionality to create ordered playlists to sort and save songs which are then shareable with other users. This then led to people creating playlists where the title of each song creates a sentence.
 
 Our program will generate a playlist (group of songs) based on a string input by the user. These then get assigned to the  user’s account and the user can also edit the contents of the playlists. 
@@ -17,11 +19,13 @@ Our program will generate a playlist (group of songs) based on a string input by
 
 ***
 
+## Running the program
+
 Running the program starts a text based user input environment that allows the user to input a string to interact with a menu interface
 
-***
+### Login/Create Account
 
-While running, the program prints a menu where users choose from:
+Upon running the program, the user will be asked to login or create a new account
 
 * Login
 	* If the user chooses to login, the program will read in the user’s username and password before checking if they match with what is stored in the database. 
@@ -32,7 +36,7 @@ While running, the program prints a menu where users choose from:
 
 ***
 
-After logging in successfully the program prints a menu where users can choose from: 
+Upon successful login, users can do one of the following: 
 
 * Create new playlist from string
 	* If the user wants to create a playlist, they are prompted to enter a string of words which the program then splices in multiple different combinations to be able to find song titles for each word or group of words
