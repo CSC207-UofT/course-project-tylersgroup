@@ -7,17 +7,14 @@ package UseCases;
  */
 
 
-import Entities.User;
 import Entities.Playlist;
-
-import java.util.*;
+import Entities.User;
 
 
 
 public class PlaylistManager {
-    private List<Playlist> playlists;
 
-    public PlaylistManager(){ playlists = new ArrayList<>(); }
+    public PlaylistManager(){}
 
     public boolean addPlaylist(Playlist playlist, User user){
         return user.getPlaylistList().add(playlist);
