@@ -17,9 +17,7 @@ import java.util.*;
 public class PlaylistManager {
     private List<Playlist> playlists;
 
-    public PlaylistManager(){
-        playlists = new ArrayList<Playlist>();
-    }
+    public PlaylistManager(){ playlists = new ArrayList<>(); }
 
     public boolean addPlaylist(Playlist playlist, User user){
         return user.getPlaylistList().add(playlist);

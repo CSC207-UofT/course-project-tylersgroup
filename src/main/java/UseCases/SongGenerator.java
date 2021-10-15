@@ -18,7 +18,7 @@ public class SongGenerator {
     public static String CSVReader(String s){
 
         String path = "sample_data.csv"; // csvFile name goes here
-        String line = "";
+        String line;
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {

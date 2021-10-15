@@ -14,7 +14,7 @@ public class PlaylistGenerator {
         Playlist newPlaylist = new Playlist();
         for (String s : words) {
             Song song = SongGenerator.generateSong(s); //create a song entity for that song
-            // recieve the song entities and instantiate a playlist entity
+            // receive the song entities and instantiate a playlist entity
             newPlaylist.addSong(song);
         }
         return newPlaylist;
