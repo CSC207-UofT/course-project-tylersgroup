@@ -69,8 +69,22 @@ public class Song {
         this.name = name;
         this.artist = artist;
         this.duration = -1;
-        this.album = "temp";
-        this.genre = "temp";
+        this.album = "sample album";
+        this.genre = "sample genre";
+        this.explicit = false;
+        this.popularity = -1;
+    }
+
+    /**
+     * construct an empty song
+     * @return
+     */
+    public Song() {
+        this.name = "";
+        this.artist = "";
+        this.duration = -1;
+        this.album = "sample album";
+        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -114,6 +128,11 @@ public class Song {
      **/
     @Override
     public String toString() {
-        return name + ", " + album + ", by: " + artist + ".";
+        if (Objects.equals(this.name, "")) {
+            return "<song not found>";
+        } else {
+            return name + ", " + album + ", by: " + artist + ".";
+        }
     }
 }
+

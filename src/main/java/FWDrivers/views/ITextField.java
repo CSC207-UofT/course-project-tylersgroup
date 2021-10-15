@@ -6,10 +6,12 @@ package FWDrivers.views;
  */
 public interface ITextField {
 
-    void changeFooter(int i);
+
+    void updateCurrentFooter(int i);
 
     String[] getTextFields();
 
+    void modifyFooter(String newFooter);
 
     View getNextView();
 }
