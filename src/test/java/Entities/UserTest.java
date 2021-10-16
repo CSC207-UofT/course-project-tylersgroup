@@ -2,17 +2,17 @@ package Entities;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserTest extends TestCase {
     User user;
 
-    public void setUp() throws Exception {
-        super.setUp();
+    public void setUp(){
         user = new User("username", "password");
     }
 
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     public void testGetUsername() {
@@ -26,8 +26,9 @@ public class UserTest extends TestCase {
     }
 
     public void testGetPlaylistList() {
-        List<Playlist> playlist = user.getPlaylistList();
-        assertEquals("password", playlist);
+        List<Playlist> playlistList = user.getPlaylistList();
+        List<Playlist> pll = new ArrayList<>();
+        assertEquals(pll, playlistList);
     }
 
     public void testUpdatePlaylistList() {
