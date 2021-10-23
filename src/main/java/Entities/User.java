@@ -61,3 +61,4 @@ public class User {
         return "This user " + this.username + " has " + this.playlistList.size() + " playlist(s).";
     }
 }
+
