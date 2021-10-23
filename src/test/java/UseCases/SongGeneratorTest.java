@@ -1,4 +1,4 @@
-
+package UseCases;
 /*
 Unit tests for UserManager.java
  */
@@ -31,3 +31,4 @@ public class SongGeneratorTest {
     }
 
 }
+

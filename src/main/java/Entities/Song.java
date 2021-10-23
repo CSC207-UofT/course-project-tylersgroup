@@ -2,13 +2,13 @@ package Entities;
 import java.util.*;
 
 public class Song {
-    private String name;
-    private String artist;
-    private int duration;
-    private String album;
-    private String genre;
-    private boolean explicit;
-    private int popularity;
+    private final String name;
+    private final String artist;
+    private final int duration;
+    private final String album;
+    private final String genre;
+    private final boolean explicit;
+    private final int popularity;
 
     /**
      * Construct a Song object, with the following parameters:
@@ -20,10 +20,6 @@ public class Song {
      * @param genre Genre of song
      * @param explicit Boolean representing whether the song is family friendly or not
      * @param popularity Int representing spot in charts
-     **/
-
-    /**
-     * Constructs a song which has an associated album.
      */
     public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
         this.name = name;
@@ -48,19 +44,6 @@ public class Song {
         this.popularity = popularity;
     }
 
-//    /**
-//     * Constructs a song with just name and artist
-//     **/
-//    public Song(String name, String artist){
-//        this.name = name;
-//        this.artist = artist;
-//        this.duration = 0;
-//        this.album = "";
-//        this.genre = "";
-//        this.explicit = false;
-//        this.popularity = 0;
-//    }
-
     /**
      * Temporary song constructor only for name and artist for phase 0
      *
@@ -69,8 +52,21 @@ public class Song {
         this.name = name;
         this.artist = artist;
         this.duration = -1;
-        this.album = "temp";
-        this.genre = "temp";
+        this.album = "sample album";
+        this.genre = "sample genre";
+        this.explicit = false;
+        this.popularity = -1;
+    }
+
+    /**
+     * construct an empty song
+     */
+    public Song() {
+        this.name = "";
+        this.artist = "";
+        this.duration = -1;
+        this.album = "sample album";
+        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -84,7 +80,7 @@ public class Song {
     }
 
     public String getArtist() {
-        // retruns artist name
+        // returns artist name
         return artist;
     }
 
@@ -114,6 +110,11 @@ public class Song {
      **/
     @Override
     public String toString() {
-        return name + ", " + album + ", by: " + artist + ".";
+        if (Objects.equals(this.name, "")) {
+            return "<song not found>";
+        } else {
+            return name + ", " + album + ", by: " + artist + ".";
+        }
     }
 }
+
