@@ -60,4 +60,5 @@ public class User {
     public String toString(){
         return "This user " + this.username + " has " + this.playlistList.size() + " playlist(s).";
     }
+
 }
