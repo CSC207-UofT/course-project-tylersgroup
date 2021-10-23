@@ -1,34 +1,25 @@
-package UseCases;/*
+package UseCases;
+
+/*
  * A Use Case class
  *
  * PlaylistManager manages all the playlists created
  */
 
 
-import Entities.User;
 import Entities.Playlist;
-
-import java.util.*;
+import Entities.User;
 
 
 
 public class PlaylistManager {
-    private List<Playlist> playlists;
 
-    public PlaylistManager(){
-        playlists = new ArrayList<Playlist>();
+    public PlaylistManager(){}
+
+    public boolean addPlaylist(Playlist playlist, User user){
+        return user.getPlaylistList().add(playlist);
     }
 
-    public void checkOrder(Playlist playlist){
-        // Iterate through the songs in order and see if it matches the input string ??
-    }
-
-
-    public void addPlaylist(Playlist playlist, User user){
-        user.getPlaylistList().add(playlist);
-    }
-
-    public void removePlaylist(Playlist playlist, User user){
-        user.getPlaylistList().remove(playlist);
+    public boolean removePlaylist(Playlist playlist, User user){ return user.getPlaylistList().remove(playlist);
     }
 }

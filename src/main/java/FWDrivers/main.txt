@@ -1,0 +1,8 @@
+while app on:
+    render home view:
+        if input == 0:
+            render GenPlay view
+
+        if input == 1:
+            render blah
+
