@@ -12,10 +12,10 @@ public class SongGenerator {
 
     /**
      * reads off CSV and returns the artist name
-     * @param s song name
-     * @return artist name as String
+     * @param songName song name
+     * @return artist name as String. When no song has been found, return "" as artist name.
      */
-    public static String CSVReader(String s){
+    public static String CSVReader(String songName){
 
         String path = "sample_data.csv"; // csvFile name goes here
         String line;
@@ -23,7 +23,7 @@ public class SongGenerator {
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (s.equals(data[0])) {
+                if (songName.equals(data[0])) {
                     return data[1];
                 }
             }
@@ -33,12 +33,19 @@ public class SongGenerator {
         // when no song has been found, return "" as artist name
         return "";
     }
-    public static Song generateSong(String s){
-        String artist = SongGenerator.CSVReader(s);
+    /**
+     * create and return a new Song whose name matches with the parameter, using CSVReader method.
+     * @param songName song name
+     * @return a newly created Song object whose name matches with songName.
+     *          When no song has been found, return an empty song.
+     */
+    public static Song generateSong(String songName){
+        String artist = SongGenerator.CSVReader(songName);
         if (!Objects.equals(artist, "")){
-            return new Song(s, artist);
+            return new Song(songName, artist);
         }
         return new Song();
     }
 
 }
+
