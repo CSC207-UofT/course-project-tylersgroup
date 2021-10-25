@@ -1,8 +1,6 @@
 package Controllers;
 
 import Entities.Playlist;
-import Entities.User;
-import FWDrivers.views.View;
 import UseCases.PlaylistGenerator;
 
 import java.util.ArrayList;

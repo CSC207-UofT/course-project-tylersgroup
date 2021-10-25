@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.legacy.views;
 
 public class GenPlaylistView extends View implements ITextField{
     private final View nextView;
