@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.legacy.views;
 
 import java.util.LinkedHashMap;
 

@@ -1,6 +1,6 @@
-package FWDrivers;
+package FWDrivers.legacy;
 
-import FWDrivers.views.View;
+import FWDrivers.legacy.views.View;
 
 /**
  * Interface to structure what the appState class needs to implement.
@@ -12,7 +12,4 @@ public interface IappState {
 
     void stopProgram();
 
-    View getCurrView();
-
-    void changeCurView(View view);
 }

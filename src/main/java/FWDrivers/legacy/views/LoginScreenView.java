@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.legacy.views;
 
 public class LoginScreenView extends View implements ITextField{
     private final String[] textFields;
