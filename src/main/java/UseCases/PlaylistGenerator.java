@@ -12,6 +12,7 @@ import java.util.*;
 public class PlaylistGenerator {
     public static Playlist generatePlaylist( ArrayList<String> words){
         Playlist newPlaylist = new Playlist();
+
         for (String s : words) {
             Song song = SongGenerator.generateSong(s); //create a song entity for that song
             // receive the song entities and instantiate a playlist entity
@@ -19,4 +20,7 @@ public class PlaylistGenerator {
         }
         return newPlaylist;
     }
+
+
+
 }

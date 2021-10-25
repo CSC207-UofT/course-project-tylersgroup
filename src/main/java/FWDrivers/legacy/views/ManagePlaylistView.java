@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.legacy.views;
 
 public class ManagePlaylistView extends View {
 
