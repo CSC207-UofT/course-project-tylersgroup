@@ -39,6 +39,15 @@ public class User {
     public List<Playlist> getPlaylistList() {return playlistList;}
 
     /**
+     * Return whether the password parameter matches this user's password.
+     * @param password the password guess
+     * @return whether the guess matches the real password.
+     */
+    public boolean passwordMatches(String password){
+        return this.password.equals(password);
+    }
+
+    /**
      * Updates the list of playlists this user has.
      * @param playlistList is the new list of playlists.
      */
