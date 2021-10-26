@@ -1,41 +1,34 @@
-package FWDrivers;
+package FWDrivers.legacy;
 
-import FWDrivers.views.View;
+import FWDrivers.legacy.views.View;
 
-public class AppState implements IappState{
+public class AppState{
 
     private static boolean running;
-    private static View currentView;
 
     /**
      * Constructs an appState object that holds the states the program can take:
      * splash screen, login, create new account, create new playlist, manage saved playlists,
      * and account settings.
      */
-    public AppState(View view){
+    public AppState(){
         running = true;
-        currentView = view;
 
     }
 
-    @Override
     public boolean isRunning() {
         return running;
     }
 
-    @Override
     public void stopProgram() {
         running = false;
     }
 
-    @Override
-    public View getCurrView() {
-        return currentView;
+    public String renderHome(){
+        return "Please select what you would like to do from the options below:" + "\n 1) Generate a new playlist"
+                + "\n 2) Manage saved playlists" + "\n 3) Account Settings" + "\n 4) Exit"
+                + "\n\n Please input one of the numbers available or type exit: ";
     }
 
-    @Override
-    public void changeCurView(View view){
-        currentView = view;
     }
 
-}

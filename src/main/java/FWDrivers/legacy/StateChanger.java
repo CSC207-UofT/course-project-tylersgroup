@@ -1,18 +1,16 @@
-package FWDrivers;
+
+package FWDrivers.legacy;
 
 
 import Controllers.createPlaylistHandler;
-import FWDrivers.views.GenPlaylistView;
-import FWDrivers.views.HomeScreenView;
-import FWDrivers.views.ITextField;
-import FWDrivers.views.View;
-
+import FWDrivers.legacy.views.View;
+/**
 public class StateChanger {
 
-    /**
+
      * Empty Constructor for stateChanger class.
      * This is a driver class that does not yet have any parameters.
-     */
+
     public StateChanger() {
     }
 
@@ -58,3 +56,4 @@ public class StateChanger {
         }
     }
 }
+*/
