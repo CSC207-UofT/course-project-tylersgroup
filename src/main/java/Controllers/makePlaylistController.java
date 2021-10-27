@@ -5,13 +5,13 @@ import UseCases.PlaylistGenerator;
 
 import java.util.ArrayList;
 
-public class createPlaylistHandler {
+public class makePlaylistController {
     private boolean complete;
 
     /**
      * Empty Constructor for createPlaylistHandler.
      */
-    public createPlaylistHandler(){
+    public makePlaylistController(){
         this.complete = false;
     }
 
@@ -21,7 +21,7 @@ public class createPlaylistHandler {
      * @param input The user input string to generate a playlist from.
      */
     public String makePlaylist(String input){
-        ArrayList<String> splitInput = UserInputProcessor.splitUserInput(input);
+        ArrayList<String> splitInput = UserInputController.splitUserInput(input);
 
         Playlist newPlaylist = PlaylistGenerator.generatePlaylist(splitInput);
 
