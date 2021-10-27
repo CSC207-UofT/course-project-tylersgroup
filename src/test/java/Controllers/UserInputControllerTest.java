@@ -8,9 +8,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertArrayEquals;
-
-public class UserInputProcessorTest {
+public class UserInputControllerTest {
     @Before
     public void setUp(){
     }
@@ -21,7 +19,7 @@ public class UserInputProcessorTest {
 
     @Test
     public void testSplitUserInput() {
-        ArrayList<String> actual = UserInputProcessor.splitUserInput("hi there my name is june");
+        ArrayList<String> actual = UserInputController.splitUserInput("hi there my name is june");
         String [] expectedArray = {"hi", "there", "my", "name", "is", "june"};
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedArray));
         assert(expected.equals(actual));

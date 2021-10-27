@@ -1,6 +1,4 @@
-package FWDrivers.legacy;
-
-import FWDrivers.legacy.views.View;
+package FWDrivers.phase0UI;
 
 /**
  * Interface to structure what the appState class needs to implement.

@@ -1,17 +1,19 @@
-package FWDrivers;
+package FWDrivers.phase0UI;
 
-import FWDrivers.legacy.AppState;
+import FWDrivers.phase0UI.AppState;
 
 import java.util.Scanner;
 
 
 public class SpottyMain {
     public static void main(String[] args) {
+        // Start a new appstate to keep track of the program current running state.
         AppState state = new AppState();
+        // Start a scanner to look for user inputs
         Scanner input = new Scanner(System.in);
 
         while (state.isRunning()){
-
+            // Render the homescreen text.
             System.out.println(state.renderHome());
             int numIn = input.nextInt();
             //TODO: Change the placeholders to start main methods for handling the displaying and user inputs for the menu options stated.

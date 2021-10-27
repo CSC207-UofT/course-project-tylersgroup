@@ -1,6 +1,4 @@
-package FWDrivers.legacy;
-
-import FWDrivers.legacy.views.HomeScreenView;
+package FWDrivers.phase0UI;
 
 import java.util.Scanner;
 
