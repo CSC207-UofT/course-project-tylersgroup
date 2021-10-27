@@ -1,4 +1,4 @@
-package FWDrivers.legacy.views;
+package FWDrivers.phase0UI.views;
 
 /**
  * Interface to specify if a view class is of the type that needs to handle string inputs from

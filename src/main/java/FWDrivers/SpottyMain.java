@@ -1,6 +1,6 @@
 package FWDrivers;
 
-import FWDrivers.legacy.AppState;
+import FWDrivers.phase0UI.AppState;
 
 import java.util.Scanner;
 
