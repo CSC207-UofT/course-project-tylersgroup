@@ -1,4 +1,4 @@
-package FWDrivers.legacy;
+package FWDrivers;
 
 import Controllers.LoginController;
 import Controllers.UserResisterController;
