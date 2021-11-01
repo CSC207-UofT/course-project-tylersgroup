@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.phase0UI.views;
 
 /**
  * Interface to specify if a view class is of the type that needs to handle string inputs from
@@ -6,10 +6,12 @@ package FWDrivers.views;
  */
 public interface ITextField {
 
-    void changeFooter(int i);
+
+    void updateCurrentFooter(int i);
 
     String[] getTextFields();
 
+    void modifyFooter(String newFooter);
 
     View getNextView();
 }

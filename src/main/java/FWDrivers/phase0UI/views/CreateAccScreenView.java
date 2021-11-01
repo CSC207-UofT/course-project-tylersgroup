@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.phase0UI.views;
 
 public class CreateAccScreenView extends View{
 

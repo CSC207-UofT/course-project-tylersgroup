@@ -1,4 +1,4 @@
-package FWDrivers.views;
+package FWDrivers.phase0UI.views;
 
 public class LoginScreenView extends View implements ITextField{
     private final String[] textFields;
@@ -21,13 +21,19 @@ public class LoginScreenView extends View implements ITextField{
         return super.header + "\n" + super.footer;
     }
     @Override
-    public void changeFooter(int i){
+    public void updateCurrentFooter(int i){
         super.footer = textFields[i];
     }
     @Override
     public String[] getTextFields(){
         return this.textFields;
     }
+
+    @Override
+    public void modifyFooter(String a) {
+
+    }
+
     @Override
     public View getNextView(){
         return this.nextView;
