@@ -1,32 +1,36 @@
 # Specification
 
-#### **Entity classes**: Playlist, User, Song etc.
-#### **Use case classes**: UserManager, PlaylistManager, PlaylistGenerator etc.
-#### **Controller**: ProcessUserInput etc.
-#### **Basic Command Line interface**: `exit` Exit the program
 
+## Introduction
 
-Spotify allows the functionality to create ordered playlists to sort and save songs which are then shareable with other users. This then led to people creating playlists where the title of each song creates a sentence.
+### Purpose
 
-Our program will generate a playlist (group of songs) based on a string input by the user. These then get assigned to the  user’s account and the user can also edit the contents of the playlists. 
+Many music streaming platforms allow users to create playlists to save and sort songs. Other users can access these shareable playlists. Some users of these music platforms like to create playlists, in which the title of each songs form a meaningful sentence. 
+
+The purpose of this program is to generate playlists (group of songs) based on a sentence inputted by the user. By splitting the input sentence into parts, and finding songs whose titles are composed of these parts, a playlist is generated. It then gets added to the  user’s account and the user can also edit the contents of the playlists. 
+
+### Intended Audience
+
+This program is intended to be used by anyone who is also using one of the supported music streaming platforms.
 
 ***
 
-**Potential extensions**:
+### Potential extensions:
 * Social functionality
 * Share, merge and compare playlists
-* Use web sockets to allow multiple users to write a sentence at the same time! 
-* sortByGenre 
+* Use web sockets to allow multiple users to write a sentence at the same time
+* When creating playlists, only include songs of a specific genre
 * Integrating with spotify's playlist functions (title, description, image, etc.)
 
-
 ***
+
+## Running the program
 
 Running the program starts a text based user input environment that allows the user to input a string to interact with a menu interface
 
-***
+### Login/Create Account
 
-While running, the program prints a menu where users choose from:
+Upon running the program, the user will be asked to login or create a new account
 
 * Login
 	* If the user chooses to login, the program will read in the user’s username and password before checking if they match with what is stored in the database. 
@@ -37,7 +41,9 @@ While running, the program prints a menu where users choose from:
 
 ***
 
-After logging in successfully the program prints a menu where users can choose from: 
+### Main Menu
+
+Upon successful login, users can do one of the following: 
 
 * Create new playlist from string
 	* If the user wants to create a playlist, they are prompted to enter a string of words which the program then splices in multiple different combinations to be able to find song titles for each word or group of words
