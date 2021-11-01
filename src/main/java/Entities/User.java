@@ -1,9 +1,10 @@
 package Entities;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable {
     private final String username;
     private final String password;
     private List<Playlist> playlistList;
@@ -67,7 +68,7 @@ public class User {
      **/
     @Override
     public String toString(){
-        return "This user " + this.username + " has " + this.playlistList.size() + " playlist(s).";
+        return " username: " + this.username + " password: " + this.password;
     }
 
 }

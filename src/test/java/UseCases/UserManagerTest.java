@@ -1,8 +1,8 @@
 package UseCases;/*
 Unit tests for UserManager.java
  */
-import UseCases.UserManager;
 
+import Entities.UserList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
