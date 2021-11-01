@@ -1,7 +1,6 @@
 package FWDrivers;
 
 import Controllers.ManagePlaylistController;
-// TODO: WTF THIS IS NOT ALLOWED - created and commented by tyler for now
 import Entities.User;
 
 import java.util.Scanner;
@@ -22,7 +21,7 @@ public class ManagePlaylistUI {
 
         while (this.running) {
             // Print all available playlists to the user.
-            printUserPlaylist();
+            printUserPlaylist(controller);
 
             String userIn = input.next();
 
@@ -68,8 +67,7 @@ public class ManagePlaylistUI {
         System.out.println("Choose the playlist you want to manage, or type \"exit\" to exit:");
     }
 
-    private void printUserPlaylist(){
-        // TODO: Controller to get user
-
-    }
+    private void printUserPlaylist(ManagePlaylistController controller){
+        controller.printUserPlaylist(currentUser);
+        }
 }

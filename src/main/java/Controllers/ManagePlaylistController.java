@@ -1,6 +1,5 @@
 package Controllers;
 
-import Entities.Playlist;
 import Entities.User;
 import UseCases.PlaylistManager;
 
@@ -14,5 +13,9 @@ public class ManagePlaylistController {
 
     public void callingRemovePlaylist(int playlistIndex, User user){
         PlaylistManager.removePlaylist(playlistIndex, user);
+    }
+
+    public void printUserPlaylist(User user){
+        PlaylistManager.printUserPlaylist(user);
     }
 }

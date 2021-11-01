@@ -34,4 +34,13 @@ public class PlaylistManager {
         Playlist wantedPlaylist = userPlaylist.get(playlistIndex);
         wantedPlaylist.setPlaylistName(newName);
     }
+
+    public static void printUserPlaylist(User user){
+        List<Playlist> playlistlist = user.getPlaylistList();
+        for (int i = 0; i < playlistlist.size(); i++) {
+            System.out.print(i);
+            System.out.print(": ");
+            System.out.println(playlistlist.get(i));
+        }
+    }
 }
