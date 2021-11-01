@@ -14,14 +14,14 @@ public class ManagePlaylistUI {
         this.currentUser = user;
     }
 
-    public void managePlaylist(ManagePlaylistController controller){
+    public void managePlaylist(){
         printManagePlaylistOptions();
 
         Scanner input = new Scanner(System.in);
 
         while (this.running) {
             // Print all available playlists to the user.
-            printUserPlaylist(controller);
+            printUserPlaylist();
 
             String userIn = input.next();
 
@@ -42,16 +42,19 @@ public class ManagePlaylistUI {
                 // TODO: Handle Exception
                 if (action == 1){
                     // Delete Playlist
+                    deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    controller.callingRemovePlaylist(playlistIndex, currentUser);
+                    ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
                 }
-                else{
+                else if (action == 2){
                     // Rename Playlist
 
                     String newName = getNewNameForPlaylist();
 
+                    editPlaylistName(playlistIndex, newName);
+
                     System.out.println("Playlist renamed.");
-                    controller.callingRenamePlaylist(playlistIndex, currentUser, newName);
+                    ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
                 }
             }
 
@@ -67,7 +70,15 @@ public class ManagePlaylistUI {
         System.out.println("Choose the playlist you want to manage, or type \"exit\" to exit:");
     }
 
-    private void printUserPlaylist(ManagePlaylistController controller){
-        controller.printUserPlaylist(currentUser);
-        }
+    private void printUserPlaylist(){
+        ManagePlaylistController.printUserPlaylist(currentUser);
+    }
+
+    private void deletePlaylist(int playlistIndex){
+        ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
+    }
+
+    private void editPlaylistName(int playlistIndex, String newName){
+        ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
+    }
 }

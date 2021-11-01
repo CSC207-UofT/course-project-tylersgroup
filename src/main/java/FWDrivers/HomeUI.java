@@ -1,10 +1,12 @@
 package FWDrivers;
 
-import Controllers.ManagePlaylistController;
 import Controllers.makePlaylistController;
+import Entities.Playlist;
 import Entities.User;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -17,7 +19,11 @@ public class HomeUI {
         // TODO: Remove this dangerous User placeholder!
         // UI access the user's playlist
         currentUser = new User("username", "password");
-
+        List<Playlist> playlistList = new ArrayList<>();
+        playlistList.add(new Playlist("Favourite"));
+        playlistList.add(new Playlist("I hate these songs"));
+        playlistList.add(new Playlist("ENGLISH SONGS"));
+        currentUser.updatePlaylistList(playlistList);
         this.running = true;
     }
 
@@ -45,8 +51,7 @@ public class HomeUI {
                     case 2:
                         // Manage saved playlists
                         ManagePlaylistUI managePlaylistUI = new ManagePlaylistUI(currentUser);
-                        ManagePlaylistController managePlaylistController  = new ManagePlaylistController();
-                        managePlaylistUI.managePlaylist(managePlaylistController);
+                        managePlaylistUI.managePlaylist();
                         break;
                     case 3:
                         // User Account

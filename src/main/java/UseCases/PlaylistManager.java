@@ -38,9 +38,10 @@ public class PlaylistManager {
     public static void printUserPlaylist(User user){
         List<Playlist> playlistlist = user.getPlaylistList();
         for (int i = 0; i < playlistlist.size(); i++) {
-            System.out.print(i);
+            // Index start at 0 but we want the list to start from 1
+            System.out.print(i + 1);
             System.out.print(": ");
-            System.out.println(playlistlist.get(i));
+            System.out.println(playlistlist.get(i).getPlaylistName());
         }
     }
 }
