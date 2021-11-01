@@ -20,8 +20,11 @@ public class HomeUI {
 
         while (this.running){
 
-            System.out.println("Please select what you would like to do from the options below:" + "\n 1) Generate a new playlist"
-                    + "\n 2) Manage saved playlists" + "\n 3) Account Settings" + "\n 4) Exit"
+            System.out.println("Please select what you would like to do from the options below:"
+                    + "\n 1) Generate a new playlist"
+                    + "\n 2) Manage saved playlists"
+                    + "\n 3) Account Settings"
+                    + "\n 4) Exit"
                     + "\n\n Please input one of the numbers available:");
 
             try {
