@@ -18,18 +18,27 @@ public class NewUserUI {
     public void RegisterUser(UserResisterController controller){
         System.out.println("Please follow the instructions below to create a new account. \n ");
         Scanner input = new Scanner(System.in);
+
         while (this.running){
             System.out.println("Please input a username for a new account or type exit: ");
             String userIn = input.nextLine();
+
             // user types in a username
             if (!userIn.equals("exit")){
 
-                    //username is unique, so user can proceed to inputting password
-                    if (controller.catchUser(userIn)){
+                    if (!controller.catchUser(userIn)){
+                        //username is unique, so user can proceed to inputting password
                         System.out.println("Please input a password for the new account:");
                         String pswd = input.nextLine();
-                        controller.registerUser(userIn, pswd);
-                        System.out.println("You are all set! Enjoy Spotty App!");
+
+                        if (controller.registerUser(userIn, pswd)){ // if adding a new user to userlist was successful
+                            System.out.println("You are all set! Enjoy Spotty App!");
+                        }
+
+                        else{
+                            System.out.println("Something went wrong, try again.");
+                            break;
+                        }
                     }
                     else { // username is not unique, user taken back to the UserAuthenticationUI
                         System.out.println("The username " +userIn+" has already been registered. \n ");

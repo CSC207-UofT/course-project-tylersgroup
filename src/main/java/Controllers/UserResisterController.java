@@ -27,8 +27,8 @@ public class UserResisterController {
      * @param password password for the user to be registered
      * @return true if the username already exists
      */
-    public void registerUser(String username, String password){
-        this.userManager.addUser(username, password);
+    public boolean registerUser(String username, String password){
+        return this.userManager.addUser(username, password);
     }
 
 }
