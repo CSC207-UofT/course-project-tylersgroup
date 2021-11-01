@@ -12,7 +12,7 @@ import java.util.concurrent.CompletionException;
 public class AuthorizationCodeUri {
     private static final String clientId = "aad0ceac29e9477bae151417a721ecf5";
     private static final String clientSecret = "de9884d5bbab4ac78171276d75383936";
-    private static final URI redirectUri = SpotifyHttpManager.makeUri("https://example.com/spotify-redirect");
+    private static final URI redirectUri = SpotifyHttpManager.makeUri("http:localhost:8080/api/get-user-code/");
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.builder()
             .setClientID(clientId)

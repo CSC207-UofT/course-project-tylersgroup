@@ -1,3 +1,5 @@
+package authorization.authorization_code;
+
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -20,8 +22,8 @@ public class AuthorizationCode(object){
     private String code = ""; //user access code, will eventually ask spotify for a user access token
 
     SpotifyApi spotifyApi = new SpotifyApi.Builder()
-            .setClientId("<your_client_id>")
-            .setClientSecret("<your_client_secret>")
+            .setClientId("aad0ceac29e9477bae151417a721ecf5")
+            .setClientSecret("de9884d5bbab4ac78171276d75383936")
             .setRedirectUri("<your_redirect_uri>")
             .build();
 
