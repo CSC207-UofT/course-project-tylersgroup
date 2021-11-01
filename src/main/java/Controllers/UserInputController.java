@@ -3,8 +3,8 @@ package Controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class UserInputProcessor {
-    public UserInputProcessor () {
+public class UserInputController {
+    public UserInputController() {
     }
 
     /**
