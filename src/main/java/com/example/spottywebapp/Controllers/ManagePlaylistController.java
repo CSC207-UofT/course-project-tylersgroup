@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
-import Entities.User;
-import UseCases.PlaylistManager;
+import com.example.spottywebapp.UseCases.PlaylistManager;
+import com.example.spottywebapp.entities.User;
 
 public class ManagePlaylistController {
     // Default constructor

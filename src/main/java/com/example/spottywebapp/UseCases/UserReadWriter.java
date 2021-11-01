@@ -1,6 +1,7 @@
 package com.example.spottywebapp.UseCases;
 
-import Entities.UserList;
+
+import com.example.spottywebapp.entities.UserList;
 
 import java.io.*;
 

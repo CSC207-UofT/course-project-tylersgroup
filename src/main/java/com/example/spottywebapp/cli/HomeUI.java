@@ -1,8 +1,8 @@
 package com.example.spottywebapp.cli;
 
-import Controllers.makePlaylistController;
-import Entities.Playlist;
-import Entities.User;
+import com.example.spottywebapp.Controllers.makePlaylistController;
+import com.example.spottywebapp.entities.Playlist;
+import com.example.spottywebapp.entities.User;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -47,7 +47,7 @@ public class HomeUI {
                 switch (numIn) {
                     case 1:
                         // Generate a new playlist
-                        FWDrivers.GenPlaylistUI genPlaylistUI = new FWDrivers.GenPlaylistUI();
+                        GenPlaylistUI genPlaylistUI = new GenPlaylistUI();
                         makePlaylistController PLController = new makePlaylistController();
                         genPlaylistUI.runPlaylistGen(PLController);
                         break;

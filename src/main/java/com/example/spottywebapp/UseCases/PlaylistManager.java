@@ -7,8 +7,9 @@ package com.example.spottywebapp.UseCases;
  */
 
 
-import Entities.Playlist;
-import Entities.User;
+
+import com.example.spottywebapp.entities.Playlist;
+import com.example.spottywebapp.entities.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 
 package com.example.spottywebapp.UseCases;
 
-import Entities.Song;
+import com.example.spottywebapp.entities.Song;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,6 +1,6 @@
 package com.example.spottywebapp.cli;
 
-import Controllers.LoginController;
+import com.example.spottywebapp.Controllers.LoginController;
 
 import java.util.Scanner;
 

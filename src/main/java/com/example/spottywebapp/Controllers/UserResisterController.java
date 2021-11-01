@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
-import Entities.UserList;
-import UseCases.UserManager;
+import com.example.spottywebapp.UseCases.UserManager;
+import com.example.spottywebapp.entities.UserList;
 
 public class UserResisterController {
 

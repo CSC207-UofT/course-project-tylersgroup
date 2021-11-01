@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
-import UseCases.LoginInputBoundary;
-import UseCases.LoginUseCase;
+import com.example.spottywebapp.UseCases.LoginInputBoundary;
+import com.example.spottywebapp.UseCases.LoginUseCase;
 
 public class LoginController {
 
