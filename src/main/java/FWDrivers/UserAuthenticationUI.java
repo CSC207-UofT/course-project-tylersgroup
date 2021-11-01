@@ -9,6 +9,7 @@ import FWDrivers.NewUserUI;
 import UseCases.LoginUseCase;
 import UseCases.UserReadWriter;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import java.io.*;
@@ -45,10 +46,15 @@ public class UserAuthenticationUI {
                         UserResisterController userResisterController = new UserResisterController(users);
                         newUserUI.RegisterUser(userResisterController);
                         urw.saveToFile(filepath, users);
-
                         break;
+                    default:
+                        System.out.println("Invalid input, please try again.");
                 }
-            } catch (EOFException eofException){
+
+            } catch (InputMismatchException e){
+                System.out.println("Invalid input, please try again. \n");
+                input.nextLine();
+            }catch (EOFException eofException){
                 System.out.println("eofException");
             } catch (IOException ioException) {
                 ioException.printStackTrace();
