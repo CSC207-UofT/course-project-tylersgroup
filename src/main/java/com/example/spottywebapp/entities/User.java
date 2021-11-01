@@ -1,9 +1,10 @@
 package com.example.spottywebapp.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private final String username;
     private final String password;
     private List<Playlist> playlistList;
@@ -39,6 +40,15 @@ public class User {
     public List<Playlist> getPlaylistList() {return playlistList;}
 
     /**
+     * Return whether the password parameter matches this user's password.
+     * @param password the password guess
+     * @return whether the guess matches the real password.
+     */
+    public boolean passwordMatches(String password){
+        return this.password.equals(password);
+    }
+
+    /**
      * Updates the list of playlists this user has.
      * @param playlistList is the new list of playlists.
      */
@@ -58,7 +68,7 @@ public class User {
      **/
     @Override
     public String toString(){
-        return "This user " + this.username + " has " + this.playlistList.size() + " playlist(s).";
+        return " username: " + this.username + " password: " + this.password;
     }
 
 }

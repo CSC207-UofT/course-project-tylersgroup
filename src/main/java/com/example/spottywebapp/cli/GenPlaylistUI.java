@@ -1,7 +1,6 @@
 package com.example.spottywebapp.cli;
 
-
-import com.example.spottywebapp.Controllers.makePlaylistController;
+import Controllers.makePlaylistController;
 
 import java.util.Scanner;
 

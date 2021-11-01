@@ -4,15 +4,14 @@ package com.example.spottywebapp.UseCases;
  */
 
 
-
-import com.example.spottywebapp.entities.Playlist;
-import com.example.spottywebapp.entities.Song;
+import Entities.Playlist;
+import Entities.Song;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistGenerator {
-    public static Playlist generatePlaylist(ArrayList<String> words){
+    public static Playlist generatePlaylist( ArrayList<String> words){
         Playlist newPlaylist = new Playlist();
         List<String> wordList = (List<String>) words;
 //        for (String s : words) {
@@ -34,7 +33,7 @@ public class PlaylistGenerator {
                 String songName = String.join(" ", wordList.subList(s, e));
                 // System.out.println(songName);
                 // make request to song generator
-                Song newSong = SongGenerator.generateSong(songName);
+                Song newSong = UseCases.SongGenerator.generateSong(songName);
                 // check if we got a song with that name
                 if (!newSong.getName().equals("")) {
                     newPlaylist.addSong(newSong);
