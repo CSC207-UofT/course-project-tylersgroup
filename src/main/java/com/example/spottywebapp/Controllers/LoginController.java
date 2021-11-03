@@ -2,6 +2,7 @@ package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.LoginInputBoundary;
 import com.example.spottywebapp.UseCases.LoginUseCase;
+import com.example.spottywebapp.entities.UserList;
 
 public class LoginController {
 
@@ -40,5 +41,8 @@ public class LoginController {
                 System.out.println("No such user... Try again.");
 
         }
+    }
+    public void userLogin(String username){
+
     }
 }

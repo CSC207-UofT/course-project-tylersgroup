@@ -1,4 +1,4 @@
-package com.example.spottywebapp.UseCases;
+package com.example.spottywebapp.Controllers;
 
 
 import com.example.spottywebapp.entities.UserList;

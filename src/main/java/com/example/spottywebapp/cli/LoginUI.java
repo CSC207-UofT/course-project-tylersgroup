@@ -1,7 +1,10 @@
 package com.example.spottywebapp.cli;
 
 import com.example.spottywebapp.Controllers.LoginController;
+import com.example.spottywebapp.Controllers.UserReadWriter;
+import com.example.spottywebapp.entities.UserList;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class LoginUI {

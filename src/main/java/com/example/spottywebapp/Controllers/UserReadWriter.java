@@ -1,6 +1,9 @@
-package com.example.spottywebapp.UseCases;
+package com.example.spottywebapp.Controllers;
 
 
+import com.example.spottywebapp.Controllers.ReadWriter;
+import com.example.spottywebapp.UseCases.UserManager;
+import com.example.spottywebapp.entities.User;
 import com.example.spottywebapp.entities.UserList;
 
 import java.io.*;
@@ -14,7 +17,7 @@ public class UserReadWriter implements ReadWriter {
      *
      * @param filePath the file to write the records to
      * @param users    stores the list of users to be serialized
-     * @throws IOException
+     * @throws IOException when failed reading
      */
     @Override
     public void saveToFile(String filePath, Object users) throws IOException {
@@ -35,10 +38,9 @@ public class UserReadWriter implements ReadWriter {
      *
      * @param filePath file where the user list is stored
      * @return list of users
-     * @throws IOException
      */
     @Override
-    public UserList readFromFile(String filePath) throws IOException, ClassNotFoundException {
+    public UserList readFromFile(String filePath)  {
         try {
             InputStream file = new FileInputStream(filePath);
             InputStream buffer = new BufferedInputStream(file);
@@ -49,7 +51,7 @@ public class UserReadWriter implements ReadWriter {
             buffer.close();
             file.close();
             return users;
-        }catch(IOException e){
+        } catch (java.io.IOException | ClassNotFoundException e) {
             return new UserList();
         }
     }

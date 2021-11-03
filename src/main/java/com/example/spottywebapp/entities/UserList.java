@@ -23,6 +23,14 @@ public class UserList implements Serializable {
         return users.containsKey(username);
     }
 
+    public void addUser(String username, User user){
+        users.put(username, user);
+    }
+
+    public void removeUser(String username){
+        users.remove(username);
+    }
+
     /**
      * Return the User associated with username.
      * @param username the username of the user to get.
