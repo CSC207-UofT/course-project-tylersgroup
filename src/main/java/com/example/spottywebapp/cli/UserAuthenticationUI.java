@@ -4,7 +4,7 @@ package com.example.spottywebapp.cli;
 import com.example.spottywebapp.Controllers.LoginController;
 import com.example.spottywebapp.Controllers.UserResisterController;
 import com.example.spottywebapp.UseCases.LoginUseCase;
-import com.example.spottywebapp.UseCases.UserReadWriter;
+import com.example.spottywebapp.Controllers.UserReadWriter;
 import com.example.spottywebapp.entities.UserList;
 
 import java.io.EOFException;
@@ -28,7 +28,7 @@ public class UserAuthenticationUI {
                     " \n 1) Log in" + "\n 2) Create a new account");
             try {
                 int numIn = input.nextInt();
-                String usersData = "users_data";
+                String usersData = "users_data.ser";
                 UserReadWriter urw = new UserReadWriter();
                 UserList users = urw.readFromFile(usersData);
                 switch (numIn) {
@@ -58,8 +58,6 @@ public class UserAuthenticationUI {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
                 System.out.println("ioException");
-            } catch (ClassNotFoundException classNotFoundException) {
-                System.out.println("classNotFoundException");
             }
         }
     }
