@@ -28,7 +28,7 @@ public class UserAuthenticationUI {
                     " \n 1) Log in" + "\n 2) Create a new account");
             try {
                 int numIn = input.nextInt();
-                String usersData = "users_data.ser";
+                String usersData = "user_data.ser";
                 UserReadWriter urw = new UserReadWriter();
                 UserList users = urw.readFromFile(usersData);
                 switch (numIn) {
@@ -36,14 +36,12 @@ public class UserAuthenticationUI {
                         LoginUI loginUI = new LoginUI();
                         LoginUseCase useCase = new LoginUseCase(urw, users);
                         LoginController controller = new LoginController(useCase);
-                        System.out.println(users.toString());
                         loginUI.runLogin(controller);
                         break;
                     case 2:
                         NewUserUI newUserUI = new NewUserUI();
                         UserResisterController userResisterController = new UserResisterController(users);
                         newUserUI.RegisterUser(userResisterController);
-                        System.out.println(users.toString());
                         urw.saveToFile(usersData, users);
                         break;
                     default:
