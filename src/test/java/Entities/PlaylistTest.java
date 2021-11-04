@@ -2,20 +2,19 @@ package Entities;
 
 import Entities.User;
 import Entities.Playlist;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
 
 public class PlaylistTest {
     Playlist playlist;
 
-    @Before
+    @Before("")
     public void setUp(){
         Playlist playlist = new Playlist("Playlist1");
     }
 
-    @After
+    @After("")
     public void tearDown(){
     }
 

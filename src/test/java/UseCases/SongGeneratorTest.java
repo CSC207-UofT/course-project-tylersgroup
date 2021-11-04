@@ -2,18 +2,17 @@ package UseCases;
 /*
 Unit tests for UserManager.java
  */
-import org.junit.*;
+import org.aspectj.lang.annotation.Before;
 import Entities.Song;
-import UseCases.SongGenerator;
+import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-import static org.junit.Assert.*;
 
 
 public class SongGeneratorTest {
 
-    @Before
+    @Before("")
     public void setUp(){
     }
 
