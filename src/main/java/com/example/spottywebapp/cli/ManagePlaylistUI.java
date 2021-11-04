@@ -16,12 +16,12 @@ public class ManagePlaylistUI {
     }
 
     public void managePlaylist(){
-        printManagePlaylistOptions();
 
         Scanner input = new Scanner(System.in);
 
         while (this.running) {
             // Print all available playlists to the user.
+            printManagePlaylistOptions();
             printUserPlaylist();
 
             String userIn = input.next();
@@ -45,7 +45,7 @@ public class ManagePlaylistUI {
                     // Delete Playlist
                     deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    this.running = false;
+                    //this.running = false;
                 }
                 else if (action == 2){
                     // Rename Playlist
@@ -55,7 +55,7 @@ public class ManagePlaylistUI {
                     editPlaylistName(playlistIndex, newName);
 
                     System.out.println("Playlist renamed.");
-                    this.running = false;
+                    //this.running = false;
                 }
             }
 
