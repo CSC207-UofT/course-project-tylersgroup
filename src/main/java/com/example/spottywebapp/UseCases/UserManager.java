@@ -76,6 +76,7 @@ public class UserManager {
 
 
     public User getUser(String username){
+        // can throw noSuchElementException
         return users.getUser(username);
     }
 }
