@@ -15,7 +15,7 @@ public class NewUserUI {
      * A new user registration.
      * @param controller UserResisterController for executing registration
      */
-    public void RegisterUser(UserResisterController controller){
+    public String RegisterUser(UserResisterController controller){
         System.out.println("Please follow the instructions below to create a new account. \n ");
         Scanner input = new Scanner(System.in);
 
@@ -33,23 +33,24 @@ public class NewUserUI {
 
                         if (controller.registerUser(userIn, pswd)){ // if adding a new user to userlist was successful
                             System.out.println("You are all set! Enjoy Spotty App!");
+                            return userIn;
                         }
 
                         else{
                             System.out.println("Something went wrong, try again.");
-                            break;
+                            return null;
                         }
                     }
                     else { // username is not unique, user taken back to the UserAuthenticationUI
                         System.out.println("The username " +userIn+" has already been registered. \n ");
+                        return null;
                     }
-                this.running = false; // the username has already been used.
-                break;
 
             }
             else { // user types in "exit"
                 this.running = false;
             }
             }
+        return null;
     }
 }
