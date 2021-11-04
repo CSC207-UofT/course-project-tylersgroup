@@ -51,7 +51,7 @@ public class UserManager {
 
     private boolean addNewUser(User newUser) {
         String username = newUser.getUsername();
-        if (((Map) users).containsKey(username)) {
+        if (((Map) this.users).containsKey(username)) {
             return false;
         } else {
             ((Map) this.users).put(username, newUser);
