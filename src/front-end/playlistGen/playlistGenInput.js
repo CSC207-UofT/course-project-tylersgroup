@@ -1,10 +1,5 @@
 const API = "http://localhost:4000/song"
 
-
-function readInput() {
-    var userInput = document.getElementsByName("input")[0].value;
-}
-
 function getAllSongs(){
     const DATA = {
         songs: [

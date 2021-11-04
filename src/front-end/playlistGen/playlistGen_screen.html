@@ -9,13 +9,21 @@
 <body>
 <h1>Playlist Generator</h1>
 
-<label for="input">Input sentence:</label>
 
-<input type="text" id="input" required
-       minlength="0" maxlength="200" onkeyup="readInput()" onchange="readInput()" size="10">
+<form action="http://localhost:4000/song" method="post">
+    <label for="input">Input sentence:</label>
+    <input type="text" id="input" name="inputSentence"><br><br>
+    <input type="submit" value="Submit">
+</form>
 
-<input type="button"
-       value="submit">
+
+<!--<form>-->
+<!--<input type="text" id="input" required-->
+<!--       minlength="0" maxlength="200" onkeyup="readInput()" onchange="readInput()" size="10">-->
+
+<!--<button>Submit</button>-->
+
+<!--</form>-->
 
 <p>Here is your playlist:</p>
 <div id="playlistContainer">
