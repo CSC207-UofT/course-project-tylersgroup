@@ -11,19 +11,31 @@ import com.example.spottywebapp.entities.UserList;
 import java.util.*;
 
 public class UserManager {
+    // Making UserManager a singleton
+    private static UserManager USERMANAGER = null;
+
+    // instance attributes of UserManager
     private UserList users;
 
-    public UserManager(){
+    private UserManager(){
         users = new UserList();
     }
 
-    public UserManager(UserList users){
+    public void setUserList(UserList users){
         this.users = users;
+    }
+
+    public static UserManager getInstance(){
+        if (USERMANAGER == null){
+            USERMANAGER = new UserManager();
+        }
+        return USERMANAGER;
     }
 
     public boolean concurrentUser(String username){
         return users.concurrentUser(username);
     }
+
     public boolean addUser(String username, String password){
         User newUser = createUser(username, password);
         return addNewUser(newUser);

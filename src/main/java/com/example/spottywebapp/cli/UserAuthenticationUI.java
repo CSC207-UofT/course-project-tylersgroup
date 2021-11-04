@@ -21,6 +21,7 @@ public class UserAuthenticationUI {
         this.running = true;
     }
 
+
     public void authentication() {
         Scanner input = new Scanner(System.in);
         while (this.running) {
