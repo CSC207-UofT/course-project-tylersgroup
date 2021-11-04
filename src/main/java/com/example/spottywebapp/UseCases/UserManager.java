@@ -5,25 +5,47 @@
  */
 package com.example.spottywebapp.UseCases;
 
+import com.example.spottywebapp.entities.Playlist;
 import com.example.spottywebapp.entities.User;
 import com.example.spottywebapp.entities.UserList;
 
 import java.util.*;
 
 public class UserManager {
+    // Making UserManager a singleton
+    private static UserManager USERMANAGER = null;
+
+    // instance attributes of UserManager
     private UserList users;
 
-    public UserManager(){
+    private UserManager(){
         users = new UserList();
     }
 
-    public UserManager(UserList users){
+    public void setUserList(UserList users){
         this.users = users;
+    }
+
+    public static UserManager getInstance(){
+        if (USERMANAGER == null){
+            USERMANAGER = new UserManager();
+
+            // TODO: remove this testing chunk of code
+            User testUser = new User("username", "password");
+            List<Playlist> playlistList = new ArrayList<>();
+            playlistList.add(new Playlist("Favourite"));
+            playlistList.add(new Playlist("I hate these songs"));
+            playlistList.add(new Playlist("ENGLISH SONGS"));
+            testUser.updatePlaylistList(playlistList);
+            USERMANAGER.addNewUser(testUser);
+        }
+        return USERMANAGER;
     }
 
     public boolean concurrentUser(String username){
         return users.concurrentUser(username);
     }
+
     public boolean addUser(String username, String password){
         User newUser = createUser(username, password);
         return addNewUser(newUser);
