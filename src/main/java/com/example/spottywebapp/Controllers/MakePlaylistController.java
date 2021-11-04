@@ -1,17 +1,18 @@
 package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.PlaylistGenerator;
+import com.example.spottywebapp.UseCases.PlaylistManager;
 import com.example.spottywebapp.entities.Playlist;
 
 import java.util.ArrayList;
 
-public class makePlaylistController {
+public class MakePlaylistController {
     private boolean complete;
 
     /**
      * Empty Constructor for createPlaylistHandler.
      */
-    public makePlaylistController(){
+    public MakePlaylistController(){
         this.complete = false;
     }
 
@@ -20,11 +21,14 @@ public class makePlaylistController {
      * that PlaylistGenerator can handle to generate a playlist.
      * @param input The user input string to generate a playlist from.
      */
-    public String makePlaylist(String input){
+    public static String makePlaylist(String input, String username){
         ArrayList<String> splitInput = UserInputController.splitUserInput(input);
 
         Playlist newPlaylist = PlaylistGenerator.generatePlaylist(splitInput);
 
+        // Add playlist to the user's list of playlists, of course
+        PlaylistManager PLAYLISTMANAGER = PlaylistManager.getInstance();
+        PLAYLISTMANAGER.addPlaylist(newPlaylist, username);
         return newPlaylist.toString();
 
 

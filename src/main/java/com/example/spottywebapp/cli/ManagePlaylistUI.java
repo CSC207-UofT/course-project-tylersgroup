@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class ManagePlaylistUI {
     private boolean running;
-    private User currentUser;
+    private String username;
 
-    public ManagePlaylistUI(User user) {
+    public ManagePlaylistUI(String username) {
         this.running = true;
-        this.currentUser = user;
+        this.username = username;
     }
 
     public void managePlaylist(){
@@ -45,7 +45,7 @@ public class ManagePlaylistUI {
                     // Delete Playlist
                     deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
+                    ManagePlaylistController.callingRemovePlaylist(playlistIndex, username);
                 }
                 else if (action == 2){
                     // Rename Playlist
@@ -55,7 +55,7 @@ public class ManagePlaylistUI {
                     editPlaylistName(playlistIndex, newName);
 
                     System.out.println("Playlist renamed.");
-                    ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
+                    ManagePlaylistController.callingRenamePlaylist(playlistIndex, username, newName);
                 }
             }
 
@@ -72,14 +72,14 @@ public class ManagePlaylistUI {
     }
 
     private void printUserPlaylist(){
-        ManagePlaylistController.printUserPlaylist(currentUser);
+        ManagePlaylistController.printUserPlaylist(username);
     }
 
     private void deletePlaylist(int playlistIndex){
-        ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
+        ManagePlaylistController.callingRemovePlaylist(playlistIndex, username);
     }
 
     private void editPlaylistName(int playlistIndex, String newName){
-        ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
+        ManagePlaylistController.callingRenamePlaylist(playlistIndex, username, newName);
     }
 }
