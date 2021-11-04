@@ -22,7 +22,7 @@ public class UserAuthenticationUI {
     }
 
 
-    public void authentication() {
+    public String authentication() {
         Scanner input = new Scanner(System.in);
         while (this.running) {
             System.out.println("Please select what you would like to do from the options below:" +
@@ -37,14 +37,13 @@ public class UserAuthenticationUI {
                         LoginUI loginUI = new LoginUI();
                         LoginUseCase useCase = new LoginUseCase(urw, users);
                         LoginController controller = new LoginController(useCase);
-                        loginUI.runLogin(controller);
-                        break;
+                        return loginUI.runLogin(controller);
                     case 2:
                         NewUserUI newUserUI = new NewUserUI();
                         UserResisterController userResisterController = new UserResisterController(users);
-                        newUserUI.RegisterUser(userResisterController);
+                        String username = newUserUI.RegisterUser(userResisterController);
                         urw.saveToFile(usersData, users);
-                        break;
+                        return username;
                     default:
                         System.out.println("Invalid input, please try again.");
                 }
@@ -59,5 +58,6 @@ public class UserAuthenticationUI {
                 System.out.println("ioException");
             }
         }
+        return null;
     }
 }
