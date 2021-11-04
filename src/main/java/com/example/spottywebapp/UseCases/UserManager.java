@@ -5,6 +5,7 @@
  */
 package com.example.spottywebapp.UseCases;
 
+import com.example.spottywebapp.entities.Playlist;
 import com.example.spottywebapp.entities.User;
 import com.example.spottywebapp.entities.UserList;
 
@@ -28,6 +29,15 @@ public class UserManager {
     public static UserManager getInstance(){
         if (USERMANAGER == null){
             USERMANAGER = new UserManager();
+
+            // TODO: remove this testing chunk of code
+            User testUser = new User("username", "password");
+            List<Playlist> playlistList = new ArrayList<>();
+            playlistList.add(new Playlist("Favourite"));
+            playlistList.add(new Playlist("I hate these songs"));
+            playlistList.add(new Playlist("ENGLISH SONGS"));
+            testUser.updatePlaylistList(playlistList);
+            USERMANAGER.addNewUser(testUser);
         }
         return USERMANAGER;
     }

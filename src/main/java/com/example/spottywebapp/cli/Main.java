@@ -6,9 +6,9 @@ public class Main {
         //TODO: Add the login UI steps once created.
 
         UserAuthenticationUI userAuthenticationUI = new UserAuthenticationUI();
-        userAuthenticationUI.authentication();
+        String username = userAuthenticationUI.authentication();
         //After authenticating the user we start the home UI.
-        HomeUI homeUI = new HomeUI();
+        HomeUI homeUI = new HomeUI(username);
 
         homeUI.runHome();
 
