@@ -45,7 +45,7 @@ public class ManagePlaylistUI {
                     // Delete Playlist
                     deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    ManagePlaylistController.callingRemovePlaylist(playlistIndex, username);
+                    this.running = false;
                 }
                 else if (action == 2){
                     // Rename Playlist
@@ -55,7 +55,7 @@ public class ManagePlaylistUI {
                     editPlaylistName(playlistIndex, newName);
 
                     System.out.println("Playlist renamed.");
-                    ManagePlaylistController.callingRenamePlaylist(playlistIndex, username, newName);
+                    this.running = false;
                 }
             }
 
