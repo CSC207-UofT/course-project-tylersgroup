@@ -1,8 +1,7 @@
-package com.example.spottywebapp.Controllers;
+package Controllers;
 
-import com.example.spottywebapp.UseCases.LoginInputBoundary;
-import com.example.spottywebapp.UseCases.LoginUseCase;
-import com.example.spottywebapp.entities.UserList;
+import UseCases.LoginInputBoundary;
+import UseCases.LoginUseCase;
 
 public class LoginController {
 
@@ -10,13 +9,6 @@ public class LoginController {
      * The input boundary for the login use case.
      */
     private final LoginInputBoundary loginInputBoundary;
-
-    /**
-     * / The "output" of this use case.
-     */
-    public enum LoginControllerResult {
-        SUCCESS, FAILURE, NO_SUCH_USER
-    }
 
     /**
      * A new LoginController for the use case defined by the LoginInputBoundary.
@@ -32,24 +24,21 @@ public class LoginController {
      * @param username the username
      * @param password the password attempt
      */
-    public LoginControllerResult runLogin(String username, String password) {
+    public void runLogin(String username, String password) {
         // Note: hands off the work to the use case class.
         LoginUseCase.LoginResult result = loginInputBoundary.logIn(username, password);
         switch (result) {
             case SUCCESS:
                 // Should we be printing? How might you refactor this program
                 // to fit the Clean Architecture?
-                return LoginControllerResult.SUCCESS;
+                System.out.println("Logged in.");
                 break;
             case FAILURE:
-                return LoginControllerResult.FAILURE;
+                System.out.println("Failed to login!");
                 break;
             case NO_SUCH_USER:
-                return LoginControllerResult.NO_SUCH_USER;
+                System.out.println("No such user... Try again.");
 
         }
-    }
-    public void userLogin(String username){
-
     }
 }

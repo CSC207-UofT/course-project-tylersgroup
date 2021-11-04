@@ -1,16 +1,19 @@
-package com.example.spottywebapp.cli;
+package FWDrivers;
 
+import Controllers.LoginController;
+import Controllers.UserResisterController;
+import Entities.User;
+import Entities.UserList;
+import FWDrivers.LoginUI;
+import FWDrivers.NewUserUI;
+import UseCases.LoginUseCase;
+import UseCases.UserReadWriter;
 
-import com.example.spottywebapp.Controllers.LoginController;
-import com.example.spottywebapp.Controllers.UserResisterController;
-import com.example.spottywebapp.UseCases.LoginUseCase;
-import com.example.spottywebapp.Controllers.UserReadWriter;
-import com.example.spottywebapp.entities.UserList;
-
-import java.io.EOFException;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import java.io.*;
+
 
 
 public class UserAuthenticationUI {
@@ -21,7 +24,6 @@ public class UserAuthenticationUI {
         this.running = true;
     }
 
-
     public void authentication() {
         Scanner input = new Scanner(System.in);
         while (this.running) {
@@ -29,7 +31,7 @@ public class UserAuthenticationUI {
                     " \n 1) Log in" + "\n 2) Create a new account");
             try {
                 int numIn = input.nextInt();
-                String usersData = "user_data.ser";
+                String usersData = "users_data";
                 UserReadWriter urw = new UserReadWriter();
                 UserList users = urw.readFromFile(usersData);
                 switch (numIn) {
@@ -37,12 +39,14 @@ public class UserAuthenticationUI {
                         LoginUI loginUI = new LoginUI();
                         LoginUseCase useCase = new LoginUseCase(urw, users);
                         LoginController controller = new LoginController(useCase);
+                        System.out.println(users.toString());
                         loginUI.runLogin(controller);
                         break;
                     case 2:
                         NewUserUI newUserUI = new NewUserUI();
                         UserResisterController userResisterController = new UserResisterController(users);
                         newUserUI.RegisterUser(userResisterController);
+                        System.out.println(users.toString());
                         urw.saveToFile(usersData, users);
                         break;
                     default:
@@ -57,6 +61,8 @@ public class UserAuthenticationUI {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
                 System.out.println("ioException");
+            } catch (ClassNotFoundException classNotFoundException) {
+                System.out.println("classNotFoundException");
             }
         }
     }
