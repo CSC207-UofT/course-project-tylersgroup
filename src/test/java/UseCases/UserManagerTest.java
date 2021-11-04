@@ -3,19 +3,20 @@ Unit tests for UserManager.java
  */
 
 import Entities.UserList;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
+
 
 public class UserManagerTest {
     UserManager manager;
 
-    @Before
+    @Before("")
     public void setUp(){
         manager = new UserManager();
     }
 
-    @After
+    @After("")
     public void tearDown(){
 
     }

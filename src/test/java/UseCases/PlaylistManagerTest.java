@@ -4,10 +4,9 @@ Unit tests for PlaylistManager.java
 import UseCases.PlaylistManager;
 import Entities.Playlist;
 import Entities.User;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
 
 public class PlaylistManagerTest {
     PlaylistManager manager;
@@ -15,7 +14,7 @@ public class PlaylistManagerTest {
     Playlist playlist2;
     User user;
 
-    @Before
+    @Before("")
     public void setUp(){
         manager = new PlaylistManager();
         //TODO: Make the constructor of Playlist public
@@ -24,7 +23,7 @@ public class PlaylistManagerTest {
         user = new User("username", "password");
     }
 
-    @After
+    @After("")
     public void tearDown(){
 
     }
