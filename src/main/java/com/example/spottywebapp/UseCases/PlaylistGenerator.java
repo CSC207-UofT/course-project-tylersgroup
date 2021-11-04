@@ -61,6 +61,7 @@ public class PlaylistGenerator {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < words.size(); i++){
             sb.append(words.get(i));
+            sb.append(" ");
         }
         return sb.toString();
 
