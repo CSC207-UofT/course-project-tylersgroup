@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlist Generator Screen</title>
+    <link rel="stylesheet" href="playlistGen_screen.css">
+
+</head>
+<body>
+<h1>Playlist Generator</h1>
+
+<label for="input">Input sentence:</label>
+
+<input type="text" id="input" required
+       minlength="0" maxlength="200" onkeyup="readInput()" onchange="readInput()" size="10">
+
+<input type="button"
+       value="submit">
+
+<p>Here is your playlist:</p>
+<div id="playlistContainer">
+    <!--    SongDataNodes will end up here-->
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.spottywebapp.cli;
 
+import com.example.spottywebapp.Controllers.GetUserController;
 import com.example.spottywebapp.Controllers.makePlaylistController;
 import com.example.spottywebapp.entities.Playlist;
 import com.example.spottywebapp.entities.User;
@@ -15,15 +16,20 @@ public class HomeUI {
     private User currentUser;
     private boolean running;
 
-    public HomeUI(){
+    public HomeUI(String username){
+
+
         // TODO: Remove this dangerous User placeholder!
         // UI access the user's playlist
-        currentUser = new User("username", "password");
-        List<Playlist> playlistList = new ArrayList<>();
-        playlistList.add(new Playlist("Favourite"));
-        playlistList.add(new Playlist("I hate these songs"));
-        playlistList.add(new Playlist("ENGLISH SONGS"));
-        currentUser.updatePlaylistList(playlistList);
+//        currentUser = new User("username", "password");
+//        List<Playlist> playlistList = new ArrayList<>();
+//        playlistList.add(new Playlist("Favourite"));
+//        playlistList.add(new Playlist("I hate these songs"));
+//        playlistList.add(new Playlist("ENGLISH SONGS"));
+//        currentUser.updatePlaylistList(playlistList);
+
+        // GetUserController will return the User object.
+        currentUser = GetUserController.getUser(username);
         this.running = true;
     }
 
