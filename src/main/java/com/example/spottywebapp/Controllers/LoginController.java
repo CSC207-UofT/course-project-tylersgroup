@@ -12,6 +12,13 @@ public class LoginController {
     private final LoginInputBoundary loginInputBoundary;
 
     /**
+     * / The "output" of this use case.
+     */
+    public enum LoginControllerResult {
+        SUCCESS, FAILURE, NO_SUCH_USER
+    }
+
+    /**
      * A new LoginController for the use case defined by the LoginInputBoundary.
      * @param loginInputBoundary the input boundary for the login use case
      */
@@ -25,20 +32,20 @@ public class LoginController {
      * @param username the username
      * @param password the password attempt
      */
-    public void runLogin(String username, String password) {
+    public LoginControllerResult runLogin(String username, String password) {
         // Note: hands off the work to the use case class.
         LoginUseCase.LoginResult result = loginInputBoundary.logIn(username, password);
         switch (result) {
             case SUCCESS:
                 // Should we be printing? How might you refactor this program
                 // to fit the Clean Architecture?
-                System.out.println("Logged in.");
+                return LoginControllerResult.SUCCESS;
                 break;
             case FAILURE:
-                System.out.println("Failed to login!");
+                return LoginControllerResult.FAILURE;
                 break;
             case NO_SUCH_USER:
-                System.out.println("No such user... Try again.");
+                return LoginControllerResult.NO_SUCH_USER;
 
         }
     }

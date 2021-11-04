@@ -27,7 +27,7 @@ public class LoginUseCase implements LoginInputBoundary {
         this.users = users;
         this.readWriter = readWriter;
         try {
-            readWriter.saveToFile("users_data.ser", users);
+            readWriter.saveToFile("user_data.ser", users);
         } catch (IOException e) {
             System.out.println("User list did not save.");
         }
