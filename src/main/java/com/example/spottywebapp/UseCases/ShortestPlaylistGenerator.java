@@ -8,13 +8,10 @@ import java.util.List;
 
 public class ShortestPlaylistGenerator implements PlaylistGenerationStrategy{
 
-    public Playlist generatePlaylist(ArrayList<String> words){
-        Playlist newPlaylist = new Playlist();
+    public Playlist generatePlaylist(ArrayList<String> words, Playlist newPlaylist){
         List<String> wordList = (List<String>) words;
-
         int s = 0;
         int e = words.size();
-
 
         while (s < words.size()) {
             // check if no song starts with the word at index s

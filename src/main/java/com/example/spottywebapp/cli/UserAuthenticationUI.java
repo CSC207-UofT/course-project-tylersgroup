@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+/**
+ * User authentication UI. Let the user create a new account or login.
+ */
 public class UserAuthenticationUI {
 
     private boolean running;
@@ -21,7 +23,11 @@ public class UserAuthenticationUI {
         this.running = true;
     }
 
-
+    /**
+     * Reads the datafile that stores the UserList information.
+     * The user/client chooses ether to login or create a new account or exit.
+     * @return string of username if user creation or login was successful. null if failed.
+     */
     public String authentication() {
         Scanner input = new Scanner(System.in);
         while (this.running) {
@@ -37,7 +43,7 @@ public class UserAuthenticationUI {
                         LoginUI loginUI = new LoginUI();
                         LoginUseCase useCase = new LoginUseCase(urw, users);
                         LoginController controller = new LoginController(useCase);
-                        return loginUI.runLogin(controller);
+                        return loginUI.runLogin(controller); //return username
                     case 2:
                         NewUserUI newUserUI = new NewUserUI();
                         UserResisterController userResisterController = new UserResisterController(users);
