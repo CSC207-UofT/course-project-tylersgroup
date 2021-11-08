@@ -1,11 +1,15 @@
 package com.example.spottywebapp.cli;
 
-
 import com.example.spottywebapp.Controllers.ManagePlaylistController;
+
 import com.example.spottywebapp.Entities.User;
+
 
 import java.util.Scanner;
 
+/**
+ * The UI responsible for managing playlists
+ */
 public class ManagePlaylistUI {
     private boolean running;
     private String username;

@@ -9,6 +9,11 @@ import com.example.spottywebapp.UseCases.PlaylistManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * A controller class
+ *
+ * MakePlaylistController makes a playlist
+ */
 public class MakePlaylistController {
     private boolean complete;
     private static HashMap<String, PlaylistGenerationStrategy> playlistGenerationStrategyMap;
@@ -42,9 +47,11 @@ public class MakePlaylistController {
         PlaylistManager PLAYLISTMANAGER = PlaylistManager.getInstance();
         PLAYLISTMANAGER.addPlaylist(newPlaylist, username);
         return newPlaylist.toString();
+
     }
 
     public boolean getComplete() {
         return this.complete;
+
     }
 }

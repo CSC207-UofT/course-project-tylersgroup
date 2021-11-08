@@ -24,6 +24,7 @@ public class PlaylistGenerator {
         this.strategy = strategy;
     }
     // TODO: This is tyler typing... this method is dumb because we are just recombining
+    // TODO: but I made this method for now
     // the words back together just to form the playlist name lmao????
     private static String buildPlaylistName(ArrayList<String> words){
         StringBuilder sb = new StringBuilder();
