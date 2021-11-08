@@ -1,4 +1,4 @@
-package com.example.spottywebapp.entities;
+package com.example.spottywebapp.Entities;
 
 import java.util.ArrayList;
 import java.util.List;

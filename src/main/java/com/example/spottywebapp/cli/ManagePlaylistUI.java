@@ -1,6 +1,10 @@
 package com.example.spottywebapp.cli;
 
 import com.example.spottywebapp.Controllers.ManagePlaylistController;
+
+import com.example.spottywebapp.Entities.User;
+
+
 import java.util.Scanner;
 
 /**

@@ -1,7 +1,10 @@
 package com.example.spottywebapp.UseCases;
 
-import com.example.spottywebapp.entities.User;
-import com.example.spottywebapp.entities.UserList;
+
+import com.example.spottywebapp.Entities.Playlist;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.Entities.UserList;
+
 
 /**
  * A Use Case class

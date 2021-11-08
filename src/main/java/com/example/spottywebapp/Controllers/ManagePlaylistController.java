@@ -2,6 +2,9 @@ package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.PlaylistManager;
 
+import com.example.spottywebapp.Entities.User;
+
+
 /**
  * A controller class
  *

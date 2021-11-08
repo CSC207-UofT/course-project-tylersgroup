@@ -31,8 +31,7 @@ public class GenPlaylistUI {
 
                     if (InputChecker.check(userIn)) {
 
-                        System.out.println(MakePlaylistController.makePlaylist(userIn, username));
-
+                        System.out.println(MakePlaylistController.makePlaylist(userIn, "shortest", this.username));
 
                     } else {
                         throw new InputException();

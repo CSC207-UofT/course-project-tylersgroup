@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.UserManager;
-import com.example.spottywebapp.entities.User;
+import com.example.spottywebapp.Entities.User;
 
 // TODO: this method is not used anymore
 public class GetUserController {

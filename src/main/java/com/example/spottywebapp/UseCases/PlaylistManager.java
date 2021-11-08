@@ -1,7 +1,17 @@
 package com.example.spottywebapp.UseCases;
 
-import com.example.spottywebapp.entities.Playlist;
-import com.example.spottywebapp.entities.User;
+
+/*
+ * A Use Case class
+ *
+ * PlaylistManager manages all the playlists created
+ */
+
+
+
+import com.example.spottywebapp.Entities.Playlist;
+import com.example.spottywebapp.Entities.User;
+
 
 import java.util.List;
 
