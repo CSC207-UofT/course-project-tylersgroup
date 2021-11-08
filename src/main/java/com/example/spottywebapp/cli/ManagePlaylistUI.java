@@ -1,11 +1,12 @@
 package com.example.spottywebapp.cli;
 
-
 import com.example.spottywebapp.Controllers.ManagePlaylistController;
-import com.example.spottywebapp.entities.User;
 
 import java.util.Scanner;
 
+/**
+ * The UI responsible for managing playlists
+ */
 public class ManagePlaylistUI {
     private boolean running;
     private String username;
@@ -16,7 +17,7 @@ public class ManagePlaylistUI {
     }
 
     public void managePlaylist(){
-
+        // Scanner for input
         Scanner input = new Scanner(System.in);
 
         while (this.running) {
@@ -24,6 +25,7 @@ public class ManagePlaylistUI {
             printManagePlaylistOptions();
             printUserPlaylist();
 
+            // Find user input
             String userIn = input.next();
 
             if (userIn.equals("exit")){
@@ -32,30 +34,25 @@ public class ManagePlaylistUI {
             else {
                 // TODO: Assume the input is valid (Index is within the length of the list of Playlist)
                 int playlistIndex = Integer.parseInt(userIn);
-                System.out.println("You've selected Playlist " + playlistIndex + ".");
-                System.out.println("Choose an action: \n1. Delete Playlist\n2. Rename Playlist");
-
+                // select playlist by index
+                printPlaylistOptions(playlistIndex);
                 // Since index starts at 0 but list number starts at 1
                 playlistIndex--;
 
                 // Choose the action performed on the playlist (delete or rename)
                 int action = input.nextInt();
-                // TODO: Handle Exception
+
+                // Handle Exception
                 if (action == 1){
                     // Delete Playlist
                     deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    //this.running = false;
                 }
                 else if (action == 2){
                     // Rename Playlist
-
                     String newName = getNewNameForPlaylist();
-
                     editPlaylistName(playlistIndex, newName);
-
                     System.out.println("Playlist renamed.");
-                    //this.running = false;
                 }
             }
 
@@ -74,6 +71,12 @@ public class ManagePlaylistUI {
     private void printUserPlaylist(){
         ManagePlaylistController.printUserPlaylist(username);
     }
+
+    private void printPlaylistOptions(int playlistIndex){
+        System.out.println("You've selected Playlist " + playlistIndex + ".");
+        System.out.println("Choose an action: \n1. Delete Playlist\n2. Rename Playlist");
+    }
+
 
     private void deletePlaylist(int playlistIndex){
         ManagePlaylistController.callingRemovePlaylist(playlistIndex, username);

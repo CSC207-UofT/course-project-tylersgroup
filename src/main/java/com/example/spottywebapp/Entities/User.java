@@ -1,4 +1,4 @@
-package com.example.spottywebapp.entities;
+package com.example.spottywebapp.Entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +32,16 @@ public class User implements Serializable {
      * @return the password of this user.
      */
     public String getPassword() {return password;}
+
+    /**
+     * Set password of user
+     * @param newPassword a String for new password
+     */
+    // TODO: this.password works iff it is final
+    public void setPassword(String newPassword) {
+        // this.password = newPassword;
+        System.out.println("Password changed!");
+    }
 
     /**
      * Getter for a list of playlists.

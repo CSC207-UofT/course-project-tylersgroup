@@ -9,9 +9,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @EntityScan("com.example.spottywebapp")
 
 public class SpottyWebAppApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(SpottyWebAppApplication.class, args);
     }
-
 }

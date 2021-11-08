@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.UserManager;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.UserList;
 
 public class UserResisterController {
 
@@ -31,7 +31,7 @@ public class UserResisterController {
      * @return true if the username already exists
      */
     public boolean registerUser(String username, String password){
-        return this.userManager.addUser(username, password);
+        return this.userManager.createAndAddUser(username, password);
     }
 
 }

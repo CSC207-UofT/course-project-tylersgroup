@@ -20,7 +20,7 @@ public class GenPlaylistUI {
 
         // Start the scanner for user inputs
         Scanner input = new Scanner(System.in);
-
+        MakePlaylistController controller = new MakePlaylistController();
         while (this.running) {
             // Print the generator screen text to the user.
             System.out.println("Please input a sentence without any special characters or type exit: ");
@@ -31,8 +31,7 @@ public class GenPlaylistUI {
 
                     if (InputChecker.check(userIn)) {
 
-                        System.out.println(MakePlaylistController.makePlaylist(userIn, username));
-
+                        System.out.println(controller.makePlaylist(userIn, "shortest", this.username));
 
                     } else {
                         throw new InputException();
