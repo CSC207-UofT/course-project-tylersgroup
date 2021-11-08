@@ -92,7 +92,7 @@ public class UserManager {
      * @param username username of the user to be deleted
      * @return whether deletion of user is successful
      */
-    public static boolean deleteUser(String username){
+    public boolean deleteUser(String username){
         if (this.users.concurrentUser(username)){
             this.users.removeUser(username);
             return true;
@@ -108,7 +108,7 @@ public class UserManager {
      * @param newPassword new password
      * @return whether changing password is successful
      */
-    public static boolean changePassword(String username, String newPassword){
+    public boolean changePassword(String username, String newPassword){
         if (this.users.concurrentUser(username)){
             User user = this.users.getUser(username);
             user.setPassword(newPassword);

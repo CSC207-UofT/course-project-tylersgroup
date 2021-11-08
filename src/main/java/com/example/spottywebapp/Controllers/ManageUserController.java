@@ -8,14 +8,18 @@ import com.example.spottywebapp.UseCases.UserManager;
  * ManageUserController works with the UI to manage users.
  */
 public class ManageUserController {
-    // Default constructor
+    private static UserManager userManager;
+
+    public ManageUserController(){
+        userManager = UserManager.getInstance();
+    }
 
     /**
      * Removes the user.
      * @param username username of user
      */
     public static void removeUser(String username){
-        UserManager.deleteUser(username);
+        userManager.deleteUser(username);
     }
 
     /**
@@ -24,6 +28,6 @@ public class ManageUserController {
      * @param newPassword new password
      */
     public static void changePassword(String username, String newPassword){
-        UserManager.changePassword(username, newPassword);
+        userManager.changePassword(username, newPassword);
     }
 }

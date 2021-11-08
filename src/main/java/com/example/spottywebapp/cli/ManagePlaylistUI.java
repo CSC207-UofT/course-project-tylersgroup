@@ -34,6 +34,7 @@ public class ManagePlaylistUI {
             else {
                 // TODO: Assume the input is valid (Index is within the length of the list of Playlist)
                 int playlistIndex = Integer.parseInt(userIn);
+                // select playlist by index
                 printPlaylistOptions(playlistIndex);
                 // Since index starts at 0 but list number starts at 1
                 playlistIndex--;
