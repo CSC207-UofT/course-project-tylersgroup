@@ -103,6 +103,23 @@ public class UserManager {
     }
 
     /**
+     * Changes the password of user.
+     * @param username username of user
+     * @param newPassword new password
+     * @return whether changing password is successful
+     */
+    public boolean changePassword(String username, String newPassword){
+        if (this.users.concurrentUser(username)){
+            User user = this.users.getUser(username);
+            user.setPassword(newPassword);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
      * Gets a User entity using username.
      * @param username username of user
      * @return the User entity with the specified username

@@ -50,7 +50,7 @@ public class HomeUI {
                         managePlaylistUI.managePlaylist();
                         break;
                     case 3:
-                        // User Account
+                        // Manage user account
                         System.out.println("Placeholder3");
                         break;
                     case 4:
