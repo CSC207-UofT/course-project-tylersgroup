@@ -7,35 +7,37 @@ import com.example.spottywebapp.entities.User;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+/**
+ * The UI for Homepage
+ */
 public class HomeUI {
 
     private String username;
     private boolean running;
 
+    /**
+     * Constructor of HomeUI.
+     * @param username username of user
+     */
     public HomeUI(String username){
         // GetUserController will return the User object.
         this.running = true;
         this.username = username;
     }
 
+    /**
+     * Runs the HomeUI.
+     */
     public void runHome() {
-
+        // Scanner for input
         Scanner input = new Scanner(System.in);
 
         while (this.running){
-
-            System.out.println("Please select what you would like to do from the options below:"
-                    + "\n 1) Generate a new playlist"
-                    + "\n 2) Manage saved playlists"
-                    + "\n 3) Account Settings"
-                    + "\n 4) Exit"
-                    + "\n\n Please input one of the numbers available:");
+            printOptions();
 
             try {
                 int numIn = input.nextInt();
 
-                //TODO: Change the placeholders to be similar to case 1.
                 switch (numIn) {
                     case 1:
                         // Generate a new playlist
@@ -64,9 +66,26 @@ public class HomeUI {
                 input.nextLine();
             }
         }
+
+        endMessage();
+    }
+
+    /**
+     * Prints available options to the user using the homepage.
+     */
+    private void printOptions(){
+        System.out.println("Please select what you would like to do from the options below:"
+                + "\n 1) Generate a new playlist"
+                + "\n 2) Manage saved playlists"
+                + "\n 3) Account Settings"
+                + "\n 4) Exit"
+                + "\n\n Please input one of the numbers available:");
+    }
+
+    /**
+     * Prints closing message to the user.
+     */
+    private void endMessage(){
         System.out.println("Thanks for using the spottyApp!");
-
-
-
     }
 }

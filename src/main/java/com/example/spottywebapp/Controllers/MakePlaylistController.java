@@ -6,6 +6,11 @@ import com.example.spottywebapp.entities.Playlist;
 
 import java.util.ArrayList;
 
+/**
+ * A controller class
+ *
+ * MakePlaylistController makes a playlist
+ */
 public class MakePlaylistController {
     private boolean complete;
 
@@ -30,11 +35,5 @@ public class MakePlaylistController {
         PlaylistManager PLAYLISTMANAGER = PlaylistManager.getInstance();
         PLAYLISTMANAGER.addPlaylist(newPlaylist, username);
         return newPlaylist.toString();
-
-
-    }
-
-    public boolean getComplete() {
-        return this.complete;
     }
 }
