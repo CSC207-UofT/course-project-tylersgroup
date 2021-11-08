@@ -2,10 +2,31 @@ package com.example.spottywebapp.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import com.vladmihalcea.hibernate.type.array.ListArrayType;
 
+@Entity
+@Table(name = "playlists")
+@TypeDef(name = "arraylist", typeClass = ListArrayType.class)
 public class Playlist{
+    //Connecting to the spotify API will return playlist ID's for us
+    @Id
+    // change generate value?
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "playlist_id", nullable = false)
+    private Long id; //id type from spotify api?
     private List<Song> playlist;
     private String playlistName;
+
+    // do we even need this?
+    @Column(name = "playlist_name", columnDefinition = "TEXT")
+    private String playlist_name;
+
+    @Column(name = "playlist_songs") // add coloumnDefinition
+    @Type(type = "arraylist")
+    private List<String> songs; //get this from playlist entity (rename?)
 
     /**
      * Construct a Playlist object with no name given
@@ -25,6 +46,11 @@ public class Playlist{
         this.playlist = new ArrayList<>();
         this.playlistName = name;
     }
+
+    public Long getid() { return id; }
+
+    @Deprecated //we may need to remove this annotation later
+    private void setid(Long id) {this.id = id;}
 
     /**
      * Get a song at the specified index of the playlist.
