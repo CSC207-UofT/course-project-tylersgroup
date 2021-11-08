@@ -12,7 +12,7 @@ public class LoginController {
     private final LoginInputBoundary loginInputBoundary;
 
     /**
-     * / The "output" of this use case.
+     * / The "output" of this controller.
      */
     public enum LoginControllerResult {
         SUCCESS, FAILURE, NO_SUCH_USER
@@ -31,25 +31,22 @@ public class LoginController {
      * account with a password attempt.
      * @param username the username
      * @param password the password attempt
+     * @return whether the login was success, failure, or no_such_user
      */
     public LoginControllerResult runLogin(String username, String password) {
-        // Note: hands off the work to the use case class.
+        // hands off the work to the use case class.
         LoginUseCase.LoginResult result = loginInputBoundary.logIn(username, password);
         switch (result) {
             case SUCCESS:
-                // Should we be printing? How might you refactor this program
-                // to fit the Clean Architecture?
                 return LoginControllerResult.SUCCESS;
-                break;
             case FAILURE:
                 return LoginControllerResult.FAILURE;
-                break;
             case NO_SUCH_USER:
                 return LoginControllerResult.NO_SUCH_USER;
 
         }
+        //TODO: why do we have to return null?
+        return null;
     }
-    public void userLogin(String username){
 
-    }
 }
