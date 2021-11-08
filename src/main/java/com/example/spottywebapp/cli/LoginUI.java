@@ -4,13 +4,16 @@ import com.example.spottywebapp.Controllers.LoginController;
 
 import java.util.Scanner;
 
+/**
+ * LoginUI.
+ */
 public class LoginUI {
 
     /**
-     * Login UI. Reads the user's input for username and password.
+     * Login UI. Reads the user's input for username and password and pass these input to the controller
      *
      * @param controller a LoginController
-     * @return
+     * @return string of username when log in successful or null if failed to log in
      */
     public String runLogin(LoginController controller){
         System.out.println("Username: ");
