@@ -6,13 +6,11 @@ import com.example.spottywebapp.entities.Playlist;
 import java.util.ArrayList;
 
 public class makePlaylistController {
-    private boolean complete;
 
     /**
      * Empty Constructor for createPlaylistHandler.
      */
     public makePlaylistController(){
-        this.complete = false;
     }
 
     /**
@@ -30,7 +28,4 @@ public class makePlaylistController {
 
     }
 
-    public boolean getComplete() {
-        return this.complete;
-    }
 }

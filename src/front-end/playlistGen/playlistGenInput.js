@@ -1,4 +1,4 @@
-const API = "http://localhost:4000/song"
+const API = "http://localhost:4000/playlist"
 
 function getAllSongs(){
     const DATA = {
