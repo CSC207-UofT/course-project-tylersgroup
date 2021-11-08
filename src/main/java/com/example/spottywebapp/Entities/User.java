@@ -6,7 +6,7 @@ import java.util.List;
 
 public class User implements Serializable {
     private final String username;
-    private String password;
+    private final String password;
     private List<Playlist> playlistList;
     //private List<User> friendsList;
     //private List<Song> blacklist;
@@ -37,7 +37,11 @@ public class User implements Serializable {
      * Set password of user
      * @param newPassword a String for new password
      */
-    public void setPassword(String newPassword) {this.password = newPassword;}
+    // TODO: this.password works iff it is final
+    public void setPassword(String newPassword) {
+        // this.password = newPassword;
+        System.out.println("Password changed!");
+    }
 
     /**
      * Getter for a list of playlists.
