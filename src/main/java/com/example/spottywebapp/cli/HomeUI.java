@@ -50,8 +50,12 @@ public class HomeUI {
                         managePlaylistUI.managePlaylist();
                         break;
                     case 3:
-                        // User Account
-                        System.out.println("Placeholder3");
+                        // Manage user account
+                        ManageUserUI manageUserUI = new ManageUserUI(username);
+                        int delete = manageUserUI.manageUser();
+                        if (delete == 1000){
+                            this.running = false;
+                        }
                         break;
                     case 4:
                         // Exits the while loop which exits the runHome method, exiting the program.

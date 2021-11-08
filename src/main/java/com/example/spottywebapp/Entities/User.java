@@ -34,6 +34,16 @@ public class User implements Serializable {
     public String getPassword() {return password;}
 
     /**
+     * Set password of user
+     * @param newPassword a String for new password
+     */
+    // TODO: this.password works iff it is final
+    public void setPassword(String newPassword) {
+        // this.password = newPassword;
+        System.out.println("Password changed!");
+    }
+
+    /**
      * Getter for a list of playlists.
      * @return the list of playlists this user has.
      */

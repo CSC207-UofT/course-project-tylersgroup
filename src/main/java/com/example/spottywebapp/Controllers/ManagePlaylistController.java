@@ -8,7 +8,7 @@ import com.example.spottywebapp.Entities.User;
 /**
  * A controller class
  *
- * ManagePlaylistController works with the UI to manager playlists of all users
+ * ManagePlaylistController works with the UI to manager playlists of all users.
  */
 public class ManagePlaylistController {
     // Default constructor
