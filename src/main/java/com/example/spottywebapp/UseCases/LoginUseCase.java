@@ -14,7 +14,6 @@ public class LoginUseCase implements LoginInputBoundary {
      * A list of users organized by username.
      */
     private final UserList users;
-    private final UserReadWriter readWriter;
 
     /**
      * / The "output" of this use case.
@@ -25,7 +24,6 @@ public class LoginUseCase implements LoginInputBoundary {
 
     public LoginUseCase(UserReadWriter readWriter, UserList users) {
         this.users = users;
-        this.readWriter = readWriter;
         try {
             readWriter.saveToFile("user_data.ser", users);
         } catch (IOException e) {

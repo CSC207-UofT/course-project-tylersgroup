@@ -5,6 +5,7 @@
  */
 package com.example.spottywebapp.UseCases;
 
+import com.example.spottywebapp.entities.Playlist;
 import com.example.spottywebapp.entities.User;
 import com.example.spottywebapp.entities.UserList;
 
@@ -21,15 +22,23 @@ public class UserManager {
         users = new UserList();
     }
 
-    public void setUserList(UserList users){
-        this.users = users;
-    }
-
     public static UserManager getInstance(){
         if (USERMANAGER == null){
             USERMANAGER = new UserManager();
+
+            // TODO: remove this testing chunk of code
+//            User testUser = new User("username", "password");
+//            List<Playlist> playlistList = new ArrayList<>();
+//            playlistList.add(new Playlist("Favourite"));
+//            playlistList.add(new Playlist("I hate these songs"));
+//            playlistList.add(new Playlist("ENGLISH SONGS"));
+//            testUser.updatePlaylistList(playlistList);
+//            USERMANAGER.addNewUser(testUser);
         }
         return USERMANAGER;
+    }
+    public void setUserList(UserList users){
+        this.users = users;
     }
 
     public boolean concurrentUser(String username){
@@ -67,6 +76,7 @@ public class UserManager {
 
 
     public User getUser(String username){
+        // can throw noSuchElementException
         return users.getUser(username);
     }
 }

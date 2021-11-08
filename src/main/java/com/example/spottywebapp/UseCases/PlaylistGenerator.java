@@ -8,11 +8,14 @@ import com.example.spottywebapp.entities.Playlist;
 import com.example.spottywebapp.entities.Song;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlaylistGenerator {
     public static Playlist generatePlaylist(ArrayList<String> words){
-        Playlist newPlaylist = new Playlist();
+        String playlistName = buildPlaylistName(words);
+
+        Playlist newPlaylist = new Playlist(playlistName);
         List<String> wordList = (List<String>) words;
 //        for (String s : words) {
 //            Song song = SongGenerator.generateSong(s); //create a song entity for that song
@@ -52,6 +55,16 @@ public class PlaylistGenerator {
         return newPlaylist;
     }
 
+    // TODO: This is tyler typing... this method is dumb because we are just recombining
+    // the words back together just to form the playlist name lmao????
+    private static String buildPlaylistName(ArrayList<String> words){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.size(); i++){
+            sb.append(words.get(i));
+            sb.append(" ");
+        }
+        return sb.toString();
 
+    }
 
 }
