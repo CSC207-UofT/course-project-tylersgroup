@@ -11,12 +11,7 @@ import java.util.HashMap;
 
 public class MakePlaylistController {
     private boolean complete;
-    private static HashMap<String, PlaylistGenerationStrategy> playlistGenerationStrategyMap;
-    public static void main(String[] args) {
-        playlistGenerationStrategyMap.put("shortest", new ShortestPlaylistGenerator());
-        playlistGenerationStrategyMap.put("longest", new LongestPlaylistGenerator());
-        playlistGenerationStrategyMap.put("random", new ShortestPlaylistGenerator());
-    }
+    private HashMap<String, PlaylistGenerationStrategy> playlistGenerationStrategyMap;
 
     /**
      * Empty Constructor for createPlaylistHandler.
@@ -24,8 +19,10 @@ public class MakePlaylistController {
     public MakePlaylistController(){
         this.complete = false;
         HashMap<String, PlaylistGenerationStrategy> playlistGenerationStrategyMap = new HashMap<>();
-//
-//        this.playlistGenerationStrategyMap = playlistGenerationStrategyMap;
+        playlistGenerationStrategyMap.put("shortest", new ShortestPlaylistGenerator());
+        playlistGenerationStrategyMap.put("longest", new LongestPlaylistGenerator());
+        playlistGenerationStrategyMap.put("random", new ShortestPlaylistGenerator());
+        this.playlistGenerationStrategyMap = playlistGenerationStrategyMap;
     }
 
     /**
@@ -33,10 +30,11 @@ public class MakePlaylistController {
      * that PlaylistGenerator can handle to generate a playlist.
      * @param input The user input string to generate a playlist from.
      */
-    public static String makePlaylist(String input, String strategy, String username){
+    public String makePlaylist(String input, String strategy, String username){
+
         ArrayList<String> words = UserInputController.splitUserInput(input);
         PlaylistGenerator playlistGenerator = new PlaylistGenerator();
-        playlistGenerator.setStrategy(playlistGenerationStrategyMap.get(strategy));
+        playlistGenerator.setStrategy(this.playlistGenerationStrategyMap.get(strategy));
         Playlist newPlaylist = playlistGenerator.generatePlaylist(words);
         // Add playlist to the user's list of playlists, of course
         PlaylistManager PLAYLISTMANAGER = PlaylistManager.getInstance();
