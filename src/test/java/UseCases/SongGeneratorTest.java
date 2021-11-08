@@ -3,7 +3,7 @@ package UseCases;
 Unit tests for UserManager.java
  */
 import com.example.spottywebapp.UseCases.SongGenerator;
-import com.example.spottywebapp.entities.Song;
+import com.example.spottywebapp.Entities.Song;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 

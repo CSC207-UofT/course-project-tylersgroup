@@ -1,11 +1,7 @@
 package com.example.spottywebapp.api;
 
-import com.example.spottywebapp.Controllers.UserInputController;
-import com.example.spottywebapp.UseCases.PlaylistGenerator;
-import com.example.spottywebapp.entities.Playlist;
+import com.example.spottywebapp.Entities.Playlist;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 public class PlaylistController {

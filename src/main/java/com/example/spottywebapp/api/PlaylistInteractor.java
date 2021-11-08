@@ -1,6 +1,6 @@
 package com.example.spottywebapp.api;
 
-import com.example.spottywebapp.entities.Playlist;
+import com.example.spottywebapp.Entities.Playlist;
 import org.springframework.stereotype.Component;
 
 @Component
