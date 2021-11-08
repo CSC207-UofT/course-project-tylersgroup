@@ -5,7 +5,7 @@ import com.example.spottywebapp.Controllers.LoginController;
 import com.example.spottywebapp.Controllers.UserResisterController;
 import com.example.spottywebapp.UseCases.LoginUseCase;
 import com.example.spottywebapp.Controllers.UserReadWriter;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.UserList;
 
 import java.io.EOFException;
 import java.io.IOException;

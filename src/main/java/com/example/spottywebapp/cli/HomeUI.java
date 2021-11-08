@@ -2,12 +2,9 @@ package com.example.spottywebapp.cli;
 
 import com.example.spottywebapp.Controllers.GetUserController;
 import com.example.spottywebapp.Controllers.makePlaylistController;
-import com.example.spottywebapp.entities.Playlist;
-import com.example.spottywebapp.entities.User;
+import com.example.spottywebapp.Entities.User;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 

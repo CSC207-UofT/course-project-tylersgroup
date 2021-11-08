@@ -1,10 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
 
-import com.example.spottywebapp.Controllers.ReadWriter;
-import com.example.spottywebapp.UseCases.UserManager;
-import com.example.spottywebapp.entities.User;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.UserList;
 
 import java.io.*;
 

@@ -29,7 +29,7 @@ public class GenPlaylistUI {
 
                     if (InputChecker.check(userIn)) {
 
-                        System.out.println(controller.makePlaylist(userIn));
+                        System.out.println(controller.makePlaylist(userIn, "shortest"));
 
                     } else {
                         throw new InputException();
