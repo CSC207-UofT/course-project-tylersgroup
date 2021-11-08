@@ -27,7 +27,7 @@ public class ManageUserController {
      * @param username username of user
      * @param newPassword new password
      */
-    public static void changePassword(String username, String newPassword){
+    public void changePassword(String username, String newPassword){
         userManager.changePassword(username, newPassword);
     }
 }

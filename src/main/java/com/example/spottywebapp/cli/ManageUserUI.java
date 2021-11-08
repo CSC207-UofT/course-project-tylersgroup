@@ -33,7 +33,6 @@ public class ManageUserUI {
             else {
                 int action = Integer.parseInt(userIn);
                 // Since index starts at 0 but list number starts at 1
-                action--;
 
                 // Choose the action performed
                 if (action == 1){
@@ -65,11 +64,12 @@ public class ManageUserUI {
     }
 
     private void changePassword(String newPassword){
-        ManageUserController.changePassword(username, newPassword);
+        ManageUserController controller = new ManageUserController();
+        controller.changePassword(username, newPassword);
     }
 
     private void printManageUserOptions(){
         System.out.println("Choose an action, or type \"exit\" to exit:");
-        System.out.println("1. Delete Playlist\n2. Rename Playlist");
+        System.out.println("1. Change Password\n2. Delete Account");
     }
 }
