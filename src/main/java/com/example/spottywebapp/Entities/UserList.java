@@ -1,4 +1,4 @@
-package Entities;
+package com.example.spottywebapp.Entities;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -23,6 +23,14 @@ public class UserList implements Serializable {
         return users.containsKey(username);
     }
 
+    public void addUser(String username, User user){
+        users.put(username, user);
+    }
+
+    public void removeUser(String username){
+        users.remove(username);
+    }
+
     /**
      * Return the User associated with username.
      * @param username the username of the user to get.
@@ -40,11 +48,12 @@ public class UserList implements Serializable {
      **/
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
-        for (String key : users.keySet()) {
-            sb.append(getUser(key).toString());
-        }
-        return String.valueOf(sb);
+//        StringBuilder sb = new StringBuilder();
+//        for (String key : users.keySet()) {
+//            sb.append(getUser(key).toString());
+//        }
+//        return String.valueOf(sb);
+        return "test";
     }
 
 }

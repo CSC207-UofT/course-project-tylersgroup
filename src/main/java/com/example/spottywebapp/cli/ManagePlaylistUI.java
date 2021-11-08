@@ -2,26 +2,26 @@ package com.example.spottywebapp.cli;
 
 
 import com.example.spottywebapp.Controllers.ManagePlaylistController;
-import com.example.spottywebapp.entities.User;
+import com.example.spottywebapp.Entities.User;
 
 import java.util.Scanner;
 
 public class ManagePlaylistUI {
     private boolean running;
-    private User currentUser;
+    private String username;
 
-    public ManagePlaylistUI(User user) {
+    public ManagePlaylistUI(String username) {
         this.running = true;
-        this.currentUser = user;
+        this.username = username;
     }
 
     public void managePlaylist(){
-        printManagePlaylistOptions();
 
         Scanner input = new Scanner(System.in);
 
         while (this.running) {
             // Print all available playlists to the user.
+            printManagePlaylistOptions();
             printUserPlaylist();
 
             String userIn = input.next();
@@ -45,7 +45,7 @@ public class ManagePlaylistUI {
                     // Delete Playlist
                     deletePlaylist(playlistIndex);
                     System.out.println("Playlist removed.");
-                    ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
+                    //this.running = false;
                 }
                 else if (action == 2){
                     // Rename Playlist
@@ -55,7 +55,7 @@ public class ManagePlaylistUI {
                     editPlaylistName(playlistIndex, newName);
 
                     System.out.println("Playlist renamed.");
-                    ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
+                    //this.running = false;
                 }
             }
 
@@ -72,14 +72,14 @@ public class ManagePlaylistUI {
     }
 
     private void printUserPlaylist(){
-        ManagePlaylistController.printUserPlaylist(currentUser);
+        ManagePlaylistController.printUserPlaylist(username);
     }
 
     private void deletePlaylist(int playlistIndex){
-        ManagePlaylistController.callingRemovePlaylist(playlistIndex, currentUser);
+        ManagePlaylistController.callingRemovePlaylist(playlistIndex, username);
     }
 
     private void editPlaylistName(int playlistIndex, String newName){
-        ManagePlaylistController.callingRenamePlaylist(playlistIndex, currentUser, newName);
+        ManagePlaylistController.callingRenamePlaylist(playlistIndex, username, newName);
     }
 }

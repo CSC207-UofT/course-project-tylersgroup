@@ -1,19 +1,20 @@
 package Controllers;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserInputControllerTest {
-    @Before
+    @Before("")
     public void setUp(){
     }
 
-    @After
+    @After("")
     public void tearDown(){
     }
 

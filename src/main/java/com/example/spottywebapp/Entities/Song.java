@@ -1,5 +1,6 @@
-package Entities;
-import java.util.*;
+package com.example.spottywebapp.Entities;
+
+import java.util.Objects;
 
 public class Song {
     private final String name;

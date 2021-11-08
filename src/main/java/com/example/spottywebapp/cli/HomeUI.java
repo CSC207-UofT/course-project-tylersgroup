@@ -1,30 +1,22 @@
 package com.example.spottywebapp.cli;
 
-import com.example.spottywebapp.Controllers.makePlaylistController;
-import com.example.spottywebapp.entities.Playlist;
-import com.example.spottywebapp.entities.User;
+import com.example.spottywebapp.Controllers.GetUserController;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.Controllers.MakePlaylistController;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 
 public class HomeUI {
 
-    private User currentUser;
+    private String username;
     private boolean running;
 
-    public HomeUI(){
-        // TODO: Remove this dangerous User placeholder!
-        // UI access the user's playlist
-        currentUser = new User("username", "password");
-        List<Playlist> playlistList = new ArrayList<>();
-        playlistList.add(new Playlist("Favourite"));
-        playlistList.add(new Playlist("I hate these songs"));
-        playlistList.add(new Playlist("ENGLISH SONGS"));
-        currentUser.updatePlaylistList(playlistList);
+    public HomeUI(String username){
+        // GetUserController will return the User object.
         this.running = true;
+        this.username = username;
     }
 
     public void runHome() {
@@ -47,13 +39,12 @@ public class HomeUI {
                 switch (numIn) {
                     case 1:
                         // Generate a new playlist
-                        GenPlaylistUI genPlaylistUI = new GenPlaylistUI();
-                        makePlaylistController PLController = new makePlaylistController();
-                        genPlaylistUI.runPlaylistGen(PLController);
+                        GenPlaylistUI genPlaylistUI = new GenPlaylistUI(username);
+                        genPlaylistUI.runPlaylistGen();
                         break;
                     case 2:
                         // Manage saved playlists
-                        ManagePlaylistUI managePlaylistUI = new ManagePlaylistUI(currentUser);
+                        ManagePlaylistUI managePlaylistUI = new ManagePlaylistUI(username);
                         managePlaylistUI.managePlaylist();
                         break;
                     case 3:

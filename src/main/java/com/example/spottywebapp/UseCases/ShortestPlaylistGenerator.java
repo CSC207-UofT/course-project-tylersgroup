@@ -1,25 +1,18 @@
-package UseCases;
-/*
- * PlaylistGenerator takes in the string of user input and generates a playlist of songs
- */
+package com.example.spottywebapp.UseCases;
 
+import com.example.spottywebapp.Entities.Playlist;
+import com.example.spottywebapp.Entities.Song;
 
-import Entities.Playlist;
-import Entities.Song;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
+public class ShortestPlaylistGenerator implements PlaylistGenerationStrategy{
 
-public class PlaylistGenerator {
-    public static Playlist generatePlaylist( ArrayList<String> words){
-        Playlist newPlaylist = new Playlist();
+    public Playlist generatePlaylist(ArrayList<String> words, Playlist newPlaylist){
         List<String> wordList = (List<String>) words;
-//        for (String s : words) {
-//            Song song = SongGenerator.generateSong(s); //create a song entity for that song
-//            // receive the song entities and instantiate a playlist entity
-//            newPlaylist.addSong(song);
-//        }
         int s = 0;
         int e = words.size();
+
         while (s < words.size()) {
             // check if no song starts with the word at index s
             if (s == e) {
@@ -30,13 +23,11 @@ public class PlaylistGenerator {
             }
             else {
                 String songName = String.join(" ", wordList.subList(s, e));
-                // System.out.println(songName);
                 // make request to song generator
                 Song newSong = SongGenerator.generateSong(songName);
                 // check if we got a song with that name
                 if (!newSong.getName().equals("")) {
                     newPlaylist.addSong(newSong);
-                    // System.out.println(newSong);
                     // shift the starting index to the end
                     s = e;
                     // shift back the ending index.
@@ -50,7 +41,4 @@ public class PlaylistGenerator {
         }
         return newPlaylist;
     }
-
-
-
 }

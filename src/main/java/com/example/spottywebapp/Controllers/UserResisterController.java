@@ -1,7 +1,7 @@
 package com.example.spottywebapp.Controllers;
 
 import com.example.spottywebapp.UseCases.UserManager;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.UserList;
 
 public class UserResisterController {
 
@@ -11,7 +11,10 @@ public class UserResisterController {
      * @param users a list of users
      */
     public UserResisterController(UserList users) {
-        this.userManager = new UserManager(users);
+        // The following no longer works because Tyler (me) changed UserManager to singleton
+        // this.userManager = new UserManager(users);
+        this.userManager = UserManager.getInstance();
+        this.userManager.setUserList(users);
     }
     /**
      * Check to see if the username is unique.

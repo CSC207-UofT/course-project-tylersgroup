@@ -2,8 +2,8 @@ package com.example.spottywebapp.UseCases;
 
 
 import com.example.spottywebapp.Controllers.UserReadWriter;
-import com.example.spottywebapp.entities.User;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.Entities.UserList;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
@@ -14,7 +14,6 @@ public class LoginUseCase implements LoginInputBoundary {
      * A list of users organized by username.
      */
     private final UserList users;
-    private final UserReadWriter readWriter;
 
     /**
      * / The "output" of this use case.
@@ -25,9 +24,8 @@ public class LoginUseCase implements LoginInputBoundary {
 
     public LoginUseCase(UserReadWriter readWriter, UserList users) {
         this.users = users;
-        this.readWriter = readWriter;
         try {
-            readWriter.saveToFile("users_data.ser", users);
+            readWriter.saveToFile("user_data.ser", users);
         } catch (IOException e) {
             System.out.println("User list did not save.");
         }

@@ -1,6 +1,7 @@
-package Entities;
+package com.example.spottywebapp.Entities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Playlist{
     private List<Song> playlist;
