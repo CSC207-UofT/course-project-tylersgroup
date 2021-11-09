@@ -2,8 +2,8 @@ package com.example.spottywebapp.UseCases;
 
 
 import com.example.spottywebapp.Controllers.UserReadWriter;
-import com.example.spottywebapp.entities.User;
-import com.example.spottywebapp.entities.UserList;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.Entities.UserList;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;

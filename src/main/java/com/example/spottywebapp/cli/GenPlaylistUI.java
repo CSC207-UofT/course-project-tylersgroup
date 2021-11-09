@@ -1,24 +1,26 @@
 package com.example.spottywebapp.cli;
 
-import com.example.spottywebapp.Controllers.makePlaylistController;
+import com.example.spottywebapp.Controllers.MakePlaylistController;
 
 import java.util.Scanner;
 
 public class GenPlaylistUI {
     private boolean running;
+    private String username;
 
-    public GenPlaylistUI(){
+    public GenPlaylistUI(String username){
         this.running = true;
+        this.username = username;
     }
 
-    public void runPlaylistGen(makePlaylistController controller) {
+    public void runPlaylistGen() {
 
         // Header to print the first time the user sees the generate playlist screen.
         System.out.println("Please follow the instructions below to generate your playlist. \n");
 
         // Start the scanner for user inputs
         Scanner input = new Scanner(System.in);
-
+        MakePlaylistController controller = new MakePlaylistController();
         while (this.running) {
             // Print the generator screen text to the user.
             System.out.println("Please input a sentence without any special characters or type exit: ");
@@ -29,7 +31,7 @@ public class GenPlaylistUI {
 
                     if (InputChecker.check(userIn)) {
 
-                        System.out.println(controller.makePlaylist(userIn));
+                        System.out.println(controller.makePlaylist(userIn, "shortest", this.username));
 
                     } else {
                         throw new InputException();

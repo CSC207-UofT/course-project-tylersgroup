@@ -1,10 +1,22 @@
-package com.example.spottywebapp.entities;
+package com.example.spottywebapp.Entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "playlists")
 public class Playlist{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "playlist_id", nullable = false)
+    private Long id;
+
+    @Column(name = "playlist_songs")
+    @OneToMany
     private List<Song> playlist;
+
+    @Column(name = "playlist_name", columnDefinition = "TEXT")
     private String playlistName;
 
     /**

@@ -1,70 +1,61 @@
 package com.example.spottywebapp.cli;
 
 import com.example.spottywebapp.Controllers.GetUserController;
-import com.example.spottywebapp.Controllers.makePlaylistController;
-import com.example.spottywebapp.entities.Playlist;
-import com.example.spottywebapp.entities.User;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.Controllers.MakePlaylistController;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
-
+/**
+ * The UI for Homepage
+ */
 public class HomeUI {
 
-    private User currentUser;
+    private String username;
     private boolean running;
 
+    /**
+     * Constructor of HomeUI.
+     * @param username username of user
+     */
     public HomeUI(String username){
-
-
-        // TODO: Remove this dangerous User placeholder!
-        // UI access the user's playlist
-//        currentUser = new User("username", "password");
-//        List<Playlist> playlistList = new ArrayList<>();
-//        playlistList.add(new Playlist("Favourite"));
-//        playlistList.add(new Playlist("I hate these songs"));
-//        playlistList.add(new Playlist("ENGLISH SONGS"));
-//        currentUser.updatePlaylistList(playlistList);
-
         // GetUserController will return the User object.
-        currentUser = GetUserController.getUser(username);
         this.running = true;
+        this.username = username;
     }
 
+    /**
+     * Runs the HomeUI.
+     */
     public void runHome() {
-
+        // Scanner for input
         Scanner input = new Scanner(System.in);
 
         while (this.running){
-
-            System.out.println("Please select what you would like to do from the options below:"
-                    + "\n 1) Generate a new playlist"
-                    + "\n 2) Manage saved playlists"
-                    + "\n 3) Account Settings"
-                    + "\n 4) Exit"
-                    + "\n\n Please input one of the numbers available:");
+            printOptions();
 
             try {
                 int numIn = input.nextInt();
 
-                //TODO: Change the placeholders to be similar to case 1.
                 switch (numIn) {
                     case 1:
                         // Generate a new playlist
-                        GenPlaylistUI genPlaylistUI = new GenPlaylistUI();
-                        makePlaylistController PLController = new makePlaylistController();
-                        genPlaylistUI.runPlaylistGen(PLController);
+                        GenPlaylistUI genPlaylistUI = new GenPlaylistUI(username);
+                        genPlaylistUI.runPlaylistGen();
                         break;
                     case 2:
                         // Manage saved playlists
-                        ManagePlaylistUI managePlaylistUI = new ManagePlaylistUI(currentUser);
+                        ManagePlaylistUI managePlaylistUI = new ManagePlaylistUI(username);
                         managePlaylistUI.managePlaylist();
                         break;
                     case 3:
-                        // User Account
-                        System.out.println("Placeholder3");
+                        // Manage user account
+                        ManageUserUI manageUserUI = new ManageUserUI(username);
+                        int delete = manageUserUI.manageUser();
+                        if (delete == 1000){
+                            this.running = false;
+                        }
                         break;
                     case 4:
                         // Exits the while loop which exits the runHome method, exiting the program.
@@ -79,9 +70,26 @@ public class HomeUI {
                 input.nextLine();
             }
         }
+
+        endMessage();
+    }
+
+    /**
+     * Prints available options to the user using the homepage.
+     */
+    private void printOptions(){
+        System.out.println("Please select what you would like to do from the options below:"
+                + "\n 1) Generate a new playlist"
+                + "\n 2) Manage saved playlists"
+                + "\n 3) Account Settings"
+                + "\n 4) Exit"
+                + "\n\n Please input one of the numbers available:");
+    }
+
+    /**
+     * Prints closing message to the user.
+     */
+    private void endMessage(){
         System.out.println("Thanks for using the spottyApp!");
-
-
-
     }
 }

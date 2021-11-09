@@ -1,8 +1,16 @@
-package com.example.spottywebapp.entities;
+package com.example.spottywebapp.Entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Song {
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private final String name;
     private final String artist;
     private final int duration;
@@ -10,6 +18,14 @@ public class Song {
     private final String genre;
     private final boolean explicit;
     private final int popularity;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * Construct a Song object, with the following parameters:

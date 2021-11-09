@@ -1,7 +1,7 @@
 package Entities;
 
-import Entities.User;
-import Entities.Playlist;
+import com.example.spottywebapp.Entities.Playlist;
+import com.example.spottywebapp.Entities.Song;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;

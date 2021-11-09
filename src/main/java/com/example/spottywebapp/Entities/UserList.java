@@ -1,4 +1,4 @@
-package com.example.spottywebapp.entities;
+package com.example.spottywebapp.Entities;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -48,11 +48,12 @@ public class UserList implements Serializable {
      **/
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
-        for (String key : users.keySet()) {
-            sb.append(getUser(key).toString());
-        }
-        return String.valueOf(sb);
+//        StringBuilder sb = new StringBuilder();
+//        for (String key : users.keySet()) {
+//            sb.append(getUser(key).toString());
+//        }
+//        return String.valueOf(sb);
+        return "test";
     }
 
 }
