@@ -30,14 +30,21 @@ public class UserAuthenticationUI {
      */
     public String authentication() {
         Scanner input = new Scanner(System.in);
+
         while (this.running) {
-            System.out.println("Please select what you would like to do from the options below:" +
-                    " \n 1) Log in" + "\n 2) Create a new account");
+
+            System.out.println("Please select what you would like to do from the options below:"
+                    + "\n 1) Log in"
+                    + "\n 2) Create a new account"
+                    + "\n 3) Exit"
+                    + "\n\n Please input one of the numbers available:");
+
             try {
                 int numIn = input.nextInt();
                 String usersData = "user_data.ser";
                 UserReadWriter urw = new UserReadWriter();
                 UserList users = urw.readFromFile(usersData);
+
                 switch (numIn) {
                     case 1:
                         LoginUI loginUI = new LoginUI();
@@ -50,6 +57,11 @@ public class UserAuthenticationUI {
                         String username = newUserUI.RegisterUser(userResisterController);
                         urw.saveToFile(usersData, users);
                         return username;
+                    case 3:
+                        // Exits the while loop which exits the runHome method, exiting the program.
+                        this.running = false;
+                        input.close();
+                        break;
                     default:
                         System.out.println("Invalid input, please try again.");
                 }

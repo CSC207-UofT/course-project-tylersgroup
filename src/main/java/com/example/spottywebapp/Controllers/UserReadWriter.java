@@ -14,7 +14,7 @@ public class UserReadWriter implements ReadWriter {
      *
      * @param filePath the file to write the records to
      * @param users    stores the list of users to be serialized
-     * @throws IOException when failed reading
+     * @throws IOException gets caught in LoginUseCase
      */
     @Override
     public void saveToFile(String filePath, Object users) throws IOException {
