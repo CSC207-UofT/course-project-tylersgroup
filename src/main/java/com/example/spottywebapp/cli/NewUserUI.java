@@ -27,7 +27,7 @@ public class NewUserUI {
             String userIn = input.nextLine();
 
             // user input was not exit --> proceed to creating a new User account
-            if (!userIn.equals("exit")) {
+            if (!userIn.equalsIgnoreCase("exit")) {
 
                 if (!controller.catchUser(userIn)) {
                     //username is unique, so user can proceed to inputting password
@@ -48,11 +48,15 @@ public class NewUserUI {
                     this.registered = false;
                 }
 
-            } else { // user types in "exit"
+            } else{
                 this.running = false;
+                input.close();
+                break;
+
+            }
                 //TODO: figure out a way to let the user exit
             }
-        }
         return null;
+        }
     }
-}
+

@@ -9,12 +9,17 @@ public class Main {
 
         String username = userAuthenticationUI.authentication(); //returns username
         System.out.println(username);
+        // null is returned when the user wants to exit
+        if (username == null){
+            System.out.println("Thanks for using the spottyApp!");
 
-        //After authenticating the user we start the home UI.
-        HomeUI homeUI = new HomeUI(username);
+        } else{
+            //After authenticating the user we start the home UI.
+            HomeUI homeUI = new HomeUI(username);
 
-        homeUI.runHome();
+            homeUI.runHome();
 
+        }
     }
 }
 
