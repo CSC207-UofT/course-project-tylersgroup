@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URI;
 
 
-@RestController
+@RestController //restful web services
 @RequestMapping("/api")
 public class SpotifyAuthController {
     private static final String CLIENT_ID = "aad0ceac29e9477bae151417a721ecf5";
@@ -33,7 +33,7 @@ public class SpotifyAuthController {
     @ResponseBody
     public String spotifyLogin(){
         AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-                .scope("playlist-modify-public, user-read-private")
+                .scope("playlist-modify-public, user-read-private, user-top-read")
                 .show_dialog(true)
                 .build();
         final URI uri = authorizationCodeUriRequest.execute();
@@ -59,8 +59,8 @@ public class SpotifyAuthController {
         catch( IOException | SpotifyWebApiException | org.apache.hc.core5.http.ParseException e){
             System.out.println("Error: " + e.getMessage());
         }
-        System.out.println(spotifyApi.getAccessToken());
-        response.sendRedirect("http://localhost:3000/topartists");
+        // System.out.println(spotifyApi.getAccessToken());
+        response.sendRedirect("http://localhost:8080/user-top-artists");
         return spotifyApi.getAccessToken();
 
     }

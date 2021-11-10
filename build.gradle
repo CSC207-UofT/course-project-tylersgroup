@@ -21,6 +21,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql:42.2.24.jre7'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+    testImplementation 'org.apache.httpcomponents:httpclient'
 }
 
 test {

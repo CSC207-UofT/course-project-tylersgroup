@@ -5,6 +5,7 @@ import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
+import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,26 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api")
 public class SpotifyApiController {
+
+    @GetMapping(value = "user-top-artists")
+    public Artist[] getUserTopArtists() {
+
+        final GetUsersTopArtistsRequest getUsersTopArtistsRequest = spotifyApi.getUsersTopArtists()
+                .time_range("medium_term")
+                .limit(10)
+                .offset(5)
+                .build();
+
+        try {
+            final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
+
+            // return top artists as JSON
+            return artistPaging.getItems();
+        } catch (Exception e) {
+            System.out.println("Something went wrong!\n" + e.getMessage());
+        }
+        return new Artist[0];
+    }
 
     @GetMapping(value = "user-top-songs")
     public Track[] getUserTopTracks() {
