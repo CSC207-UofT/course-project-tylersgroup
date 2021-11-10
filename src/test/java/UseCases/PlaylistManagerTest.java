@@ -1,9 +1,10 @@
 package UseCases;/*
 Unit tests for PlaylistManager.java
 */
-import UseCases.PlaylistManager;
-import Entities.Playlist;
-import Entities.User;
+
+import com.example.spottywebapp.Entities.Playlist;
+import com.example.spottywebapp.Entities.User;
+import com.example.spottywebapp.UseCases.PlaylistManager;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;

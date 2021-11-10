@@ -1,6 +1,7 @@
 package Controllers;
 
 
+import com.example.spottywebapp.Controllers.UserInputController;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
