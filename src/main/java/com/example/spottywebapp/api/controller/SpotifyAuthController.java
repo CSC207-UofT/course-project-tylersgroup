@@ -18,7 +18,7 @@ import java.net.URI;
 public class SpotifyAuthController {
     private static final String CLIENT_ID = "aad0ceac29e9477bae151417a721ecf5";
     private static final String CLIENT_SECRET = "de9884d5bbab4ac78171276d75383936";
-    private static final URI redirectUri = SpotifyHttpManager.makeUri("https://www.spotify.com/ca-en/");
+    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8080/api/get-user-code/");
     public String code = "";
 
     //create spotifyapi object
@@ -40,6 +40,9 @@ public class SpotifyAuthController {
         return uri.toString();
     }
 
+    //request param requests the usercode, which is the parameter we need to ask spotify for a user access token so
+    //spotify knows that the user has authenticated. Httpservletresponse will allow us to redirect back to our
+    //front end
     @GetMapping(value = "get-user-code")
     public String getSpotifyUserCode(@RequestParam("code") String userCode, HttpServletResponse response) throws IOException{
         code = userCode;
