@@ -19,7 +19,7 @@ public class UserManager {
     private UserList users;
 
     // Constructor
-    private UserManager(){
+    public UserManager(){
         users = new UserList();
     }
 
@@ -77,7 +77,7 @@ public class UserManager {
      * @param newUser a newly created User entity
      * @return whether adding the new user to users is successful
      */
-    private boolean addNewUser(User newUser) {
+    public boolean addNewUser(User newUser) {
         String username = newUser.getUsername();
         if (this.users.concurrentUser(username)) {
             return false;

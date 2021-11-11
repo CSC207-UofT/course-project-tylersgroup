@@ -4,8 +4,8 @@ function getAllSongs(){
     const DATA = {
         songs: [
             {
-                name: '',
-                artist: ''
+                name: 'testName',
+                artist: 'testArtist'
             }
         ]
     }
