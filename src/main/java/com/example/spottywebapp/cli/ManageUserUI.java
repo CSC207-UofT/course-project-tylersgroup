@@ -29,23 +29,30 @@ public class ManageUserUI {
 
             if (userIn.equals("exit")){
                 this.running = false;
+                break;
             }
-            else {
+
+            try {
                 int action = Integer.parseInt(userIn);
                 // Since index starts at 0 but list number starts at 1
 
                 // Choose the action performed
-                if (action == 1){
+                if (action == 1) {
                     // Change password
                     String newPassword = getNewPassword();
                     changePassword(newPassword);
-                }
-                else if (action == 2){
+                } else if (action == 2) {
                     // delete account
                     removeUser();
                     this.running = false;
                     return 1000;
                 }
+                else{
+                    System.out.println("No such option!");
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("Invalid input: Please enter \"exit\" or a number");
             }
 
 
@@ -60,7 +67,8 @@ public class ManageUserUI {
     }
 
     private void removeUser(){
-        ManageUserController.removeUser(username);
+        ManageUserController controller = new ManageUserController();
+        controller.removeUser(username);
     }
 
     private void changePassword(String newPassword){
