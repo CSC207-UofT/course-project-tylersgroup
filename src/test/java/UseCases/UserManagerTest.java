@@ -2,7 +2,7 @@ package UseCases;/*
 Unit tests for UserManager.java
  */
 
-import Entities.UserList;
+import com.example.spottywebapp.UseCases.UserManager;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
