@@ -16,4 +16,6 @@ public class WebInputController {
     public String processForm(WebInput input){
         return "result";
     }
+
+
 }
