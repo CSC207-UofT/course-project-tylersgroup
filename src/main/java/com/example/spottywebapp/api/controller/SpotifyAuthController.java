@@ -65,7 +65,4 @@ public class SpotifyAuthController {
 
     }
 
-    //TODO: In the front end, create a method to getSpotifyUserLogin, taking in the URI we've created above.
-
-
 }

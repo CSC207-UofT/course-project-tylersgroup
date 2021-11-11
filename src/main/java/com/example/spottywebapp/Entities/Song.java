@@ -1,5 +1,9 @@
 package com.example.spottywebapp.Entities;
 
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.model_objects.specification.AudioFeatures;
+import com.wrapper.spotify.model_objects.specification.Track;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,13 +15,9 @@ public class Song {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private final String name;
-    private final String artist;
-    private final int duration;
-    private final String album;
-    private final String genre;
+    private final String name, artist, album, genre;
+    private final int duration, popularity;
     private final boolean explicit;
-    private final int popularity;
 
     public Long getId() {
         return id;
@@ -29,6 +29,8 @@ public class Song {
 
     /**
      * Construct a Song object, with the following parameters:
+     *
+     * I want to be able to create a song object from a track object that we can use locally in java
      *
      * @param name Name of the song
      * @param artist Artist name
