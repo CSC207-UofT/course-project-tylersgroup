@@ -30,10 +30,14 @@ public class ManagePlaylistUI {
 
             if (userIn.equals("exit")){
                 this.running = false;
+                break;
             }
-            else {
-                // TODO: Assume the input is valid (Index is within the length of the list of Playlist)
+
+            try {
                 int playlistIndex = Integer.parseInt(userIn);
+
+                // TODO: Assume the input is valid (Index is within the length of the list of Playlist)
+
                 // select playlist by index
                 printPlaylistOptions(playlistIndex);
                 // Since index starts at 0 but list number starts at 1
@@ -54,7 +58,14 @@ public class ManagePlaylistUI {
                     editPlaylistName(playlistIndex, newName);
                     System.out.println("Playlist renamed.");
                 }
+                else{
+                    System.out.println("No such option!");
+                }
             }
+            catch (NumberFormatException e){
+                System.out.println("Invalid input: Please enter \"exit\" or a number");
+            }
+
 
 
         }

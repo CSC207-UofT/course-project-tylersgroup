@@ -18,7 +18,7 @@ public class ManageUserController {
      * Removes the user.
      * @param username username of user
      */
-    public static void removeUser(String username){
+    public void removeUser(String username){
         userManager.deleteUser(username);
     }
 
