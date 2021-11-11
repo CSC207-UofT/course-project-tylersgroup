@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>home_screen</title>
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 
 <menu>
     <a
-        href="WebInput.html">
+        th:href="@{/PlayGen}">
         <li><button>Generate Playlist</button></li>
     </a>
 

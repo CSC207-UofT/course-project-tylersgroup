@@ -5,12 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <title>SpottyApp</title>
-    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <h1>Welcome to the SpottyApp</h1>
-<a th:action="@{/home}">
-    <button>Click Here To Begin</button>
-</a>
+
+
+<form action="#" th:action="@{/redirect}" method="get">
+    <input type="submit" value="Click here to begin"/>
+</form>
+
 </body>
 </html>
