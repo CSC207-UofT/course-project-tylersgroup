@@ -1,12 +1,19 @@
 package com.example.spottywebapp.Entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Users")
 public class User implements Serializable {
+    @Id
+    @Column(name = "username", nullable = false)
     private final String username;
     private final String password;
+    @Column(name = "associated_playlists")
+    @OneToMany
     private List<Playlist> playlistList;
     //private List<User> friendsList;
     //private List<Song> blacklist;
