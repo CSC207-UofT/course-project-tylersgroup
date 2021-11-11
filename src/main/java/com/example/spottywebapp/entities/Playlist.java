@@ -1,32 +1,29 @@
 package com.example.spottywebapp.entities;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import com.vladmihalcea.hibernate.type.array.ListArrayType;
 
 @Entity
 @Table(name = "playlists")
-@TypeDef(name = "arraylist", typeClass = ListArrayType.class)
-public class Playlist{
+public class Playlist implements Serializable{
     //Connecting to the spotify API will return playlist ID's for us
     @Id
     // change generate value?
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "playlist_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id; //id type from spotify api?
-    private List<Song> playlist;
-    private String playlistName;
-
-    // do we even need this?
-    @Column(name = "playlist_name", columnDefinition = "TEXT")
-    private String playlist_name;
 
     @Column(name = "playlist_songs") // add coloumnDefinition
-    @Type(type = "arraylist")
-    private List<String> songs; //get this from playlist entity (rename?)
+    @OneToMany
+    private List<Song> playlist;
+
+    @Column(name = "playlist_name", columnDefinition = "TEXT")
+    private String playlistName;
+
 
     /**
      * Construct a Playlist object with no name given
@@ -70,8 +67,10 @@ public class Playlist{
      * @return the playlist name
      */
     public String getPlaylistName(){
-        return playlistName;
+        return this.playlistName;
     }
+
+    public List<Song> getPlaylist() { return this.playlist; }
 
     /**
      * Changes the playlist name to the provided name.
