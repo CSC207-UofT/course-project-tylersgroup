@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta  http-equiv="Content-Type" content="text/html; charset=UTF-8" >
     <title>Playlist Generator Screen</title>
     <link rel="stylesheet" href="css/playlistGen_screen.css">
 
 </head>
 <body>
+
 <h1>Playlist Generator</h1>
 
 
-<form action="#" th:action="@{/WebInput}" th:object="${WebInput}" method="post">
-    <p>Input Sentence: <input type="text" th:field="*{input}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<form action="http://localhost:8080/PlayGen" method="POST">
+    <div>
+        <label for="input">Please input a sentence:</label>
+        <input name="input" id="input">
+    </div>
+
+    <div>
+        <label for="num">Enter 1 for long and 2 for short:</label>
+        <input name="num" id="num" value="1">
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
 </form>
+
 </body>
-
-
-<!--<form action="http://localhost:4000/playlist" method="post">-->
-<!--    <label for="input">Input sentence:</label>-->
-<!--    <input type="text" id="input" name="inputSentence"><br><br>-->
-<!--    <input type="submit" value="Submit" onclick="getAllSongs()">-->
-<!--</form>-->
-
-<!--<div id="playlistContainer">-->
-<!--    &lt;!&ndash;    SongDataNodes will end up here&ndash;&gt;-->
-<!--</div>-->
-
 </html>

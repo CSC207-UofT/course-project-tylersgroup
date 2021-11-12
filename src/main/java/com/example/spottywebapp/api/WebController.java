@@ -15,9 +15,15 @@ public class WebController {
         return "home.html";
     }
 
-    @GetMapping(value ="/PlayGen")
+    @RequestMapping(value ="/PlayGen")
     public String PlayGen(){
         return "PlayGen.html";
     }
 
-}
+    @GetMapping(value = "/result")
+        public String result(){
+            return "result.html";
+        }
+
+    }
+

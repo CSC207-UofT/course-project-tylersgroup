@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>home_screen</title>
@@ -20,9 +20,10 @@
 <!--            <input type="submit" value="Generate Playlist"/>-->
 <!--        </form>-->
 <!--    </button>-->
-    <a href="http://localhost:8080/PlayGen">
+    <a href="PlayGen.html" th:href="@{PlayGen}">
         <button>Generate Playlist</button>
     </a>
+
     </li>
 
     <li><button>Manage Playlists</button></li>

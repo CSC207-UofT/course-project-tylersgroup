@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>SpottyApp</title>
@@ -11,9 +11,10 @@
 <h1>Welcome to the SpottyApp</h1>
 
 
-<form action="#" th:action="@{/redirect}" method="get">
-    <input type="submit" value="Click here to begin"/>
-</form>
+<a href="home.html" th:href="@{home}">
+    <button>Get started</button>
+</a>
+
 
 </body>
 </html>
