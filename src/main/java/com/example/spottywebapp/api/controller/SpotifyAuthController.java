@@ -60,7 +60,7 @@ public class SpotifyAuthController {
             System.out.println("Error: " + e.getMessage());
         }
         // System.out.println(spotifyApi.getAccessToken());
-        response.sendRedirect("http://localhost:8080/user-top-artists");
+        response.sendRedirect("http://localhost:8080/home");
         return spotifyApi.getAccessToken();
 
     }

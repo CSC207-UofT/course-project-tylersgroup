@@ -15,7 +15,7 @@ public class Song {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private final String name, artist, album, genre;
+    private final String name, artist, album;
     private final int duration, popularity;
     private final boolean explicit;
 
@@ -36,7 +36,6 @@ public class Song {
      * @param artist Artist name
      * @param duration How long the song is in seconds
      * @param album Name of the album, might be a single
-     * @param genre Genre of song
      * @param explicit Boolean representing whether the song is family friendly or not
      * @param popularity Int representing spot in charts
      */
@@ -45,7 +44,6 @@ public class Song {
         this.artist = artist;
         this.duration = duration;
         this.album = album;
-        this.genre = genre;
         this.explicit = explicit;
         this.popularity = popularity;
     }
@@ -58,7 +56,6 @@ public class Song {
         this.artist = artist;
         this.duration = duration;
         this.album = name;
-        this.genre = genre;
         this.explicit = explicit;
         this.popularity = popularity;
     }
@@ -72,7 +69,6 @@ public class Song {
         this.artist = artist;
         this.duration = -1;
         this.album = "sample album";
-        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -85,7 +81,6 @@ public class Song {
         this.artist = "";
         this.duration = -1;
         this.album = "sample album";
-        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -106,11 +101,6 @@ public class Song {
     public String getAlbum() {
         //returns album from where the song is from
         return album;
-    }
-
-    public String getGenre() {
-        //returns genre of album
-        return genre;
     }
 
     public boolean isExplicit() {

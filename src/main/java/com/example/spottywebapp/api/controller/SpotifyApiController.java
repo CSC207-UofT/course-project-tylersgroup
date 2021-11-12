@@ -1,5 +1,6 @@
 package com.example.spottywebapp.api.controller;
 
+import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.*;
@@ -7,6 +8,8 @@ import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopT
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
+import com.wrapper.spotify.model_objects.special.SearchResult;
+import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -181,6 +184,20 @@ public class SpotifyApiController {
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public static Track searchSong(String songName){
+        final SearchItemRequest searchItemRequest = spotifyApi.searchItem(songName, ModelObjectType.TRACK.getType())
+                .build();
+
+        try{
+            SearchResult searchResult = searchItemRequest.execute();
+            return searchResult.getTracks().getItems()[0];
+        } catch (IOException | SpotifyWebApiException | ParseException e){
+            System.out.print("Error: " + e.getMessage());
+        }
+        return null; //song not found
+
     }
 
     public static void getCurrentUsersProfile_Sync() {
