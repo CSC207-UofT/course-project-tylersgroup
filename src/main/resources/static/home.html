@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>home_screen</title>
@@ -9,11 +9,22 @@
 <body>
 <h1>Welcome to the SpottyApp</h1>
 
+
+
+
 <menu>
-    <a
-        th:href="@{/PlayGen}">
-        <li><button>Generate Playlist</button></li>
+    <li>
+<!--        <button>-->
+
+<!--        <form action="/PlayGen" method="get">-->
+<!--            <input type="submit" value="Generate Playlist"/>-->
+<!--        </form>-->
+<!--    </button>-->
+    <a href="PlayGen.html" th:href="@{PlayGen}">
+        <button>Generate Playlist</button>
     </a>
+
+    </li>
 
     <li><button>Manage Playlists</button></li>
     <li><button>Account Settings</button></li>

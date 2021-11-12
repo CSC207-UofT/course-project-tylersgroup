@@ -1,4 +1,4 @@
-package com.example.spottywebapp.api;
+package com.example.spottywebapp.api.playlist;
 
 import com.example.spottywebapp.Entities.Playlist;
 import org.springframework.data.jpa.repository.JpaRepository;
