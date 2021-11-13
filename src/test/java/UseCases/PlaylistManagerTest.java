@@ -29,24 +29,24 @@ public class PlaylistManagerTest {
 
     }
 
-    @Test
-    public void testAddPlaylist(){
-        boolean success = manager.addPlaylist(playlist1, user);
-        assert(success);
-    }
-
-    @Test
-    public void testRemovePlaylistSuccess(){
-        manager.addPlaylist(playlist1, user);
-        boolean success = manager.removePlaylist(playlist1, user);
-        assert(success);
-    }
-
-    @Test
-    public void testRemovePlaylistFailure(){
-        manager.addPlaylist(playlist1, user);
-        boolean success = manager.removePlaylist(playlist2, user);
-        assert(!success);
-    }
+//    @Test
+//    public void testAddPlaylist(){
+//        boolean success = manager.addPlaylist(playlist1, user);
+//        assert(success);
+//    }
+//
+//    @Test
+//    public void testRemovePlaylistSuccess(){
+//        manager.addPlaylist(playlist1, user);
+//        boolean success = manager.removePlaylist(playlist1, user);
+//        assert(success);
+//    }
+//
+//    @Test
+//    public void testRemovePlaylistFailure(){
+//        manager.addPlaylist(playlist1, user);
+//        boolean success = manager.removePlaylist(playlist2, user);
+//        assert(!success);
+//    }
 
 }

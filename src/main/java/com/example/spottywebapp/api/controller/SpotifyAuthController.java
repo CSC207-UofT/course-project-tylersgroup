@@ -7,6 +7,8 @@ import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredential
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -31,13 +33,15 @@ public class SpotifyAuthController {
 
     @GetMapping("login")
     @ResponseBody
-    public String spotifyLogin(){
+    public RedirectView spotifyLogin(RedirectAttributes attributes){
+        attributes.addFlashAttribute("flashAttribute", "redirectWithRedirectView");
+        attributes.addAttribute("attribute", "redirectWithRedirectView");
         AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .scope("playlist-modify-public, user-read-private, user-top-read")
                 .show_dialog(true)
                 .build();
         final URI uri = authorizationCodeUriRequest.execute();
-        return uri.toString();
+        return new RedirectView(uri.toString());
     }
 
     //request param requests the usercode, which is the parameter we need to ask spotify for a user access token so
