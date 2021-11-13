@@ -1,8 +1,7 @@
 package com.example.spottywebapp.api;
 
-import org.springframework.http.HttpStatus;
+import com.example.spottywebapp.Controllers.MakePlaylistController;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -12,10 +11,22 @@ public class WebInputController {
 
     @RequestMapping(value="/PlayGen", method = RequestMethod.POST)
     public @ResponseBody String submitForm(@ModelAttribute("WebInput") WebInput input) {
+        String a;
         if (input.isValid()) {
             System.out.println(input); //Logging to console for testing purposes
+            MakePlaylistController MakePlaylist = new MakePlaylistController();
+            //String username = "testUser";
+            if (input.getNum() == 1){
+                a = MakePlaylist.makePlaylist(input.getInput(), "longest");
+            } else {
+                a = MakePlaylist.makePlaylist(input.getInput(), "shortest");
+            }
+            System.out.println(a);
+        } else{
+            a = "failed";
         }
-        return "result.html";
+
+        return a;
     }
 
 
