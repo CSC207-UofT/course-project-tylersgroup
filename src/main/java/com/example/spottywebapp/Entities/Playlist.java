@@ -12,7 +12,7 @@ public class Playlist{
     @Column(name = "playlist_id", nullable = false)
     private Long id;
 
-    @Column(name = "playlist_songs")
+    @Column(name = "playlist_songs") //TODO add coloumn definitions?
     @OneToMany
     private List<Song> playlist;
 

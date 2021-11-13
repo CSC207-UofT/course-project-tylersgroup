@@ -20,6 +20,12 @@ public class PlaylistGenerator {
         return this.strategy.generatePlaylist(words, newPlaylist);
     }
 
+    public Playlist generatePlaylistWeb(ArrayList<String> words) {
+        String playlistName = PlaylistGenerator.buildPlaylistName(words);
+        Playlist newPlaylist = new Playlist(playlistName);
+        return this.strategy.generatePlaylistWeb(words, newPlaylist);
+    }
+
     public void setStrategy(PlaylistGenerationStrategy strategy) {
         this.strategy = strategy;
     }

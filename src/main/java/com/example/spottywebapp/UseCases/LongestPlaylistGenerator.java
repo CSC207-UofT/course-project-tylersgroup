@@ -15,4 +15,13 @@ public class LongestPlaylistGenerator implements PlaylistGenerationStrategy{
         }
         return newPlaylist;
     }
+
+    public Playlist generatePlaylistWeb(ArrayList<String> words, Playlist newPlaylist){
+        for (String s : words) {
+            Song song = SongGenerator.generateSongSpotify(s); //create a song entity for that song
+            // receive the song entities and instantiate a playlist entity
+            newPlaylist.addSong(song);
+        }
+        return newPlaylist;
+    }
 }

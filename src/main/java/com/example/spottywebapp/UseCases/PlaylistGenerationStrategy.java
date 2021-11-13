@@ -6,4 +6,6 @@ import java.util.ArrayList;
 
 public interface PlaylistGenerationStrategy {
     Playlist generatePlaylist(ArrayList<String> words, Playlist playlist);
+
+    Playlist generatePlaylistWeb(ArrayList<String> words, Playlist playlist);
 }
