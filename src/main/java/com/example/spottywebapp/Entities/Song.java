@@ -1,33 +1,23 @@
 package com.example.spottywebapp.Entities;
 
-import javax.persistence.*;
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.model_objects.specification.AudioFeatures;
+import com.wrapper.spotify.model_objects.specification.Track;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-@Table(name = "songs")
 public class Song {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "song_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "song_name") //TODO add coloumn definitions?
-    private final String name;
-
-    @Column(name = "artist")
-    private final String artist;
-
-    @Column(name = "duration")
-    private final int duration;
-
-    @Column(name = "album")
-    private final String album;
-
-    @Column(name = "explicit") //bool type?
+    private final String name, artist, album;
+    private final int duration, popularity;
     private final boolean explicit;
-
-    @Column(name = "popularity")
-    private final int popularity;
 
     public Long getId() {
         return id;
@@ -39,6 +29,8 @@ public class Song {
 
     /**
      * Construct a Song object, with the following parameters:
+     *
+     * I want to be able to create a song object from a track object that we can use locally in java
      *
      * @param name Name of the song
      * @param artist Artist name
@@ -110,7 +102,6 @@ public class Song {
         //returns album from where the song is from
         return album;
     }
-
 
     public boolean isExplicit() {
         //returns True if song is explicit
