@@ -55,12 +55,12 @@ public class MakePlaylistController {
      * @param strategy method by which playlist generation occurs.
      * @return returns a string representation of the playlist.
      */
-    public String makePlaylist(String input, String strategy) {
+    public String makePlaylistWeb(String input, String strategy) {
 
         ArrayList<String> words = UserInputController.splitUserInput(input);
         PlaylistGenerator playlistGenerator = new PlaylistGenerator();
         playlistGenerator.setStrategy(this.playlistGenerationStrategyMap.get(strategy));
-        Playlist newPlaylist = playlistGenerator.generatePlaylist(words);
+        Playlist newPlaylist = playlistGenerator.generatePlaylistWeb(words);
         return newPlaylist.toString();
     }
 

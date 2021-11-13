@@ -17,9 +17,9 @@ public class WebInputController {
             MakePlaylistController MakePlaylist = new MakePlaylistController();
             //String username = "testUser";
             if (input.getNum() == 1){
-                a = MakePlaylist.makePlaylist(input.getInput(), "longest");
+                a = MakePlaylist.makePlaylistWeb(input.getInput(), "longest");
             } else {
-                a = MakePlaylist.makePlaylist(input.getInput(), "shortest");
+                a = MakePlaylist.makePlaylistWeb(input.getInput(), "shortest");
             }
             System.out.println(a);
         } else{
