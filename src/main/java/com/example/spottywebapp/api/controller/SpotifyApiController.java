@@ -7,6 +7,7 @@ import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import com.wrapper.spotify.model_objects.special.SearchResult;
 import com.wrapper.spotify.requests.data.search.SearchItemRequest;
@@ -186,13 +187,22 @@ public class SpotifyApiController {
         }
     }
 
+    @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
-        final SearchItemRequest searchItemRequest = spotifyApi.searchItem(songName, ModelObjectType.TRACK.getType())
+        final SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks("\""+songName+"\"")
+                //.limit(50)
+                //.offset(25)
                 .build();
 
         try{
-            SearchResult searchResult = searchItemRequest.execute();
-            return searchResult.getTracks().getItems()[0];
+            final Paging<Track> trackPaging = searchTracksRequest.execute();
+            //Track[] found_tracks = trackPaging.getItems();
+            //for(Track i:found_tracks){
+                //if(i.getName().length() == songName.length()){
+                    //return i;
+                //}
+            //}
+            return trackPaging.getItems()[0];
         } catch (IOException | SpotifyWebApiException | ParseException e){
             System.out.print("Error: " + e.getMessage());
         }
