@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 public class UserManagerTest {
     UserManager manager = UserManager.getInstance();
 
+
     @Before("")
     public void setUp(){
     }

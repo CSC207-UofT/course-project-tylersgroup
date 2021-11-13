@@ -50,5 +50,4 @@ public class PlaylistManagerTest {
         boolean success = playlistManager.removePlaylist(playlist2, username);
         assert(!success);
     }
-
 }
