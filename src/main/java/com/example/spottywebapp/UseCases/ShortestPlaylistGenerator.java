@@ -24,7 +24,7 @@ public class ShortestPlaylistGenerator implements PlaylistGenerationStrategy{
             else {
                 String songName = String.join(" ", wordList.subList(s, e));
                 // make request to song generator
-                Song newSong = SongGenerator.generateSong(songName);
+                Song newSong = SongGenerator.generateSongSpotify(songName);
                 // check if we got a song with that name
                 if (!newSong.getName().equals("")) {
                     newPlaylist.addSong(newSong);
