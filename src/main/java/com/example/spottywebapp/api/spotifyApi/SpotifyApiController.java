@@ -18,6 +18,7 @@ import org.apache.hc.core5.http.ParseException;
 import static com.example.spottywebapp.api.spotifyApi.SpotifyAuthController.spotifyApi;
 import java.io.IOException;
 
+/**
 @RestController
 @RequestMapping("/api")
 public class SpotifyApiController {
@@ -218,3 +219,5 @@ public class SpotifyApiController {
         }
     }
 }
+
+ **/

@@ -2,7 +2,7 @@
 package com.example.spottywebapp.UseCases;
 
 import com.example.spottywebapp.Entities.Song;
-import com.example.spottywebapp.api.spotifyApi.SpotifyApiController;
+import com.example.spottywebapp.api.spotifyApi.SpotifyApiSongController;
 import com.wrapper.spotify.model_objects.specification.Track;
 
 import java.io.BufferedReader;
@@ -53,7 +53,7 @@ public class SongGenerator {
     }
 
     public static Song generateSongSpotify(String songName){
-        Track temp_song = SpotifyApiController.searchSong(songName);
+        Track temp_song = SpotifyApiSongController.searchSong(songName);
         if(temp_song != null){
             return new Song(temp_song.getName(),
                     temp_song.getArtists()[0].getName(),
