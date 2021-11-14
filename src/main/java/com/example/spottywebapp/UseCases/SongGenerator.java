@@ -2,7 +2,7 @@
 package com.example.spottywebapp.UseCases;
 
 import com.example.spottywebapp.Entities.Song;
-import com.example.spottywebapp.api.controller.SpotifyApiController;
+import com.example.spottywebapp.api.spotifyApi.SpotifyApiController;
 import com.wrapper.spotify.model_objects.specification.Track;
 
 import java.io.BufferedReader;

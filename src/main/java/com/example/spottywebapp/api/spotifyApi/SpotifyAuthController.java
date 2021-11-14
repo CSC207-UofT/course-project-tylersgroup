@@ -1,4 +1,4 @@
-package com.example.spottywebapp.api.controller;
+package com.example.spottywebapp.api.spotifyApi;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;

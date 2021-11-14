@@ -1,6 +1,5 @@
-package com.example.spottywebapp.api.controller;
+package com.example.spottywebapp.api.spotifyApi;
 
-import com.wrapper.spotify.enums.ModelObjectType;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.*;
@@ -9,17 +8,14 @@ import com.wrapper.spotify.requests.data.playlists.*;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopArtistsRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
-import com.wrapper.spotify.model_objects.special.SearchResult;
-import com.wrapper.spotify.requests.data.search.SearchItemRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import org.apache.hc.core5.http.ParseException;
 
-import static com.example.spottywebapp.api.controller.SpotifyAuthController.spotifyApi;
+import static com.example.spottywebapp.api.spotifyApi.SpotifyAuthController.spotifyApi;
 import java.io.IOException;
 
 @RestController
