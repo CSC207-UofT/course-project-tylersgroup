@@ -1,6 +1,5 @@
 body {
-    margin: 50% 10%;
-    padding: 0;
+    margin: 10% 10%;
     background: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,23 +11,34 @@ body {
 .box-1 p{
     font-size: 20px;
 }
-.menu_list{
-    list-style-type: none;
+.box-1{
+    margin: 10%;
 }
-.menu_contents a:link{
-    float: left;
-    display: block;
-    padding: 10px 15px;
+.menu-list{
+    background-color: #bc7089;
+    width: 40%;
+}
+.menu-contents{
+    list-style-type: none;
+    margin: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-contents a:link{
+    padding: 10px 20px;
     border-radius: 10px;
     text-align: center;
     font-size: 15px;
-    color: whitesmoke;
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+    font-weight: bold;
 }
 
-.menu_contents a:visited {
-    color: whitesmoke;
+.menu-contents a:visited {
+    color: black;
 }
-.menu_contents a:hover{
+.menu-contents a:hover{
     background: lightgrey;
-    color: cadetblue;
 }
