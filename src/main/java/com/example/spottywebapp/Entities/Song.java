@@ -7,10 +7,11 @@ import com.wrapper.spotify.model_objects.specification.Track;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Song {
+public class Song implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
