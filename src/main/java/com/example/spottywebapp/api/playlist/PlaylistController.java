@@ -1,7 +1,9 @@
 package com.example.spottywebapp.api.playlist;
 
 import com.example.spottywebapp.Entities.Playlist;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class PlaylistController {
@@ -15,9 +17,12 @@ public class PlaylistController {
 
 
 
-    @PostMapping("/playlist")
-    Playlist makePlaylist(@RequestBody Playlist newPlaylist){
-        return interactor.save(newPlaylist);
+    @GetMapping("/playlist")
+    public ModelAndView makePlaylist(ModelMap model, @ModelAttribute("flashAttribute") Playlist playlist){
+
+        interactor.save(playlist);
+        model.addAttribute("playlistString", playlist.toString());
+        return new ModelAndView("result", model);
 
 //        ArrayList<String> splitInput = UserInputController.splitUserInput(input);
 //
