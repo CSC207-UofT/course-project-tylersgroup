@@ -5,18 +5,24 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
-.box-1 h1 {
+.welcome h1 {
     font-size:30px;
 }
-.box-1 p{
+.welcome p{
     font-size: 20px;
 }
-.box-1{
+.welcome{
     margin: 10%;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 .menu-list{
     background-color: #bc7089;
-    width: 40%;
+    width: 35%;
 }
 .menu-contents{
     list-style-type: none;
@@ -32,7 +38,6 @@ body {
     font-size: 15px;
     color: black;
     text-decoration: none;
-    margin: 5px;
     font-weight: bold;
 }
 
