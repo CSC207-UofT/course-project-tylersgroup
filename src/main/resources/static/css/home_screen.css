@@ -19,20 +19,20 @@ body {
     justify-content: center;
     align-items: center;
 }
-.menu-list{
+ul{
     background-color: mintcream;
     width: 35%;
     border-radius: 4px;
 
 }
-.menu-contents{
+li{
     list-style-type: disc;
     margin: 20px 0;
     display: flex;
     /*justify-content: center;*/
     /*align-items: center;*/
 }
-.menu-contents a:link{
+li a:link{
     padding: 10px 20px;
     border-radius: 10px;
     text-align: center;
@@ -41,10 +41,9 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
-
-.menu-contents a:visited {
+li a:visited {
     color: black;
 }
-.menu-contents a:hover{
+li a:hover{
     background: lightgrey;
 }
