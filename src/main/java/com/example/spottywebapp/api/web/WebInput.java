@@ -1,4 +1,4 @@
-package com.example.spottywebapp.api;
+package com.example.spottywebapp.api.web;
 
 import com.example.spottywebapp.cli.InputChecker;
 
