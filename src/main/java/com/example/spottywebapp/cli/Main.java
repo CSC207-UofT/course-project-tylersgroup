@@ -6,7 +6,6 @@ public class Main {
         //TODO: Add the login UI steps once created.
 
         UserAuthenticationUI userAuthenticationUI = new UserAuthenticationUI();
-
         String username = userAuthenticationUI.authentication(); //returns username
         System.out.println(username);
         // null is returned when the user wants to exit
