@@ -1,0 +1,32 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta  http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title>Playlist Generator Screen</title>
+    <link rel="stylesheet" href="css/playlistGen_screen.css">
+
+</head>
+<body>
+
+<h1>Playlist Generator</h1>
+
+
+<form action="http://localhost:8080/PlayGen" method="POST">
+    <div>
+        <label for="input">Please input a sentence:</label>
+        <input name="input" id="input">
+    </div>
+
+    <div>
+        <label for="num">Enter 1 for long and 2 for short:</label>
+        <input name="num" id="num" value="1">
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+
+</body>
+</html>

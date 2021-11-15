@@ -48,6 +48,22 @@ public class MakePlaylistController {
 
     }
 
+
+    /**
+     * WEB Controller testing version of makePlaylist without user saving functionality.
+     * @param input input string to generate playlist
+     * @param strategy method by which playlist generation occurs.
+     * @return returns a string representation of the playlist.
+     */
+    public Playlist makePlaylistWeb(String input, String strategy) {
+
+        ArrayList<String> words = UserInputController.splitUserInput(input);
+        PlaylistGenerator playlistGenerator = new PlaylistGenerator();
+        playlistGenerator.setStrategy(this.playlistGenerationStrategyMap.get(strategy));
+        return playlistGenerator.generatePlaylistWeb(words);
+    }
+
+
     public boolean getComplete() {
         return this.complete;
 

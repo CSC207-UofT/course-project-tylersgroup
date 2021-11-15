@@ -1,18 +1,19 @@
 package com.example.spottywebapp.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "playlists")
-public class Playlist{
+public class Playlist implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "playlist_id", nullable = false)
     private Long id;
 
-    @Column(name = "playlist_songs")
+    @Column(name = "playlist_songs") //TODO add coloumn definitions?
     @OneToMany
     private List<Song> playlist;
 

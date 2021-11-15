@@ -1,23 +1,24 @@
 package com.example.spottywebapp.Entities;
 
+import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.model_objects.specification.AudioFeatures;
+import com.wrapper.spotify.model_objects.specification.Track;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Song {
+public class Song implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private final String name;
-    private final String artist;
-    private final int duration;
-    private final String album;
-    private final String genre;
+    private final String name, artist, album;
+    private final int duration, popularity;
     private final boolean explicit;
-    private final int popularity;
 
     public Long getId() {
         return id;
@@ -30,11 +31,12 @@ public class Song {
     /**
      * Construct a Song object, with the following parameters:
      *
+     * I want to be able to create a song object from a track object that we can use locally in java
+     *
      * @param name Name of the song
      * @param artist Artist name
      * @param duration How long the song is in seconds
      * @param album Name of the album, might be a single
-     * @param genre Genre of song
      * @param explicit Boolean representing whether the song is family friendly or not
      * @param popularity Int representing spot in charts
      */
@@ -43,7 +45,6 @@ public class Song {
         this.artist = artist;
         this.duration = duration;
         this.album = album;
-        this.genre = genre;
         this.explicit = explicit;
         this.popularity = popularity;
     }
@@ -56,7 +57,6 @@ public class Song {
         this.artist = artist;
         this.duration = duration;
         this.album = name;
-        this.genre = genre;
         this.explicit = explicit;
         this.popularity = popularity;
     }
@@ -70,7 +70,6 @@ public class Song {
         this.artist = artist;
         this.duration = -1;
         this.album = "sample album";
-        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -83,7 +82,6 @@ public class Song {
         this.artist = "";
         this.duration = -1;
         this.album = "sample album";
-        this.genre = "sample genre";
         this.explicit = false;
         this.popularity = -1;
     }
@@ -104,11 +102,6 @@ public class Song {
     public String getAlbum() {
         //returns album from where the song is from
         return album;
-    }
-
-    public String getGenre() {
-        //returns genre of album
-        return genre;
     }
 
     public boolean isExplicit() {
