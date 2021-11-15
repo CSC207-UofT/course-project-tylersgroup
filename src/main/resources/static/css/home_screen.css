@@ -1,16 +1,51 @@
 body {
+    margin: 10% 10%;
+    background: #bc7089;
     text-align: center;
-    font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.welcome h1 {
+    font-size:30px;
+}
+.welcome p{
+    font-size: 20px;
+}
+.welcome{
+    margin: 10%;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background-color: #3d7f23;
 }
-h1 {
-    font-size:3rem;
-    color: #ffffff;
+.menu-list{
+    background-color: mintcream;
+    width: 35%;
+    border-radius: 4px;
+
 }
-button {
-    padding: 1rem;
-    border: 0.3rem solid #000000;
+.menu-contents{
+    list-style-type: disc;
+    margin: 20px 20px;
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+.menu-contents a:link{
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
     font-weight: bold;
+}
+
+.menu-contents a:visited {
+    color: black;
+}
+.menu-contents a:hover{
+    background: lightgrey;
 }

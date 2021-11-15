@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>home_screen</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/home_screen.css">
 </head>
 
 <body>
-<h1>Welcome to the SpottyApp</h1>
 
+<div class="welcome">
+    <h1>Welcome to the SpottyApp</h1>
+    <p>
+        This app will help you create a playlist using Spotify.
+        All you need to do is to input a set of words!
+    </p>
+</div>
 
+<div class="menu">
+    <ul class="menu-list">
+        <li class="menu-contents"><a href="http://localhost:8080/PlayGen">Generate Playlist</a></li>
+        <li class="menu-contents"><a href="http://localhost:8080/manage">Manage Playlists</a></li>
+        <li class="menu-contents"><a href="#">Account Settings</a></li>
+    </ul>
 
+</div>
 
-<menu>
-    <li>
-<!--        <button>-->
-
-<!--        <form action="/PlayGen" method="get">-->
-<!--            <input type="submit" value="Generate Playlist"/>-->
-<!--        </form>-->
-<!--    </button>-->
-    <a href="http://localhost:8080/PlayGen">
-        <button>Generate Playlist</button>
-    </a>
-
-    </li>
-
-    <li><button>Manage Playlists</button></li>
-    <li><button>Account Settings</button></li>
-</menu>
 </body>
 </html>

@@ -1,20 +1,37 @@
-body {
-    text-align: center;
-    font-size: 10px;
+body{
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background: rosybrown;
+    color: white;
 
-    background-color: #3d7f23;
 }
-h1 {
-    font-size:3rem;
-    color: #ffffff;
+
+.button {
+    background-color: white;
+    color: black;
+    border: 2px solid maroon; /* Green */
+    transition-duration: 0.4s;
+    text-align: center;
 }
-button {
-    padding: 1rem;
-    border: 0.3rem solid #000000;
-    font-weight: bold;
+
+.button:hover {
+    background-color: saddlebrown; /* Green */
+    color: white;
 }
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.box {
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rosybrown;
+    text-align: center;
+}
+h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
 }

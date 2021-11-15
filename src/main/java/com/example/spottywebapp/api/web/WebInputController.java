@@ -58,11 +58,49 @@ public class WebInputController {
         if (inputFlashMap != null) {
             Playlist playlist = (Playlist) inputFlashMap.get("playlist");
             System.out.println("Result: " + playlist);
-            return "<h1>Generated Playlist:</h1>" + playlist.toString();
+            return "<html><head>\n" +
+                    "<style>\n" +
+                    "body {background-color: #bc7089;}\n" +
+                    "h1   {color: white;" +
+                    "      font-family: Arial, Helvetica, sans-serif;}\n" +
+                    "p    {color: white;" +
+                    "      font-family: Arial, Helvetica, sans-serif;}\n" +
+                    "" +
+                    "</style>\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "<h1>Generated Playlist</h1>\n" +
+                    "<h2>" + playlist.toString() + "</h2></body></html>";
 
         }else{
             return "failed";
         }
+
+    }
+
+    @GetMapping(value = "/manage")
+    @ResponseBody
+    public String manage(){
+        Serializer getter = new Serializer();
+        StringBuilder out = new StringBuilder();
+        for (String playlist: getter.getPlaylists()){
+            out.append("<li>");
+            out.append(playlist).append("\n");
+            out.append("</li>");
+        }
+        return "<html><head>\n" +
+                "<style>\n" +
+                "body {background-color: #bc7089;}\n" +
+                "h1   {color: white;" +
+                "      font-family: Arial, Helvetica, sans-serif;}\n" +
+                "p    {color: white;" +
+                "      font-family: Arial, Helvetica, sans-serif;}\n" +
+                "" +
+                "</style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>Generated Playlists</h1>\n" +
+                "<h2>" + out + "</h2></body></html>";
 
     }
 
