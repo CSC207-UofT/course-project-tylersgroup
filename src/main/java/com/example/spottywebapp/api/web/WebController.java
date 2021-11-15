@@ -1,4 +1,4 @@
-package com.example.spottywebapp.api;
+package com.example.spottywebapp.api.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +20,11 @@ public class WebController {
         return "PlayGen.html";
     }
 
-    @GetMapping(value = "/result")
-        public String result(){
-            return "result.html";
-        }
+//    @GetMapping(value = "/result")
+//        public String result(){
+//            return "playlistResult.html";
+//        }
 
-    }
+
+  }
 

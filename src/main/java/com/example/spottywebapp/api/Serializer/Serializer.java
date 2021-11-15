@@ -27,7 +27,7 @@ public class Serializer {
     public Playlist deserialize(String filename){
         Playlist playlist = new Playlist();
         try {
-            FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+            FileInputStream fileIn = new FileInputStream("/tmp/" + filename + ".ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             playlist = (Playlist) in.readObject();
             in.close();

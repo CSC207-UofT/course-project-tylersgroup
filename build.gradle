@@ -14,13 +14,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.5'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
     implementation 'junit:junit:3.8.2'
     implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql:42.2.24.jre7'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+    runtimeOnly 'org.postgresql:postgresql:42.3.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
     testImplementation 'org.apache.httpcomponents:httpclient'
 }
 
