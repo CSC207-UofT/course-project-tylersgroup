@@ -58,7 +58,7 @@ public class WebInputController {
         if (inputFlashMap != null) {
             Playlist playlist = (Playlist) inputFlashMap.get("playlist");
             System.out.println("Result: " + playlist);
-            return "<h1>Generated Playlist</h1>" + playlist.toString();
+            return "<h1>Generated Playlist:</h1>" + playlist.toString();
 
         }else{
             return "failed";
