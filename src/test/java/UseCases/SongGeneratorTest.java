@@ -30,5 +30,13 @@ public class SongGeneratorTest {
         if (!Objects.equals(success.toString(), song.toString().toString())) throw new AssertionError();
     }
 
+    @Test
+    public void testGenerateSongSpotify(){
+        Song success = SongGenerator.generateSongSpotify("Hello");
+        Song song = new Song("Hello", "Adele");
+        if (!Objects.equals(success.toString(), song.toString().toString())) throw new AssertionError();
+    }
+
+
 }
 
