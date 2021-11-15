@@ -1,5 +1,7 @@
 package com.example.spottywebapp.api.spotifyApi;
 
+
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.requests.data.personalization.simplified.GetUsersTopTracksRequest;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
@@ -41,26 +43,59 @@ public class SpotifyApiSongController {
 
     @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
-        final SearchTracksRequest searchTracksRequest =
-                spotifyApi.searchTracks("\""+songName+"\"")
-                //.limit(50)
-                //.offset(25)
-                .build();
+        String capitalizedSongName = toTitleCase(songName);
+//        final SearchTracksRequest searchTracksRequest =
+//                spotifyApi.searchTracks("\""+songName+"\"")
+//                //.limit(50)
+//                //.offset(25)
+//                .build();
 
         try{
-            final Paging<Track> trackPaging = searchTracksRequest.execute();
-            //Track[] found_tracks = trackPaging.getItems();
-            //for(Track i:found_tracks){
-            //if(i.getName().length() == songName.length()){
-            //return i;
-            //}
-            //}
-            return trackPaging.getItems()[0];
+            int offset_temp = 1;
+            while(offset_temp < 5000) {
+                final SearchTracksRequest searchTracksRequest =
+                        spotifyApi.searchTracks("\"" + capitalizedSongName + "\"")
+                                .market(CountryCode.CA)
+                                .limit(50)
+                                .offset(offset_temp)
+                                .build();
+                final Paging<Track> trackPaging = searchTracksRequest.execute();
+                Track[] found_tracks = trackPaging.getItems();
+                for(Track i:found_tracks){
+                    System.out.println(i.getName());
+                    if((i.getName()).equals(capitalizedSongName)){
+                        return i;
+                    }
+                }
+                offset_temp += 50;
+                System.out.println("check");
+                //return trackPaging.getItems()[0];
+            }
         } catch (IOException | SpotifyWebApiException | ParseException e){
             System.out.print("Error: " + e.getMessage());
         }
         return null; //song not found
 
     }
+
+    public static String toTitleCase(String input) {
+        StringBuilder titleCase = new StringBuilder(input.length());
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
+    }
+
+
 
 }
