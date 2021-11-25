@@ -5,11 +5,14 @@ import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.api.Serializer.Serializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -51,55 +54,40 @@ public class WebInputController {
 
     @RequestMapping(value = "/result", method = RequestMethod.GET)
     @ResponseBody
-    public String result(HttpServletRequest request){
+    public ModelAndView result(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("playlistResult");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
         if (inputFlashMap != null) {
             Playlist playlist = (Playlist) inputFlashMap.get("playlist");
+            //Console logging for debugging
             System.out.println("Result: " + playlist);
-            return "<html><head>\n" +
-                    "<style>\n" +
-                    "body {background-color: #bc7089;}\n" +
-                    "h1   {color: white;" +
-                    "      font-family: Arial, Helvetica, sans-serif;}\n" +
-                    "p    {color: white;" +
-                    "      font-family: Arial, Helvetica, sans-serif;}\n" +
-                    "" +
-                    "</style>\n" +
-                    "</head>\n" +
-                    "<body>\n" +
-                    "<h1>Generated Playlist</h1>\n" +
-                    "<h2>" + playlist.toString() + "</h2></body></html>";
 
-        }else{
-            return "failed";
+            modelAndView.addObject("playlist", playlist.toString());
+            return modelAndView;
+        }else {
+            return null;
         }
 
     }
 
     @GetMapping(value = "/manage")
     @ResponseBody
-    public String manage(){
+    public ModelAndView manage(){
+        ModelAndView modelAndView = new ModelAndView("manage");
+        //TODO: This needs to be moved to either a helper method or use case class. (For clean architecture)
         Serializer getter = new Serializer();
-        StringBuilder out = new StringBuilder();
-        for (String playlist: getter.getPlaylists()){
-            out.append("<li>");
-            out.append(playlist).append("\n");
-            out.append("</li>");
+        HashMap<String, String> out = new HashMap<>();
+        ArrayList<Playlist> playlists = getter.getPlaylists(); //TODO: BAD TO MANIPULATE ENTITY
+        for(Playlist playlist : playlists){
+            out.put(playlist.getPlaylistName(), playlist.toString());
         }
-        return "<html><head>\n" +
-                "<style>\n" +
-                "body {background-color: #bc7089;}\n" +
-                "h1   {color: white;" +
-                "      font-family: Arial, Helvetica, sans-serif;}\n" +
-                "p    {color: white;" +
-                "      font-family: Arial, Helvetica, sans-serif;}\n" +
-                "" +
-                "</style>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<h1>Generated Playlists</h1>\n" +
-                "<h2>" + out + "</h2></body></html>";
+        modelAndView.addObject("playlistMap", out);
+
+        //Console logging for debugging
+        System.out.println("All playlists:\n" + out);
+
+        return modelAndView;
 
     }
 

@@ -19,11 +19,5 @@ public class WebController {
         return "PlayGen";
     }
 
-//    @GetMapping(value = "/result")
-//        public String result(){
-//            return "playlistResult.html";
-//        }
-
-
   }
 
