@@ -20,6 +20,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.6'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
     implementation 'com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT'
+    implementation 'com.github.cliftonlabs:json-simple:3.1.0'
+    implementation 'com.github.dozermapper:dozer-core:6.5.0'
 }
 
 test {

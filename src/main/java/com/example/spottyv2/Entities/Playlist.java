@@ -1,14 +1,17 @@
 package com.example.spottyv2.Entities;
 
-import java.io.Serializable;
+import java.io.Serializable; //remove?
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsonable;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Playlist implements Serializable {
+public class Playlist implements Jsonable {
 
     private Long id;
-
 
     private List<Song> playlist;
 
@@ -112,4 +115,22 @@ public class Playlist implements Serializable {
         }
         return s.toString();
     }
+
+    @Override
+    public String toJson() {
+        JsonObject json = new JsonObject();
+        json.put("name", this.playlistName);
+        json.put("playlist array", this.playlist);
+        //should we add length, etc. ?
+        return json.toJson();
+    }
+
+    @Override
+    public void toJson(Writer writable) throws IOException {
+        try{
+            writable.write(this.toJson());
+        } catch (Exception ignored) {
+        }
+    }
+
 }
