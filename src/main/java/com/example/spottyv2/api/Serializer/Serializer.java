@@ -42,14 +42,14 @@ public class Serializer {
         return playlist;
     }
 
-    public ArrayList<String> getPlaylists() {
-        ArrayList<String> playlists = new ArrayList<>();
+    public ArrayList<Playlist> getPlaylists() {
+        ArrayList<Playlist> playlists = new ArrayList<>();
         File folder = new File("/Users/maxbridgewater/IdeaProjects/course-project-tylersgroup1/SerializedPlaylists");
         File[] listOfFiles = folder.listFiles();
         assert listOfFiles != null;
         for (File listOfFile : listOfFiles) {
             if (listOfFile.isFile()) {
-                playlists.add(deserialize(listOfFile.getName()).toString());
+                playlists.add(deserialize(listOfFile.getName()));
             }
         }
         return playlists;
