@@ -7,6 +7,7 @@ import com.github.cliftonlabs.json_simple.Jsonable;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class JsonSerializer {
-
 
 //    public Playlist createjson(Playlist playlist) {
 //        try {
@@ -42,6 +42,24 @@ public class JsonSerializer {
         }
     }
 
+    // deserializes and gets playlists in one go, maybe create a helper
+    public ArrayList<Playlist> getPlaylist() {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("playlists.json"));
+            JsonArray objects = Jsoner.deserializeMany(reader);
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            // Mapper through spring?
+            JsonArray array = (JsonArray) objects.get(0);
+            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
+                    .map(obj -> mapper.map(obj, Playlist.class))
+                    .collect(Collectors.toList());
+            reader.close();
+            return playlists;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null; // if this doesn't work, move this into the exception catch statement
+   }
 
     public ArrayList<Playlist> getPlaylist() {
         try {
@@ -61,4 +79,5 @@ public class JsonSerializer {
         }
         return null;
    }
+
 }
