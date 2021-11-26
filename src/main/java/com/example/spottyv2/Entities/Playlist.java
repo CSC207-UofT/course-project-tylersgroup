@@ -11,8 +11,6 @@ import java.util.List;
 
 public class Playlist implements Jsonable {
 
-    private Long id;
-
     private List<Song> playlist;
 
     private String playlistName;

@@ -1,14 +1,17 @@
 package com.example.spottyv2.Entities;
 
-import java.io.Serializable;
+//import java.io.Serializable;
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsonable;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class User implements Serializable {
+public class User implements Jsonable {
 
     private final String username;
-    private final String password;
 
     private List<Playlist> playlistList;
     //private List<User> friendsList;
@@ -20,7 +23,6 @@ public class User implements Serializable {
      */
     public User(String username, String password){
         this.username = username;
-        this.password = password;
         this.playlistList = new ArrayList<>();
     }
 
@@ -30,36 +32,12 @@ public class User implements Serializable {
      */
     public String getUsername() {return username;}
 
-    /**
-     * Getter for password.
-     * @return the password of this user.
-     */
-    public String getPassword() {return password;}
-
-    /**
-     * Set password of user
-     * @param newPassword a String for new password
-     */
-    // TODO: this.password works iff it is final
-    public void setPassword(String newPassword) {
-        // this.password = newPassword;
-        System.out.println("Password changed!");
-    }
 
     /**
      * Getter for a list of playlists.
      * @return the list of playlists this user has.
      */
     public List<Playlist> getPlaylistList() {return playlistList;}
-
-    /**
-     * Return whether the password parameter matches this user's password.
-     * @param password the password guess
-     * @return whether the guess matches the real password.
-     */
-    public boolean passwordMatches(String password){
-        return this.password.equals(password);
-    }
 
     /**
      * Updates the list of playlists this user has.
@@ -80,8 +58,32 @@ public class User implements Serializable {
      * @return user as a string in the form of: This user *username* has *number of playlists* playlist(s).
      **/
     @Override
-    public String toString(){
-        return " username: " + this.username + " password: " + this.password;
+    public String toString(){return " username: " + this.username;}
+
+    /**
+     * Serialize to a JSON formatted string.
+     *
+     * @return a string, formatted in JSON, that represents the Jsonable.
+     */
+    @Override
+    public String toJson() {
+        JsonObject json = new JsonObject();
+        json.put("username", this.username);
+        json.put("playlist array", this.playlistList);
+        return json.toJson();
     }
 
+    /**
+     * Serialize to a JSON formatted stream.
+     *
+     * @param writable where the resulting JSON text should be sent.
+     * @throws IOException when the writable encounters an I/O error.
+     */
+    @Override
+    public void toJson(Writer writable) throws IOException {
+        try{
+            writable.write(this.toJson());
+        } catch (Exception ignored) {
+        }
+    }
 }
