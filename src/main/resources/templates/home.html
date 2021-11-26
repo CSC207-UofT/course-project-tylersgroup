@@ -18,7 +18,7 @@
 
 <div class="menu">
     <ul>
-        <li><a href="http://localhost:8080/PlayGen">Generate Playlist</a></li>
+        <li><a id="PlayGen" href="http://localhost:8080/PlayGen">Generate Playlist</a></li>
         <li><a href="http://localhost:8080/manage">Manage Playlists</a></li>
         <li><a href="http://localhost:8080/account">Account Settings</a></li>
     </ul>
@@ -26,4 +26,16 @@
 </div>
 
 </body>
+<script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id')
+    console.log(id);
+
+    const PlayGen = document.getElementById("PlayGen");
+    PlayGen.href = `http://localhost:8080/PlayGen?id=${id}`
+    console.log(PlayGen.href)
+
+</script>
 </html>

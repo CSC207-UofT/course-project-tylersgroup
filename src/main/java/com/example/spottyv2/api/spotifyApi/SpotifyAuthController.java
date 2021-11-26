@@ -64,7 +64,8 @@ public class SpotifyAuthController {
             System.out.println("Error: " + e.getMessage());
         }
         // System.out.println(spotifyApi.getAccessToken());
-        response.sendRedirect("http://localhost:8080/home");
+        String url = String.format("http://localhost:8080/home?id=%s",spotifyApi.getAccessToken());
+        response.sendRedirect(url);
         return spotifyApi.getAccessToken();
 
     }
