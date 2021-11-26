@@ -8,6 +8,9 @@ import com.example.spottyv2.Entities.Song;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class for generating the shortest playlists
+ */
 public class ShortestPlaylistGenerator implements PlaylistGenerationStrategy{
 
     public Playlist generatePlaylist(ArrayList<String> words, Playlist newPlaylist){
