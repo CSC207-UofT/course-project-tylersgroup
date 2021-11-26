@@ -1,20 +1,22 @@
 package com.example.spottyv2.api.Serializer;
 
 import com.example.spottyv2.Entities.Playlist;
-//import com.github.cliftonlabs.json_simple.JsonArray;
-//import com.github.cliftonlabs.json_simple.JsonObject;
-//import com.github.cliftonlabs.json_simple.Jsonable;
+import com.github.cliftonlabs.json_simple.JsonArray;
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsonable;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
-//import com.github.dozermapper
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
+// Keeping this for now for the sharing functionality
 //    public Playlist createjson(Playlist playlist) {
 //        try {
 //            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"))
@@ -41,35 +43,23 @@ public class JsonSerializer {
         }
     }
 
-
-    public Playlist deserialize() {
-        Playlist playlist = new Playlist();
+    // deserializes and gets playlists in one go, maybe create a helper
+    public ArrayList<Playlist> getPlaylist() {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("playlists.json"))
+            Reader reader = Files.newBufferedReader(Paths.get("playlists.json"));
             JsonArray objects = Jsoner.deserializeMany(reader);
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
             // Mapper through spring?
-            JsonArray array = (JsonArray) playlists.get(0);
-            ArrayList<Playlist> playlists = array.stream()
+            JsonArray array = (JsonArray) objects.get(0);
+            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
                     .map(obj -> mapper.map(obj, Playlist.class))
                     .collect(Collectors.toList());
-            // add a return statement? pass to another class
             reader.close();
+            return playlists;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return null; // if this doesn't work, move this into the exception catch statement
    }
 
-//    public ArrayList<Playlist> getPlaylists() {
-//        ArrayList<Playlist> playlists = new ArrayList<>();
-//        File folder = new File("/Users/maxbridgewater/IdeaProjects/course-project-tylersgroup1/SerializedPlaylists");
-//        File[] listOfFiles = folder.listFiles();
-//        assert listOfFiles != null;
-//        for (File listOfFile : listOfFiles) {
-//            if (listOfFile.isFile()) {
-//                playlists.add(deserialize(listOfFile.getName()));
-//            }
-//        }
-//        return playlists;
-//    }
 }
