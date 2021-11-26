@@ -1,4 +1,4 @@
-package com.example.spottyv2.api.web;
+package com.example.spottyv2.api.SpringControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

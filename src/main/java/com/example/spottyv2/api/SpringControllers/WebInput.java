@@ -1,4 +1,4 @@
-package com.example.spottyv2.api.web;
+package com.example.spottyv2.api.SpringControllers;
 
 
 import com.example.spottyv2.cli.InputChecker;
