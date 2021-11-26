@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
-// Keeping this for now for the sharing functionality
 //    public Playlist createjson(Playlist playlist) {
 //        try {
 //            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"))
@@ -60,6 +59,25 @@ public class JsonSerializer {
             ex.printStackTrace();
         }
         return null; // if this doesn't work, move this into the exception catch statement
+   }
+
+    public ArrayList<Playlist> getPlaylist() {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get("playlists.json"));
+            JsonArray objects = Jsoner.deserializeMany(reader);
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            // Mapper through spring?
+            JsonArray array = (JsonArray) objects.get(0);
+            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
+                    .map(obj -> mapper.map(obj, Playlist.class))
+                    .collect(Collectors.toList());
+            // add a return statement? pass to another class
+            reader.close();
+            return playlists;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
    }
 
 }
