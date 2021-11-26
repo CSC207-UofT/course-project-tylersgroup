@@ -1,4 +1,4 @@
-package com.example.spottyv2.cli;
+package com.example.spottyv2.api;
 
 /**
  * The input checker is a helper class that ensures the user input to the playlist generator screen will be english

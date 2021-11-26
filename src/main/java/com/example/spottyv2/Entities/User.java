@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// TODO: To be used by database
 public class User implements Serializable {
 
     private final String username;

@@ -27,24 +27,6 @@ public class MakePlaylistController {
         this.playlistGenerationStrategyMap = playlistGenerationStrategyMap;
     }
 
-    /**
-     * makePlaylist takes the user's string input and calls on UserInputProcessor to split the string into a form
-     * that PlaylistGenerator can handle to generate a playlist.
-     * @param input The user input string to generate a playlist from.
-     */
-    public String makePlaylist(String input, String strategy, String username){
-
-        ArrayList<String> words = UserInputController.splitUserInput(input);
-        PlaylistGenerator playlistGenerator = new PlaylistGenerator();
-        playlistGenerator.setStrategy(this.playlistGenerationStrategyMap.get(strategy));
-        Playlist newPlaylist = playlistGenerator.generatePlaylist(words);
-        // Add playlist to the user's list of playlists, of course
-        PlaylistManager PLAYLISTMANAGER = PlaylistManager.getInstance();
-        PLAYLISTMANAGER.addPlaylist(newPlaylist, username);
-        return newPlaylist.toString();
-
-    }
-
 
     /**
      * WEB Controller testing version of makePlaylist without user saving functionality.
@@ -60,9 +42,4 @@ public class MakePlaylistController {
         return playlistGenerator.generatePlaylistWeb(words);
     }
 
-
-    public boolean getComplete() {
-        return this.complete;
-
-    }
 }

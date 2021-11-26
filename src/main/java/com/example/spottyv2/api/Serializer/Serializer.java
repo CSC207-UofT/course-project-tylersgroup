@@ -44,7 +44,7 @@ public class Serializer {
 
     public ArrayList<Playlist> getPlaylists() {
         ArrayList<Playlist> playlists = new ArrayList<>();
-        File folder = new File("/Users/maxbridgewater/IdeaProjects/course-project-tylersgroup1/SerializedPlaylists");
+        File folder = new File("./SerializedPlaylists");
         File[] listOfFiles = folder.listFiles();
         assert listOfFiles != null;
         for (File listOfFile : listOfFiles) {

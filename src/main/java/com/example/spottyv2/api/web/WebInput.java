@@ -1,7 +1,7 @@
 package com.example.spottyv2.api.web;
 
 
-import com.example.spottyv2.cli.InputChecker;
+import com.example.spottyv2.api.InputChecker;
 
 /**
  * This is technically a gateway class but is used to display information from the server to the client.
