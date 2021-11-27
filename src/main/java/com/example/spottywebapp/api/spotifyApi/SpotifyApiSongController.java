@@ -20,6 +20,10 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 @RequestMapping("/api")
 public class SpotifyApiSongController {
 
+    /**
+     * Returns the top tracks of the current user
+     * @return Returns top tracks as Json array
+     */
     @GetMapping(value = "user-top-songs")
     public Track[] getUserTopTracks() {
 

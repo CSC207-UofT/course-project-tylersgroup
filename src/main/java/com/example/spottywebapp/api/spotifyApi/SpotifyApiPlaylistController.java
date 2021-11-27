@@ -58,6 +58,7 @@ public class SpotifyApiPlaylistController {
         }
     }
 
+
     /**
      * changes the playlist name
      * @param playlistId the string id of the playlist whose name we want to change
@@ -179,4 +180,6 @@ public class SpotifyApiPlaylistController {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+
 }
