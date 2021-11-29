@@ -1,8 +1,10 @@
-package com.example.spottyv2.api.web;
+package com.example.spottyv2.api.SpringControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+//TODO: Add javadoc!
 
 @Controller
 public class WebController {
@@ -16,12 +18,6 @@ public class WebController {
     public String PlayGen(){
         return "PlayGen";
     }
-
-//    @GetMapping(value = "/result")
-//        public String result(){
-//            return "playlistResult.html";
-//        }
-
 
   }
 
