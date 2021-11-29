@@ -20,6 +20,10 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 @RequestMapping("/api")
 public class SpotifyApiSongController {
 
+    /**
+     * Returns the top tracks of the current user
+     * @return Returns top tracks as Json array
+     */
     @GetMapping(value = "user-top-songs")
     public Track[] getUserTopTracks() {
 
@@ -41,6 +45,12 @@ public class SpotifyApiSongController {
         return new Track[0];
     }
 
+    /**
+     * Searches song in spotify database
+     * @param songName string of song we want to find
+     * @return if it exists, returns a song with the same songName.
+     */
+
     @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
         String capitalizedSongName = toTitleCase(songName);
@@ -52,7 +62,7 @@ public class SpotifyApiSongController {
 
         try{
             int offset_temp = 1;
-            while(offset_temp < 5000) {
+            while(offset_temp < 1000) {
                 final SearchTracksRequest searchTracksRequest =
                         spotifyApi.searchTracks("\"" + capitalizedSongName + "\"")
                                 .market(CountryCode.CA)
@@ -77,6 +87,12 @@ public class SpotifyApiSongController {
         return null; //song not found
 
     }
+
+    /**
+     * Helper method to make strings into title case for spotify search algorithm to work better.
+     * @param input String we want to put into title case
+     * @return input string in title case form
+     */
 
     public static String toTitleCase(String input) {
         StringBuilder titleCase = new StringBuilder(input.length());
