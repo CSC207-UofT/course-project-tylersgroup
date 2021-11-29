@@ -1,6 +1,5 @@
-package com.example.spottyv2.api.SpringControllers;
+package com.example.spottyv2.api.web;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
