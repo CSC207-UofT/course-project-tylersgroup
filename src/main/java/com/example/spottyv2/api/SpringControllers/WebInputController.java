@@ -36,6 +36,7 @@ public class WebInputController {
     RedirectView submitPost(HttpServletRequest request,
                             @ModelAttribute("WebInput") WebInput input,
                             RedirectAttributes attributes) {
+
         String out;
         Playlist playlist;
 
@@ -106,29 +107,7 @@ public class WebInputController {
         return modelAndView;
 
     }
-    //TODO: Remove this method and incorporate the streaming into monitoring the outputs from song generator.
-    @RequestMapping("/testing")
-    public ResponseEntity<StreamingResponseBody> handleRequest2() {
-        PrintStream previousConsole = System.out;
-        ByteArrayOutputStream newConsole = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(newConsole));
 
-
-        StreamingResponseBody stream = out -> {
-            for (int i = 0; i < 1000; i++) {
-                System.out.println("test" + i);
-                out.write((newConsole + "-").getBytes());
-                out.flush();
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        System.setOut(previousConsole);
-        return ResponseEntity.ok().contentType(MediaType.TEXT_HTML).body(stream);
-    }
 
 
 }
