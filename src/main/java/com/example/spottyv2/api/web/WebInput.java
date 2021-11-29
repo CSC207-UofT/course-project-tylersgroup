@@ -10,13 +10,15 @@ import com.example.spottyv2.api.InputChecker;
 public class WebInput {
     private String input;
     private int num;
+    private String id;
 
     public WebInput(){
     }
 
-    public WebInput(String input, int num){
+    public WebInput(String input, int num, String id){
         this.input = input;
         this.num = num;
+        this.id = id;
     }
 
     public String getInput(){
@@ -30,6 +32,10 @@ public class WebInput {
     public int getNum(){
         return this.num;
     }
+
+    public String getId(){ return this.id; }
+
+    public void setId(String id) {this.id = id; }
 
     public void setNum(int num) {
         this.num = num;

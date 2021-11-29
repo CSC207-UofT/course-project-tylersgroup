@@ -49,7 +49,7 @@ public class WebInputController {
             out = "failed";
         }
         System.out.println(out);
-        return new RedirectView("/result", true);
+        return new RedirectView(String.format("/result?id=%s", input.getId()), true);
     }
 
     @RequestMapping(value = "/result", method = RequestMethod.GET)
