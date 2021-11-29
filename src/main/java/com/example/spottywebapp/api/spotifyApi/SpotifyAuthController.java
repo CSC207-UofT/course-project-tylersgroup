@@ -4,11 +4,14 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
+import com.example.spottywebapp.api.spotifyApi.SpotifyUserController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -65,6 +68,7 @@ public class SpotifyAuthController {
     @GetMapping(value = "get-user-code")
     public String getSpotifyUserCode(@RequestParam("code") String userCode, HttpServletResponse response) throws IOException{
         code = userCode;
+        String userId;
         AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
                 .build();
 
@@ -79,7 +83,9 @@ public class SpotifyAuthController {
             System.out.println("Error: " + e.getMessage());
         }
         // System.out.println(spotifyApi.getAccessToken());
+        User loggedUser = SpotifyUserController.getCurrentUser();
         response.sendRedirect("http://localhost:8080/home");
+        String url = String.format("/home?id=%s", loggedUser.getId());
         return spotifyApi.getAccessToken();
 
     }

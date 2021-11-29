@@ -23,7 +23,6 @@ public class SpotifyUserController {
      */
     public static final GetCurrentUsersProfileRequest getCurrentUsersProfileReq = spotifyApi.getCurrentUsersProfile()
             .build();
-
     /**
      * Constructs User object representing the currently logged-in user, allowing us to use the following:
      * currentUser.getId, currentUser.getExternalUrls, currentUser.getUri, currentUser.getDisplayName
@@ -31,7 +30,7 @@ public class SpotifyUserController {
      */
     @GetMapping(value = "get-current-user")
     @ResponseBody
-    public User getCurrentUser(){
+    public static User getCurrentUser(){
         //constructs current user
         try{
             currentUser = getCurrentUsersProfileReq.execute();
@@ -49,7 +48,13 @@ public class SpotifyUserController {
     @ResponseBody
     public String getCurrentUserId()
     {
-        return currentUser.getId();
+        try{
+            return currentUser.getId();
+        }
+        catch (NullPointerException e ) {
+            System.out.println("No user is currently logged in.");
+            return null;
+        }
     }
 
     @GetMapping
