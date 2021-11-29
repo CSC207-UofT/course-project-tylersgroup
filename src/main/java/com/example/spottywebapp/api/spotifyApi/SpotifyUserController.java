@@ -24,6 +24,11 @@ public class SpotifyUserController {
     public static final GetCurrentUsersProfileRequest getCurrentUsersProfileReq = spotifyApi.getCurrentUsersProfile()
             .build();
 
+    /**
+     * Constructs User object representing the currently logged-in user, allowing us to use the following:
+     * currentUser.getId, currentUser.getExternalUrls, currentUser.getUri, currentUser.getDisplayName
+     * @return User Object representing currently logged-in user.
+     */
     @GetMapping(value = "get-current-user")
     @ResponseBody
     public User getCurrentUser(){
@@ -37,6 +42,8 @@ public class SpotifyUserController {
             return null;
         }
     }
+
+
 
     @GetMapping(value = "get-current-user-id")
     @ResponseBody
