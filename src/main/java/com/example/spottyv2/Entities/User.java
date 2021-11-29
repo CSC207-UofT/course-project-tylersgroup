@@ -3,35 +3,32 @@ package com.example.spottyv2.Entities;
 //import java.io.Serializable;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
+
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.List;
 
-
 public class User implements Jsonable {
-
-    private final String username;
+    private final String userID;
+    private final boolean isDefaultUser;
 
     private List<Playlist> playlistList;
-    //private List<User> friendsList;
-    //private List<Song> blacklist;
+
     /**
-     * Construct a User object, with the following parameters:
-     * @param username Username of the User
-     * @param password Password of the User
+     * Construct a User object, with the following parameter:
+     * @param userID Username of the User
+     * @param isDefaultUser is User a default user
      */
-    public User(String username, String password){
-        this.username = username;
-        this.playlistList = new ArrayList<>();
+    public User(String userID, boolean isDefaultUser){
+        this.userID = userID;
+        this.isDefaultUser = isDefaultUser;
     }
 
     /**
      * Getter for username.
      * @return the username of this user.
      */
-    public String getUsername() {return username;}
-
+    public String getUserID() {return userID;}
 
     /**
      * Getter for a list of playlists.
@@ -45,20 +42,12 @@ public class User implements Jsonable {
      */
     public void updatePlaylistList(List<Playlist> playlistList) {this.playlistList = playlistList;}
 
-
-    //public List<User> getFriendsList() {return friendsList;
-    //public List<Song> getBlacklist() {return blacklist;}
-    //public void setFriendsList(){this.friendsList = new ArrayList<User>();}
-    //public void setFriendsList(List<User> friendsList) {this.friendsList = friendsList;}
-    //public void setBlacklist(){this.blacklist = new ArrayList<Song>();}
-    //public void setBlacklist(List<Song> blacklist) {this.blacklist = blacklist;}
-
     /**
      * Override toString
      * @return user as a string in the form of: This user *username* has *number of playlists* playlist(s).
      **/
     @Override
-    public String toString(){return " username: " + this.username;}
+    public String toString(){return " userID: " + this.userID;}
 
     /**
      * Serialize to a JSON formatted string.
@@ -68,7 +57,8 @@ public class User implements Jsonable {
     @Override
     public String toJson() {
         JsonObject json = new JsonObject();
-        json.put("username", this.username);
+        json.put("userID", this.userID);
+        json.put("isDefaultUser", this.isDefaultUser);
         json.put("playlist array", this.playlistList);
         return json.toJson();
     }
