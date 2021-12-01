@@ -8,7 +8,7 @@ public class Song implements Serializable {
 
     private Long id;
 
-    private final String name, artist, album;
+    private final String name, artist, album, songUri;
     private final int duration, popularity;
     private final boolean explicit;
 
@@ -31,26 +31,30 @@ public class Song implements Serializable {
      * @param album Name of the album, might be a single
      * @param explicit Boolean representing whether the song is family friendly or not
      * @param popularity Int representing spot in charts
+     * @param songUri String containing songUri;
      */
-    public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity) {
+    public Song(String name, String artist, int duration, String album, String genre, boolean explicit, int popularity,
+                String songUri) {
         this.name = name;
         this.artist = artist;
         this.duration = duration;
         this.album = album;
         this.explicit = explicit;
         this.popularity = popularity;
+        this.songUri = songUri;
     }
 
     /**
      * Constructs a song that is a single (no associated album)
      */
-    public Song(String name, String artist, int duration, String genre, boolean explicit, int popularity) {
+    public Song(String name, String artist, int duration, String genre, boolean explicit, int popularity, String songUri) {
         this.name = name;
         this.artist = artist;
         this.duration = duration;
         this.album = name;
         this.explicit = explicit;
         this.popularity = popularity;
+        this.songUri = songUri;
     }
 
     /**
@@ -64,6 +68,7 @@ public class Song implements Serializable {
         this.album = "sample album";
         this.explicit = false;
         this.popularity = -1;
+        this.songUri = "";
     }
 
     /**
@@ -76,6 +81,7 @@ public class Song implements Serializable {
         this.album = "sample album";
         this.explicit = false;
         this.popularity = -1;
+        this.songUri = "";
     }
 
     public String getName() {

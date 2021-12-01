@@ -15,6 +15,8 @@ import java.io.IOException;
 
 public class SpotifyApiPlaylistController {
 
+    SpotifyApiPlaylistController spotifyApiPlaylistController = new SpotifyApiPlaylistController();
+
     /**
      * Get current user's list of playlists
      * @param user_id current userID
@@ -45,16 +47,18 @@ public class SpotifyApiPlaylistController {
      * @param userId current user's ID
      * @param name New playlist's name in form of a string.
      */
-    @PostMapping(value = "create-playlist")
-    public void createNewPlaylist(String userId, String name){
+    @PostMapping(value = "save-playlist")
+    public Playlist SavePlaylistToSpotify(String userId, String name, com.example.spottyv2.Entities.Playlist toSave){
         final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
                 .build();
         try {
             final Playlist playlist = createPlaylistRequest.execute();
-
+            spotifyApiPlaylistController.addItemsToPlaylist(playlist.getId(), toSave.getSongUriArray());
             System.out.println("Name: " + playlist.getName());
+            return playlist;
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
+            return null;
         }
     }
 
