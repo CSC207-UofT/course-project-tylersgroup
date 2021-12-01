@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Playlist implements Jsonable {
+public class Playlist implements Jsonable, Serializable {
 
     private List<Song> playlist;
 

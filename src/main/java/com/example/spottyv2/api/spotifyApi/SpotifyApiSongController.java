@@ -65,6 +65,7 @@ public class SpotifyApiSongController {
                     System.out.println(i.getName());
                     if((i.getName()).equals(capitalizedSongName)){
                         System.out.println("Playlist generated.");
+                        System.out.println(" ");
                         return i;
                     }
                 }

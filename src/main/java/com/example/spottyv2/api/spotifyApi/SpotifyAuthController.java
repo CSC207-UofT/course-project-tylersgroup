@@ -84,8 +84,9 @@ public class SpotifyAuthController {
         }
         // System.out.println(spotifyApi.getAccessToken());
         User loggedUser = SpotifyUserController.getCurrentUser();
-        response.sendRedirect("http://localhost:8080/home");
         String url = String.format("/home?id=%s", loggedUser.getId());
+        response.sendRedirect(url);
+
         return spotifyApi.getAccessToken();
 
     }
