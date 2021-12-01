@@ -14,6 +14,7 @@ public class Playlist implements Jsonable, Serializable {
     private List<Song> playlist;
 
     private String playlistName;
+    private List<String> songUris;
 
     /**
      * Construct a Playlist object with no name given
@@ -21,6 +22,7 @@ public class Playlist implements Jsonable, Serializable {
     public Playlist(){
         this.playlist = new ArrayList<>();
         this.playlistName = "Unnamed Playlist";
+        this.songUris = new ArrayList<>();
     }
 
     // constructor for playlist with name
@@ -32,6 +34,7 @@ public class Playlist implements Jsonable, Serializable {
     public Playlist(String name){
         this.playlist = new ArrayList<>();
         this.playlistName = name;
+        this.songUris = new ArrayList<>();
     }
 
     /**
@@ -74,6 +77,12 @@ public class Playlist implements Jsonable, Serializable {
     public int getPlaylistLength(){
         // return length of playlist in terms of how many songs are in it
         return playlist.size();
+    }
+
+    public String[] getSongUriArray(){
+        String[] uriArray = new String[songUris.size()];
+        uriArray = songUris.toArray(uriArray);
+        return uriArray;
     }
 
     /**
