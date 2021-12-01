@@ -61,7 +61,8 @@ public class SongGenerator {
                     temp_song.getDurationMs(),
                     temp_song.getAlbum().getName(),
                     temp_song.getIsExplicit(),
-                    temp_song.getPopularity());
+                    temp_song.getPopularity(),
+                    temp_song.getUri());
         }
         return new Song();
     }

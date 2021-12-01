@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
+
 @Controller
 @ControllerAdvice
 public class WebInputController {
@@ -25,18 +29,24 @@ public class WebInputController {
     RedirectView submitPost(HttpServletRequest request,
                             @ModelAttribute("WebInput") WebInput input,
                             RedirectAttributes attributes) {
+
         String out;
         Playlist playlist;
 
         if (input.isValid()) {
+
             System.out.println(input); //Logging to console for testing purposes
+            //Initialize controller to create playlist
             MakePlaylistController MakePlaylist = new MakePlaylistController();
-            //String username = "testUser";
+
             if (input.getNum() == 1){
+                //Generating playlist with "longest" strategy
                 playlist = MakePlaylist.makePlaylistWeb(input.getInput(), "longest");
             } else {
+                //Generating playlist with "shortest" strategy
                 playlist = MakePlaylist.makePlaylistWeb(input.getInput(), "shortest");
             }
+            //Initialize gateway class
             Serializer write = new Serializer();
             write.serialize(playlist);
 
@@ -49,7 +59,7 @@ public class WebInputController {
             out = "failed";
         }
         System.out.println(out);
-        return new RedirectView("/result", true);
+        return new RedirectView(String.format("/result?id=%s", input.getId()), true);
     }
 
     @RequestMapping(value = "/result", method = RequestMethod.GET)
@@ -90,6 +100,7 @@ public class WebInputController {
         return modelAndView;
 
     }
+
 
 
 }

@@ -18,9 +18,9 @@
 
 <div class="menu">
     <ul>
-        <li><a id="PlayGen" href="http://localhost:8080/PlayGen">Generate Playlist</a></li>
-        <li><a href="http://localhost:8080/manage">Manage Playlists</a></li>
-        <li><a href="http://localhost:8080/account">Account Settings</a></li>
+        <li><a id="PlayGen" href="">Generate Playlist</a></li>
+        <li><a id="manage" href="">Manage Playlists</a></li>
+        <li><a id="account" href="">Account Settings</a></li>
     </ul>
 
 </div>
@@ -28,13 +28,17 @@
 </body>
 <script>
     const queryString = window.location.search;
-    console.log(queryString);
+    // console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id')
-    console.log(id);
+    // console.log(id);
 
     const PlayGen = document.getElementById("PlayGen");
-    PlayGen.href = `http://localhost:8080/PlayGen?id=${id}`
+    const manage = document.getElementById("manage");
+    const account = document.getElementById("account");
+    PlayGen.href = `/PlayGen?id=${id}`
+    manage.href = `/manage?id=${id}`
+    account.href = `/account?id=${id}`
     console.log(PlayGen.href)
 
 </script>
