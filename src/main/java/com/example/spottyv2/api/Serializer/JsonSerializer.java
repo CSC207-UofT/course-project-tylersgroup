@@ -16,24 +16,23 @@ import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
-//    public Playlist createjson(Playlist playlist) {
-//        try {
-//            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"))
-//            //String json = Jsoner.serialize(playlist);
-//            Jsoner.serialize(playlist, writer);
-//            //json = Jsoner.prettyPrint(json);
-//            writer.close()
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace() //edit
-//        }
-//    }
-
-    public void createjsons(ArrayList<Playlist> playlists) {
-        try { // might need to be a List not an arrayList
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlists.json"));
+    public void createjson(Jsonable object) {
+        try {
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"));
             //String json = Jsoner.serialize(playlist);
-            Jsoner.serialize(playlists, writer);
+            Jsoner.serialize(object, writer);
+            //json = Jsoner.prettyPrint(json);
+            writer.close();
+        } catch (Exception ex) {
+            ex.printStackTrace(); //edit
+        }
+    }
+
+    public void createjsons(ArrayList<Jsonable> objects) {
+        try { // might need to be a List not an arrayList
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get("SerializedPlaylists/jsonables"));
+            //String json = Jsoner.serialize(playlist);
+            Jsoner.serialize(objects, writer);
             //json = Jsoner.prettyPrint(json);
             writer.close();
 
@@ -45,7 +44,7 @@ public class JsonSerializer {
     // deserializes and gets playlists in one go, maybe create a helper
     public ArrayList<Playlist> getPlaylist() {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("playlists.json"));
+            Reader reader = Files.newBufferedReader(Paths.get("SerializedPlaylists/jsonables"));
             JsonArray objects = Jsoner.deserializeMany(reader);
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
             // Mapper through spring?
