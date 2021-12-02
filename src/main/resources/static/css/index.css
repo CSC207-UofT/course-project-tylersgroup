@@ -1,37 +1,88 @@
+/*
+Reference: https://css-tricks.com/old-timey-terminal-styling/
+ */
+
 body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: rosybrown;
+    /*display: inline-block;*/
+    /*margin: auto;*/
+    /*text-align: center;*/
+    /*padding: 0;*/
+    /*position: relative;*/
+    /*top: 0;*/
+    /*left: 25%;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+
+
+
+    /* Font color and style */
     color: white;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    /* Mystery Green Color for background */
+    background-color: black;
+    background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+    height: 100vh;
+
 
 }
 
+.welcomeMessage{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Effect when text is highlighted */
+::selection {
+    background: #0080FF;
+    text-shadow: none;
+}
+
+/* CRT Monitor lines aftereffect */
+body::after {
+    content: "";
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+            0deg,
+            rgba(00, 00, 00, 0.15),
+            rgba(00, 00, 00, 0.15) 1px,
+            transparent 1px,
+            transparent 2px
+    );
+}
+
+/* Button Effects */
 .button {
-    background-color: white;
-    color: black;
-    border: 2px solid maroon; /* Green */
+    background-color: #003308; /* Green */
+    color: white;
+    font: 1.3rem Inconsolata, monospace;
+    border: darkgreen; /* Green */
     transition-duration: 0.4s;
     text-align: center;
 }
 
 .button:hover {
-    background-color: saddlebrown; /* Green */
+
+    /* Mystery Green Color */
+    background-color: black;
+    background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+
+
+    /* Font color and style */
     color: white;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
 }
 
-.box {
-    width: 300px;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rosybrown;
-    text-align: center;
-}
-h1{
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500;
-}
+
+
+
+
