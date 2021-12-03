@@ -44,22 +44,6 @@ body{
     text-shadow: none;
 }
 
-/* CRT Monitor lines aftereffect */
-body::after {
-    content: "";
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: repeating-linear-gradient(
-            0deg,
-            rgba(00, 00, 00, 0.15),
-            rgba(00, 00, 00, 0.15) 1px,
-            transparent 1px,
-            transparent 2px
-    );
-}
 
 /* Button Effects */
 .button {
@@ -75,7 +59,6 @@ body::after {
 }
 
 .button:hover {
-
     /* Mystery Green Color */
     background-color: black;
     background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
@@ -87,7 +70,20 @@ body::after {
     text-shadow: 0 0 5px #C8C8C8;
 }
 
-
-
-
+/* CRT Monitor lines aftereffect */
+/*body::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100vw;*/
+/*    height: 100vh;*/
+/*    background: repeating-linear-gradient(*/
+/*            0deg,*/
+/*            rgba(00, 00, 00, 0.2),*/
+/*            rgba(00, 00, 00, 0.2) 1px,*/
+/*            transparent 1px,*/
+/*            transparent 2px*/
+/*    );*/
+/*}*/
 
