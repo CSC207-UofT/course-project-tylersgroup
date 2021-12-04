@@ -63,7 +63,7 @@ public class SpotifyAuthController {
      * @param userCode Usercode from quthorization code request
      * @param response response from server
      * @return accessToken string
-     * @throws IOException
+     * @throws IOException in case of failed input/output operation.
      */
     @GetMapping(value = "get-user-code")
     public String getSpotifyUserCode(@RequestParam("code") String userCode, HttpServletResponse response) throws IOException{
@@ -79,7 +79,7 @@ public class SpotifyAuthController {
             spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
             System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
         }
-        catch( IOException | SpotifyWebApiException | org.apache.hc.core5.http.ParseException e){
+        catch( IOException | SpotifyWebApiException | NullPointerException | org.apache.hc.core5.http.ParseException e){
             System.out.println("Error: " + e.getMessage());
         }
         // System.out.println(spotifyApi.getAccessToken());

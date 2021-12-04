@@ -25,8 +25,6 @@ public class Playlist implements Jsonable, Serializable {
         this.songUris = new ArrayList<>();
     }
 
-    // constructor for playlist with name
-
     /**
      * Construct a Playlist object with the given name
      * @param name is the name of the playlist
@@ -79,6 +77,10 @@ public class Playlist implements Jsonable, Serializable {
         return playlist.size();
     }
 
+    /**
+     * Get an array representation of all the song uris contained within the playlist.
+     * @return String array with the uris.
+     */
     public String[] getSongUriArray(){
         String[] uriArray = new String[songUris.size()];
         uriArray = songUris.toArray(uriArray);
@@ -123,6 +125,10 @@ public class Playlist implements Jsonable, Serializable {
         return s.toString();
     }
 
+    /**
+     * representation of the playlist object
+     * @return String representing selected playlist.
+     */
     @Override
     public String toJson() {
         JsonObject json = new JsonObject();

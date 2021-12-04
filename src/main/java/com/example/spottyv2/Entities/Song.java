@@ -84,33 +84,47 @@ public class Song implements Serializable {
         this.songUri = "";
     }
 
+    /**
+     * Get the Name of the song object
+     * @return Song name as a string
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Get the duration of the song
+     * @return duration in seconds as an int.
+     */
     public int getDuration() {
         return duration;
     }
 
-    public String getArtist() {
-        // returns artist name
-        return artist;
-    }
+    /**
+     * Get the artist for the current song
+     * @return artist name as a string.
+     */
+    public String getArtist() {return artist;}
 
-    public String getAlbum() {
-        //returns album from where the song is from
-        return album;
-    }
+    /**
+     * Get the album from which the current song comes from
+     * @return album name as a string
+     */
+    public String getAlbum() {return album;}
 
+    /**
+     * Get whether the album is explicit or not
+     * @return True if album is explicit, false if not.
+     */
     public boolean isExplicit() {
-        //returns True if song is explicit
         return explicit;
     }
 
-    public double getPopularity() {
-        //returns ranking on charts
-        return popularity;
-    }
+    /**
+     * Get the popularity of the current song on the charts.
+     * @return popularity of the song as a double
+     */
+    public double getPopularity() { return popularity;}
 
     /**
      * Override toString

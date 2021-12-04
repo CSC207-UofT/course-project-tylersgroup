@@ -20,6 +20,11 @@ import static com.example.spottyv2.api.spotifyApi.SpotifyAuthController.spotifyA
 @RequestMapping("/api")
 public class SpotifyApiSongController {
 
+    /**
+     * Getter method to get the top 10 songs from the currently logged-in user's library
+     * @return Array of spotify track objects.
+     */
+
     @GetMapping(value = "user-top-songs")
     public Track[] getUserTopTracks() {
 
@@ -32,8 +37,6 @@ public class SpotifyApiSongController {
         try {
 
             final Paging<Track> trackPaging = getUsersTopTracksRequest.execute();
-
-            // return top Tracks as JSON
             return trackPaging.getItems();
         } catch (Exception e) {
             System.out.println("Something went wrong!\n" + e.getMessage());
@@ -41,15 +44,15 @@ public class SpotifyApiSongController {
         return new Track[0];
     }
 
+    /**
+     * Searches spotify for song titled songName
+     * @param songName String snippet read off from the user's input.
+     * @return SpotifyApi track object if song with given title was found, null if song doesn't exist in database.
+     */
+
     @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
         String capitalizedSongName = toTitleCase(songName);
-//        final SearchTracksRequest searchTracksRequest =
-//                spotifyApi.searchTracks("\""+songName+"\"")
-//                //.limit(50)
-//                //.offset(25)
-//                .build();
-
         try{
             int offset_temp = 1;
             while(offset_temp < 5000) {
@@ -76,10 +79,15 @@ public class SpotifyApiSongController {
         } catch (IOException | SpotifyWebApiException | ParseException e){
             System.out.print("Error: " + e.getMessage());
         }
-        return null; //song not found
+        return null;
 
     }
 
+    /**
+     * Helper to convert strings to title case to make search in spotify database more accurate.
+     * @param input String to be converted to title case
+     * @return String converted to title case
+     */
     public static String toTitleCase(String input) {
         StringBuilder titleCase = new StringBuilder(input.length());
         boolean nextTitleCase = true;
