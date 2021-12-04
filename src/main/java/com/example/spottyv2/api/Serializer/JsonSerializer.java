@@ -80,21 +80,6 @@ public class JsonSerializer {
             e.printStackTrace();
         }
     }
-    // https://coderedirect.com/questions/542673/deserialize-nested-array-as-arraylist-with-jackson-
-    public List<User> deserializer() {
-        ObjectMapper mapper = new ObjectMapper();
-        try{
-            JsonNode jsonNode = mapper.readTree("SerializedPlaylists/jsonables").get("user");
-            CollectionType collectionType = TypeFactory.defaultInstance().constructCollectionType(List.class, User.class);
-            if (null == jsonNode || !jsonNode.isArray() || !jsonNode.elements().hasNext()){
-                return null;
-            }
-            return mapper.reader(collectionType).readValue(jsonNode);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     // deserializes and gets playlists in one go, maybe create a helper
     public ArrayList<Playlist> getPlaylist() {
