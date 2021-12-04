@@ -1,6 +1,17 @@
 package com.example.spottyv2.api.Serializer;
 
 import com.example.spottyv2.Entities.Playlist;
+import com.example.spottyv2.Entities.User;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
@@ -12,6 +23,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class JsonSerializer {
@@ -41,6 +53,49 @@ public class JsonSerializer {
         }
     }
 
+    public void usersToJson(List<User> users) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(Paths.get("jsonables.json").toFile(), users);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    // https://stackoverflow.com/questions/13514570/jackson-best-way-writes-a-java-list-to-a-json-array
+    public void playlistToJson(List<Playlist> playlists){
+        final ObjectMapper mapper = new ObjectMapper();
+        try{
+            mapper.writeValue(Paths.get("jsonables.json").toFile(), playlists);
+        } catch (IOException ioException){
+            ioException.printStackTrace();
+        }
+    }
+
+    public void readJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            List<User> users = mapper.readValue(
+                    Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    // https://coderedirect.com/questions/542673/deserialize-nested-array-as-arraylist-with-jackson-
+    public List<User> deserializer() {
+        ObjectMapper mapper = new ObjectMapper();
+        try{
+            JsonNode jsonNode = mapper.readTree("SerializedPlaylists/jsonables").get("user");
+            CollectionType collectionType = TypeFactory.defaultInstance().constructCollectionType(List.class, User.class);
+            if (null == jsonNode || !jsonNode.isArray() || !jsonNode.elements().hasNext()){
+                return null;
+            }
+            return mapper.reader(collectionType).readValue(jsonNode);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     // deserializes and gets playlists in one go, maybe create a helper
     public ArrayList<Playlist> getPlaylist() {
         try {
@@ -59,4 +114,11 @@ public class JsonSerializer {
         }
         return null; // if this doesn't work, move this into the exception catch statement
    }
+
+   
+
+
+
 }
+
+
