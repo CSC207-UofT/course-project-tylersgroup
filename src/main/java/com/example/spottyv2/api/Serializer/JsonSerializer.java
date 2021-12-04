@@ -24,35 +24,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
-    public void createjson(Jsonable object) {
-        try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"));
-            //String json = Jsoner.serialize(playlist);
-            Jsoner.serialize(object, writer);
-            //json = Jsoner.prettyPrint(json);
-            writer.close();
-        } catch (Exception ex) {
-            ex.printStackTrace(); //edit
-        }
+    public User loggedInUserInfo(String username){
+        List<User> users = readJson();
+        return comparator(username, users);
     }
-
-    public void createjsons(ArrayList<Jsonable> objects) {
-        try { // might need to be a List not an arrayList
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("SerializedPlaylists/jsonables"));
-            //String json = Jsoner.serialize(playlist);
-            Jsoner.serialize(objects, writer);
-            //json = Jsoner.prettyPrint(json);
-            writer.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace(); //edit
-        }
-    }
-
     public void usersToJson(List<User> users) {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -61,6 +41,7 @@ public class JsonSerializer {
             ex.printStackTrace();
         }
     }
+
     // https://stackoverflow.com/questions/13514570/jackson-best-way-writes-a-java-list-to-a-json-array
     public void playlistToJson(List<Playlist> playlists){
         final ObjectMapper mapper = new ObjectMapper();
@@ -71,15 +52,33 @@ public class JsonSerializer {
         }
     }
 
-    public void readJson() {
+    public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             List<User> users = mapper.readValue(
                     Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
+    /**
+     * Find User with the given username in the list of User users.
+     * @return User if the user exists, null if the user is new (does not exist in the list)
+     */
+    public User comparator (String username, List<User> users){
+        for (User user : users) {
+            if (username.equals(user.getUsername())) {
+                return user;
+            }
+        }
+        return new User(username);
+    }
+
+
+
+
 
     // deserializes and gets playlists in one go, maybe create a helper
     public ArrayList<Playlist> getPlaylist() {
