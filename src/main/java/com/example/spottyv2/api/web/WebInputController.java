@@ -55,6 +55,7 @@ public class WebInputController {
         }
         System.out.println("Generated Playlist: " + out);
         System.out.println("Process finished.");
+        System.out.println("Closing...");
         return new RedirectView(String.format("/result?id=%s", input.getId()), true);
     }
 

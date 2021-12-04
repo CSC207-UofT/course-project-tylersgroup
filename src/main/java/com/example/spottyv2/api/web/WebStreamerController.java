@@ -90,15 +90,16 @@ public class WebStreamerController {
                 } catch (InterruptedException e) {
                     break;
                 }
-                if (newConsole.toString().contains("Process finished.")){
+                if (newConsole.toString().equals("Closing...")){
                     running = false;
+                    out.write((newConsole.toString()).getBytes());
                     System.setOut(previousConsole);
 
                 }
             }
             out.write(("</div>").getBytes());
-            out.write(("<form action=\"http://localhost:8080/result\">\n" +
-                    "    <input type=\"submit\" value=\"Get your playlist\" />\n" +
+            out.write(("<form action=\"http://localhost:8080/home\">\n" +
+                    "    <input type=\"submit\" value=\"Home\" />\n" +
                     "</form>").getBytes());
             out.close();
         };

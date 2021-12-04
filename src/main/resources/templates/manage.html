@@ -10,15 +10,31 @@
 <h1>Manage Playlists</h1>
 
 
-<table style="width:60%">
-    <tr>
-        <td>Playlist Name</td>
-        <td>Songs</td>
+<!--<table style="width:60%">-->
+<!--    <tr>-->
+<!--        <td>Playlist Name</td>-->
+<!--        <td>Songs</td>-->
+<!--        <td>Add to your spotify</td>-->
+<!--        <td>Get shareable link</td>-->
+<!--    </tr>-->
+<!--    <tr data-th-each="mapEntry : ${playlistMap}">-->
+<!--        <td data-th-text="${mapEntry.key}"></td>-->
+<!--        <td data-th-text="${mapEntry.value}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<table style="width:70%">
+    <thead>
+    <tr class="headings">
+        <th data-th-each="header : ${headers}" class="column-title" data-th-text="${header}"></th>
     </tr>
-    <tr data-th-each="mapEntry : ${playlistMap}">
-        <td data-th-text="${mapEntry.key}"></td>
-        <td data-th-text="${mapEntry.value}"></td>
+    </thead>
+
+    <tbody>
+    <tr class="even pointer" data-th-each="row : ${rows}" id="tablerow">
+        <td data-th-each="header : ${headers}" data-th-text="${row.get(header)}"></td>
     </tr>
+    </tbody>
 </table>
 
 
