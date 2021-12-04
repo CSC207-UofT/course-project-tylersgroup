@@ -17,7 +17,7 @@ import java.io.PrintStream;
 
 @Controller
 @ControllerAdvice
-public class WebStreamer {
+public class WebStreamerController {
 
     @RequestMapping(value = "/dataStream")
     public StreamingResponseBody dataStream() {
@@ -67,11 +67,17 @@ public class WebStreamer {
                             "pre {\n" +
                             "  margin: 0;\n" +
                             "}"+
+                    ".container {\n" +
+                            "  height: 100px;\n" +
+                            "  overflow: auto;\n" +
+                            "  display: flex;\n" +
+                            "  flex-direction: column-reverse;\n" +
+                            "}"+
                     "</style>\n" +
                     "</head>").getBytes());
 
             out.write(("<h1>Generating Playlist</h1>").getBytes());
-            out.write(("<div style=\"width:800px;height:600px;line-height:3em;overflow:auto;padding:5px;\">").getBytes());
+            out.write(("<div class=\"container\" style=\"width:800px;height:600px;line-height:3em;overflow:auto;padding:5px;\">").getBytes());
 
             while (running) {
                 //System.out.println("test" + i);
@@ -84,21 +90,22 @@ public class WebStreamer {
                 } catch (InterruptedException e) {
                     break;
                 }
-                if (newConsole.toString().equals("Playlist generated.") || newConsole.toString().equals(" ")){
+                if (newConsole.toString().equals("Closing...")){
                     running = false;
+                    out.write((newConsole.toString()).getBytes());
                     System.setOut(previousConsole);
+
                 }
             }
             out.write(("</div>").getBytes());
-            out.write(("<form action=\"http://localhost:8080/result\">\n" +
-                    "    <input type=\"submit\" value=\"Get your playlist\" />\n" +
+            out.write(("<form action=\"http://localhost:8080/home\">\n" +
+                    "    <input type=\"submit\" value=\"Home\" />\n" +
                     "</form>").getBytes());
             out.close();
         };
         //Checking thread closing.
 
         System.out.println("Thread closed");
-
 
         return stream;
 
