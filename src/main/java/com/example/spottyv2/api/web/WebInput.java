@@ -4,7 +4,8 @@ package com.example.spottyv2.api.web;
 import com.example.spottyv2.api.InputChecker;
 
 /**
- * This is technically a gateway class but is used to display information from the server to the client.
+ * This is technically an entity class but is used to display information from the server to the client. Basically just
+ * a container object for passing information from the clientside to the server.
  */
 
 public class WebInput {
