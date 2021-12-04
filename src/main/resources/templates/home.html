@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>SpottyApp Home</title>
-    <link rel="stylesheet" href="../static/css/home_screen.css">
+<!--    <link rel="stylesheet" href="../static/css/home.css">-->
+
+    <style>
+        body {
+            margin: 10% 10%;
+            background-color: black;
+            background-image: radial-gradient(
+                    rgba(0, 150, 0, 0.75), black 120%
+            );
+            text-align: center;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+        .welcome h1 {
+            font-size:3rem;
+        }
+        .welcome p{
+            font-size: 25px;
+        }
+        .welcome{
+            margin: 10%;
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        ul{
+            align-items: normal;
+            background-color: transparent;
+            width: 20%;
+
+        }
+
+        /* Menu Options */
+        li{
+            list-style-type: disc;
+            margin: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li a:link{
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+        li a:visited {
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+        li a:hover{
+            background: greenyellow;
+            text-shadow: none;
+            color: black;
+        }
+
+        /* CRT Monitor lines aftereffect */
+        body::after {
+            content: "";
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: repeating-linear-gradient(
+                    0deg,
+                    rgba(00, 00, 00, 0.15),
+                    rgba(00, 00, 00, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+            );
+        }
+    </style>
 </head>
 
 <body>
