@@ -29,9 +29,32 @@ import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
+    /**
+     * Take in username that is unique to the currently logged-in user, and return an instantiated User entity.
+     *
+     * @return User if the user exists, null if the user is new (does not exist in the list)
+     */
     public User loggedInUserInfo(String username){
         List<User> users = readJson();
-        return comparator(username, users);
+        for (User user: users){
+            if (comparator(username, user.getUsername())){
+                return user;
+            }
+        }
+        return new User(username);
+    }
+
+    public void saveUser(User loggedInUser){
+        List<User> users = readJson();
+        //compare if the user is in users
+        for (User user: users) {
+            if (comparator(loggedInUser.getUsername(), user.getUsername())) {
+                users.remove(loggedInUser);
+                break;
+            }
+        }
+        users.add(loggedInUser);
+        usersToJson(users);
     }
     public void usersToJson(List<User> users) {
         ObjectMapper mapper = new ObjectMapper();
@@ -63,21 +86,14 @@ public class JsonSerializer {
         }
         return null;
     }
+
     /**
-     * Find User with the given username in the list of User users.
-     * @return User if the user exists, null if the user is new (does not exist in the list)
+     * Compare the username of the current user currentUsername and comparison user tempUsername.
+     * @return true if currentUsername = tempUsername, false if they are different
      */
-    public User comparator (String username, List<User> users){
-        for (User user : users) {
-            if (username.equals(user.getUsername())) {
-                return user;
-            }
-        }
-        return new User(username);
+    public Boolean comparator (String currentUsername, String tempUsername){
+        return currentUsername.equals(tempUsername);
     }
-
-
-
 
 
     // deserializes and gets playlists in one go, maybe create a helper

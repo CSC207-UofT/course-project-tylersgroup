@@ -26,13 +26,11 @@ public class User {
         this.playlistList = new ArrayList<>();
     }
 
-
     /**
      * Getter for username.
      * @return the username of this user.
      */
     public String getUsername() {return username;}
-
 
     /**
      * Getter for a list of playlists.
@@ -56,7 +54,6 @@ public class User {
 
     /**
      * Override toString
-     *
      * @return user as a string
      **/
     @Override
