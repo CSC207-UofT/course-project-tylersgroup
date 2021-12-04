@@ -71,14 +71,16 @@ public class JsonSerializer {
         }
     }
 
-    public void readJson() {
+    public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
             List<User> users = mapper.readValue(
-                    Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
+                    Paths.get("jsonables").toFile(), new TypeReference<List<User>>() {});
+            return users;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     // deserializes and gets playlists in one go, maybe create a helper
