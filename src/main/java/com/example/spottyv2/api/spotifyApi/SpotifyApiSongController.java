@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import static com.example.spottyv2.api.spotifyApi.SpotifyAuthController.spotifyApi;
 
@@ -44,6 +45,7 @@ public class SpotifyApiSongController {
     @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
         String capitalizedSongName = toTitleCase(songName);
+        capitalizedSongName = capitalizedSongName.toLowerCase();
 //        final SearchTracksRequest searchTracksRequest =
 //                spotifyApi.searchTracks("\""+songName+"\"")
 //                //.limit(50)
@@ -62,8 +64,8 @@ public class SpotifyApiSongController {
                 final Paging<Track> trackPaging = searchTracksRequest.execute();
                 Track[] found_tracks = trackPaging.getItems();
                 for(Track i:found_tracks){
-                    System.out.println(i.getName());
-                    if((i.getName()).equals(capitalizedSongName)){
+                    System.out.println(i.getName().toLowerCase());
+                    if((i.getName().toLowerCase().equals(capitalizedSongName))){
                         System.out.println("Playlist generated.");
                         System.out.println(" ");
                         return i;
