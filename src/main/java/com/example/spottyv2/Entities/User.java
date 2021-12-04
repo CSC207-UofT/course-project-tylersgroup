@@ -14,7 +14,6 @@ public class User {
 
     private final String username;
 
-    @JsonProperty("playlist array")
     private List<Playlist> playlistList;
     //private List<User> friendsList;
     //private List<Song> blacklist;
@@ -26,12 +25,7 @@ public class User {
         this.username = username;
         this.playlistList = new ArrayList<>();
     }
-    @JsonCreator
-    public User(@JsonProperty("user-name") final String username,
-                @JsonProperty("playlists") final List<Playlist> playlistList){
-        this.username = username;
-        this.playlistList = playlistList;
-    }
+
 
     /**
      * Getter for username.
@@ -73,17 +67,4 @@ public class User {
                 '}';
     }
 
-    /**
-     * Serialize to a JSON formatted stream.
-     *
-     * @param writable where the resulting JSON text should be sent.
-     * @throws IOException when the writable encounters an I/O error.
-     */
-    @Override
-    public void toJson(Writer writable) throws IOException {
-        try{
-            writable.write(this.toJson());
-        } catch (Exception ignored) {
-        }
-    }
 }
