@@ -1,0 +1,21 @@
+body {
+    margin: 20% 10%;
+    background-color: black;
+    background-image: radial-gradient(
+            rgba(0, 150, 0, 0.75), black 120%
+    );
+    text-align: center;
+
+    /* Terminal Text Style */
+    color: white;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+}
+h1 {
+    font-size:3rem;
+}
+
+.table{
+}
+
+
