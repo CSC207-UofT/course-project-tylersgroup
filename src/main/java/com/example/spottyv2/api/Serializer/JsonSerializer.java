@@ -15,35 +15,46 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
-    public void createjson(Jsonable object) {
-        try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("playlist.json"));
-            //String json = Jsoner.serialize(playlist);
-            Jsoner.serialize(object, writer);
-            //json = Jsoner.prettyPrint(json);
-            writer.close();
-        } catch (Exception ex) {
-            ex.printStackTrace(); //edit
+    /**
+     * Takes in username that is unique to the currently logged-in user, and returns an instantiated User entity.
+     * @param username the username of the user
+     * @return the existing user in the list or new User that is instantiated
+     */
+    public User loggedInUserInfo(String username){
+        List<User> users = readJson();
+        for (User user: users){
+            if (comparator(username, user.getUsername())){
+                return user;
+            }
         }
+        return new User(username);
     }
-
-    public void createjsons(ArrayList<Jsonable> objects) {
-        try { // might need to be a List not an arrayList
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get("SerializedPlaylists/jsonables"));
-            //String json = Jsoner.serialize(playlist);
-            Jsoner.serialize(objects, writer);
-            //json = Jsoner.prettyPrint(json);
-            writer.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace(); //edit
+    /**
+     * Saves the User loggedInUser to the Json file.
+     * @param loggedInUser User that is currently logged-in in this system.
+     */
+    public void saveUser(User loggedInUser){
+        List<User> users = readJson();
+        //compare if the user is in users
+        for (User user: users) {
+            if (comparator(loggedInUser.getUsername(), user.getUsername())) {
+                users.remove(loggedInUser);
+                break;
+            }
         }
+        users.add(loggedInUser);
+        usersToJson(users);
     }
-
+    /**
+     * Helper method.
+     * Convert a list of User users into JsonArray and write to the file.
+     * @param users list of User to be written to Json file
+     */
     public void usersToJson(List<User> users) {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -52,6 +63,7 @@ public class JsonSerializer {
             ex.printStackTrace();
         }
     }
+
     // https://stackoverflow.com/questions/13514570/jackson-best-way-writes-a-java-list-to-a-json-array
     public void playlistToJson(List<Playlist> playlists){
         final ObjectMapper mapper = new ObjectMapper();
@@ -62,16 +74,28 @@ public class JsonSerializer {
         }
     }
 
+    /**
+     * Helper method.
+     * Reads in a jsonable file that contains JsonArray of json objects that represent User entities.
+     * @return a Java list of User
+     */
     public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            List<User> users = mapper.readValue(
-                    Paths.get("jsonables").toFile(), new TypeReference<List<User>>() {});
-            return users;
+            return mapper.readValue(Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * Helper method.
+     * Compare the username of the current user currentUsername and comparison user tempUsername.
+     * @return true if currentUsername = tempUsername, false if they are different
+     */
+    public Boolean comparator (String currentUsername, String tempUsername){
+        return currentUsername.equals(tempUsername);
     }
 
     // deserializes and gets playlists in one go, maybe create a helper
@@ -92,10 +116,6 @@ public class JsonSerializer {
 //        }
 //        return null; // if this doesn't work, move this into the exception catch statement
 //   }
-
-   
-
-
 
 }
 
