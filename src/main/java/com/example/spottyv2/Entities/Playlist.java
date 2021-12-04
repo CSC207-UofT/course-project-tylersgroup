@@ -88,11 +88,13 @@ public class Playlist implements Jsonable, Serializable {
     }
 
     /**
-     * Adds song into end of playlist
+     * Adds song into end of playlist, also adds songUri to playlist.
      * @return boolean true if song was successfully added into playlist
      */
-    public boolean addSong(Song song){
-        return playlist.add(song);
+    public void addSong(Song song){
+        playlist.add(song);
+        this.songUris.add(song.getSongUri());
+        System.out.println(song.getName() + "was added to the playlist.");
     }
 
     //TODO: Override should implement Comparable. Uncomment this method for now

@@ -92,6 +92,10 @@ public class Song implements Serializable {
         return name;
     }
 
+    public String getSongUri(){
+        return songUri;
+    }
+
     /**
      * Get the duration of the song
      * @return duration in seconds as an int.
