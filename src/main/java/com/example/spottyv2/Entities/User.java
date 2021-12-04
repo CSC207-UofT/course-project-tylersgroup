@@ -13,6 +13,7 @@ import java.util.List;
 public class User {
 
     private final String username;
+    private final boolean isDefaultUser;
 
     private List<Playlist> playlistList;
     //private List<User> friendsList;
@@ -21,7 +22,8 @@ public class User {
      * Construct a User object, with the following parameters:
      * @param username Username of the User
      */
-    public User(String username){
+    public User(String username, boolean isDefaultUser){
+        this.isDefaultUser = isDefaultUser;
         this.username = username;
         this.playlistList = new ArrayList<>();
     }

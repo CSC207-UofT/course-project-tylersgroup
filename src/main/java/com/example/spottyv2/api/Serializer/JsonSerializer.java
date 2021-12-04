@@ -2,24 +2,15 @@ package com.example.spottyv2.api.Serializer;
 
 import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
 import com.github.cliftonlabs.json_simple.Jsoner;
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -84,23 +75,23 @@ public class JsonSerializer {
     }
 
     // deserializes and gets playlists in one go, maybe create a helper
-    public ArrayList<Playlist> getPlaylist() {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("SerializedPlaylists/jsonables"));
-            JsonArray objects = Jsoner.deserializeMany(reader);
-            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-            // Mapper through spring?
-            JsonArray array = (JsonArray) objects.get(0);
-            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
-                    .map(obj -> mapper.map(obj, Playlist.class))
-                    .collect(Collectors.toList());
-            reader.close();
-            return playlists;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return null; // if this doesn't work, move this into the exception catch statement
-   }
+//    public ArrayList<Playlist> getPlaylist() {
+//        try {
+//            Reader reader = Files.newBufferedReader(Paths.get("SerializedPlaylists/jsonables"));
+//            JsonArray objects = Jsoner.deserializeMany(reader);
+//            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+//            // Mapper through spring?
+//            JsonArray array = (JsonArray) objects.get(0);
+//            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
+//                    .map(obj -> mapper.map(obj, Playlist.class))
+//                    .collect(Collectors.toList());
+//            reader.close();
+//            return playlists;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return null; // if this doesn't work, move this into the exception catch statement
+//   }
 
    
 
