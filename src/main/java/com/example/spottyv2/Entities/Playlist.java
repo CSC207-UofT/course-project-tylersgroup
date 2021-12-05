@@ -142,7 +142,10 @@ public class Playlist {
 //        //should we add length, etc. ?
 //        return json.toJson();
 //    }
-
+    /**
+     * toJson to be used in serializing Playlist class
+     * @return the Json string of Playlist
+     */
     @JsonValue
     public String toJson(){
         return "{" +
