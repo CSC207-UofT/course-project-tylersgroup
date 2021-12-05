@@ -27,7 +27,6 @@ public class Playlist {
         this.songUris = new ArrayList<>();
     }
 
-    // constructor for playlist with name
 
     /**
      * Construct a Playlist object with the given name
@@ -71,7 +70,6 @@ public class Playlist {
      * @return a statement containing the old name and the new changed name.
      */
     public String setPlaylistName(String newName) {
-        //change playlist name and return a string with the new name
         String oldName = this.getPlaylistName();
         this.playlistName = newName;
         return "Playlist " + oldName + " was renamed to: " + newName;
@@ -83,7 +81,6 @@ public class Playlist {
      * @return the playlist length
      */
     public int getPlaylistLength() {
-        // return length of playlist in terms of how many songs are in it
         return playlist.size();
     }
 
@@ -146,6 +143,7 @@ public class Playlist {
      * toJson to be used in serializing Playlist class
      * @return the Json string of Playlist
      */
+
     @JsonValue
     public String toJson(){
         return "{" +
