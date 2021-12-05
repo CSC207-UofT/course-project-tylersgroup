@@ -1,63 +1,133 @@
 
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta  http-equiv="Content-Type" content="text/html; charset=UTF-8" >
     <title>Playlist Generator Screen</title>
-    <link rel="stylesheet" href="../css/playlistGen_screen.css">
+<!--    <link rel="stylesheet" href="../static/css/playlistGen.css">-->
 
+    <style>
+        body {
+            margin: 10% 5%;
+            background-color: black;
+            background-image: radial-gradient(
+                    rgba(0, 150, 0, 0.75), black 120%
+            );
+
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        h1 {
+            margin-top: 15%;
+            text-align: center;
+            font-size:3rem;
+        }
+        form{
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+
+        }
+
+        input[type="text"]{
+            width: 111%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size:24px;
+            background-color: darkgreen;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        input[type="submit"]{
+            width: 15%;
+            height: 5%;
+            box-sizing: border-box;
+            background-color: darkgreen;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        input[name="input"]{
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: darkgreen;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        input[name="num"]{
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size:24px;
+            background-color: darkgreen;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button:hover{
+            /* Mystery Green Color */
+            background-color: black;
+            background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+        }
+        button {
+            transition-duration: 0.4s;
+            padding: 15px 20px;
+            margin: 4px 2px;
+            font-weight: bold;
+
+            background-color: #003308; /* Green */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            border: darkgreen; /* Green */
+            text-align: center;
+            width: 200px;
+            height: 50px;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+        button:hover{
+            background-color: #e7e7e7;
+        }
+        #submit-btn {
+            align-self: end;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #bc7089;
-    }
-    h1 {
-        margin-top: 10%;
-        text-align: center;
-        font-size:3rem;
-        color: floralwhite;
-    }
-    form{
-        /*width: 80%;*/
-        /*position: absolute;*/
-        /*top: 50%;*/
-        /*left: 50%;*/
-        /*transform: translate(-50%, -50%);*/
-    }
 
-    input[type="text"]{
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-        font-size:24px;
-        background-color: #bc7089;
-
-    }
-
-    .buttons{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    button:hover{
-        background: lightgrey;
-        color: cadetblue;
-    }
-    button {
-        transition-duration: 0.4s;
-        font-size: 20px;
-        padding: 15px 20px;
-        margin: 4px 2px;
-        border: 0.3rem solid #ffffff;
-        font-weight: bold;
-    }
-    button:hover{
-        background-color: #e7e7e7;
-    }
-</style>
 <body>
 
 <h1>Playlist Generator</h1>
@@ -74,12 +144,10 @@
         <input name="num" id="num" value="1">
     </div>
     <div>
-        <label for="id">hi</label>
-        <input type="text" name="id" id="id" value="">
+        <label for="id"></label>
+        <input type="text" name="id" id="id" value="" hidden>
     </div>
-    <div>
-        <button>Submit</button>
-    </div>
+        <button id="submit-btn">Generate</button>
 </form>
 
  <p><span>&#9888;</span> WARNING: it may take 3-5 minutes to generate your playlist, this is normal. </p>
