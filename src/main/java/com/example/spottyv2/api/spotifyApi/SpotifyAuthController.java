@@ -92,7 +92,12 @@ public class SpotifyAuthController {
         //Saving the new spotify user to the Json file
         JsonSerializer userSaver = new JsonSerializer();
         MakeUserController userMaker = new MakeUserController();
-        userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), true));
+        if(loggedUser.getId().equals("a5436skjdhfk2y7@gmail.com")){
+        userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), false));}
+        else{
+            userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), true));
+
+        }
 
         return spotifyApi.getAccessToken();
 

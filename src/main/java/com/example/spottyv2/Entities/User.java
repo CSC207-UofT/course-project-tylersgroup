@@ -60,4 +60,6 @@ public class User {
                 '}';
     }
 
+    public boolean getDefaultUser() {return this.isDefaultUser;
+    }
 }
