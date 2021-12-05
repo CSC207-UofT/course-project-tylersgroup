@@ -13,7 +13,7 @@
             background-image: radial-gradient(
                     rgba(0, 150, 0, 0.75), black 120%
             );
-
+            text-align: center;
 
             /* Terminal Text Style */
             color: white;
@@ -27,14 +27,11 @@
             font-size:3rem;
         }
         form{
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            /*position: absolute;*/
-            /*top: 50%;*/
-            /*left: 50%;*/
-            /*transform: translate(-50%, -50%);*/
-
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         input[type="text"]{
@@ -122,9 +119,6 @@
         button:hover{
             background-color: #e7e7e7;
         }
-        #submit-btn {
-            align-self: end;
-        }
     </style>
 </head>
 
@@ -145,9 +139,11 @@
     </div>
     <div>
         <label for="id"></label>
-        <input type="text" name="id" id="id" value="" hidden>
+        <input type="text" name="id" id="id" value="">
     </div>
-        <button id="submit-btn">Generate</button>
+    <div>
+        <button>Submit</button>
+    </div>
 </form>
 
  <p><span>&#9888;</span> WARNING: it may take 3-5 minutes to generate your playlist, this is normal. </p>
