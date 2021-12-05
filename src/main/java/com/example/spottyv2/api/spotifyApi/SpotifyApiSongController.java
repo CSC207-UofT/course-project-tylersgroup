@@ -64,6 +64,7 @@ public class SpotifyApiSongController {
                 final Paging<Track> trackPaging = searchTracksRequest.execute();
                 Track[] found_tracks = trackPaging.getItems();
                 for(Track i:found_tracks){
+
                     System.out.println(i.getName().toLowerCase());
                     if((i.getName().toLowerCase().equals(capitalizedSongName))){
                         System.out.println("Playlist generated.");
