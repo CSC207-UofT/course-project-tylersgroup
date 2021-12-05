@@ -84,19 +84,24 @@ public class Playlist {
         return playlist.size();
     }
 
+    /**
+     * Get an array representation of all the song uris contained within the playlist.
+     * @return String array with the uris.
+     */
     public String[] getSongUriArray(){
         String[] uriArray = new String[songUris.size()];
         uriArray = songUris.toArray(uriArray);
         return uriArray;
     }
 
+
     /**
-     * Adds song into end of playlist
-     *
-     * @return boolean true if song was successfully added into playlist
+     * Adds song into end of playlist, also adds songUri to playlist.
      */
-    public boolean addSong(Song song) {
-        return playlist.add(song);
+    public void addSong(Song song){
+        playlist.add(song);
+        this.songUris.add(song.getSongUri());
+        System.out.println(song.getName() + "was added to the playlist.");
     }
 
     //TODO: Override should implement Comparable. Uncomment this method for now
