@@ -1,9 +1,7 @@
 package com.example.spottyv2.api.spotifyApi;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.User;
@@ -13,14 +11,8 @@ import org.apache.hc.core5.http.ParseException;
 
 import java.io.IOException;
 
-
-
 public class SpotifyUserController {
-    // whenever a new user logs in, create a new user object for this user, need a constructor for user.
     public static User currentUser;
-    /**
-     * Returns a User object for the currently logged in user.
-     */
     public static final GetCurrentUsersProfileRequest getCurrentUsersProfileReq = spotifyApi.getCurrentUsersProfile()
             .build();
     /**
@@ -43,7 +35,10 @@ public class SpotifyUserController {
     }
 
 
-
+    /**
+     * Get the id representation of the currently logged-in user.
+     * @return String id of currently logged-in user.
+     */
     @GetMapping(value = "get-current-user-id")
     @ResponseBody
     public String getCurrentUserId()
@@ -57,12 +52,20 @@ public class SpotifyUserController {
         }
     }
 
+    /**
+     * Get username of currently logged-in user.
+     * @return String of logged-in user's username
+     */
     @GetMapping
     @ResponseBody
     public String getCurrentUserName() {
         return currentUser.getDisplayName();
     }
 
+    /**
+     * Get the Uri representation of the currently logged-in user.
+     * @return String representing the currently logged-in user's profile Uri.
+     */
     @GetMapping
     @ResponseBody
     public String getCurrentUserUri() {

@@ -44,6 +44,8 @@ public class SpotifyApiPlaylistController {
 
     /**
      * Creates a new playlist to the user's account
+     * First creates an empty playlist in the spotify user's account, then populates it with songs using the songUris
+     * stored in an array within the spottyApp playlist objects.
      * @param userId current user's ID
      * @param name New playlist's name in form of a string.
      */
@@ -52,9 +54,11 @@ public class SpotifyApiPlaylistController {
         final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
                 .build();
         try {
+            //creates an empty playlist in the user's spotify library
             final Playlist playlist = createPlaylistRequest.execute();
+            //Populates the new playlist with songUris
             spotifyApiPlaylistController.addItemsToPlaylist(playlist.getId(), toSave.getSongUriArray());
-            System.out.println("Name: " + playlist.getName());
+            System.out.println("Saved!");
             return playlist;
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
@@ -92,7 +96,7 @@ public class SpotifyApiPlaylistController {
      * @param playlistId playlist id we of the playlist we want returned.
      */
     @GetMapping(value = "get-playlist")
-    public void getPlaylist(String playlistId){
+    public Playlist getPlaylist(String playlistId){
         final GetPlaylistRequest getPlaylistRequest =
                 spotifyApi.getPlaylist(playlistId)
                         .build();
@@ -101,9 +105,11 @@ public class SpotifyApiPlaylistController {
             final Playlist playlist = getPlaylistRequest.execute();
 
             System.out.println("Name: " + playlist.getName());
+            return playlist;
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return null;
     }
 
     /**
@@ -183,6 +189,11 @@ public class SpotifyApiPlaylistController {
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    @PostMapping(value = "get-playlist-url")
+    public ExternalUrl getPlaylistUrl(String playlist_id){
+        return spotifyApiPlaylistController.getPlaylist(playlist_id).getExternalUrls();
     }
 
 
