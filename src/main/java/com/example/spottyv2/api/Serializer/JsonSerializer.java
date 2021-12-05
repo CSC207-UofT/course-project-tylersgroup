@@ -32,7 +32,7 @@ public class JsonSerializer {
                 return user;
             }
         }
-        return new User(username);
+        return new User(username, false);
     }
     /**
      * Saves the User loggedInUser to the Json file.
