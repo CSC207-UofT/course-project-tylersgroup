@@ -1,6 +1,8 @@
 package com.example.spottyv2.Entities;
 
 import java.io.Serializable; //remove?
+
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Playlist implements Jsonable, Serializable {
+public class Playlist {
 
     private List<Song> playlist;
 
@@ -131,23 +133,21 @@ public class Playlist implements Jsonable, Serializable {
         return s.toString();
     }
 
+//
+//    @Override
+//    public String toJson() {
+//        JsonObject json = new JsonObject();
+//        json.put("name", this.playlistName);
+//        json.put("playlist array", this.playlist);
+//        //should we add length, etc. ?
+//        return json.toJson();
+//    }
 
-    @Override
-    public String toJson() {
-        JsonObject json = new JsonObject();
-        json.put("name", this.playlistName);
-        json.put("playlist array", this.playlist);
-        //should we add length, etc. ?
-        return json.toJson();
-    }
-
-    @Override
-    public void toJson(Writer writable) throws IOException {
-        try {
-            writable.write(this.toJson());
-        } catch (Exception ignored) {
-
-        }
-
+    @JsonValue
+    public String toJson(){
+        return "{" +
+                "playlistName='" + this.playlistName + '\'' +
+                ", songs="+ songUris +
+                '}';
     }
 }
