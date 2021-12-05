@@ -61,6 +61,7 @@ public class SpotifyAuthController {
         return new RedirectView(uri.toString());
     }
 
+
     /**
      * Gets unique user code from currently logged in spotify user
      * @param userCode Usercode from quthorization code request

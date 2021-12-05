@@ -24,9 +24,20 @@
 <body>
 <h1>Generated Playlist!</h1>
 <p data-th-text="${'Playlist Generated!: ' + playlist}"></p>
-<a href="/home">Back to home</a>
+<a id="home" href="/home">Back to home</a>
 
 
 </body>
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id')
+
+    const home = document.getElementById("home");
+    home.href = `/home?id=${id}`;
+
+    // const form = document.getElementById("form");
+    // form.action = `http://localhost:8080/PlayGen?id=${idInput.value}`
+</script>
 
 </html>
