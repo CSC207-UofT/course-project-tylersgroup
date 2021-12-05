@@ -1,5 +1,8 @@
 package com.example.spottyv2.api.Serializer;
 
+import com.example.spottyv2.Controllers.MakeUserController;
+import com.example.spottyv2.Controllers.SavePlaylistController;
+import com.example.spottyv2.Controllers.UserController;
 import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -22,7 +25,8 @@ public class JsonSerializer {
                 return user;
             }
         }
-        return new User(username);
+        MakeUserController makeUserController = new MakeUserController();
+        return makeUserController.makeUser(username, true);
     }
     /**
      * Saves the User loggedInUser to the Json file.
@@ -72,11 +76,11 @@ public class JsonSerializer {
     public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(Paths.get("jsonables").toFile(), new TypeReference<List<User>>() {});
+            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -88,10 +92,39 @@ public class JsonSerializer {
         return currentUsername.equals(tempUsername);
     }
 
+    public void savePlaylistToUser(User user, Playlist playlist){
+        SavePlaylistController savePlaylistController = new SavePlaylistController();
+        if (savePlaylistController.savePlaylist(user, playlist)){
+            this.saveUser(user);
+        }
+    }
+
+    public ArrayList<Playlist> getPlaylists(User loggedInUser){
+        UserController uc = new UserController();
+        return uc.getPlaylists(loggedInUser);
+    }
+
+    // deserializes and gets playlists in one go, maybe create a helper
+//    public ArrayList<Playlist> getPlaylist() {
+//        try {
+//            Reader reader = Files.newBufferedReader(Paths.get("SerializedPlaylists/jsonables"));
+//            JsonArray objects = Jsoner.deserializeMany(reader);
+//            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+//            // Mapper through spring?
+//            JsonArray array = (JsonArray) objects.get(0);
+//            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
+//                    .map(obj -> mapper.map(obj, Playlist.class))
+//                    .collect(Collectors.toList());
+//            reader.close();
+//            return playlists;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        return null; // if this doesn't work, move this into the exception catch statement
+//   }
     public void SaveUser() {
 
     }
-
 
 }
 
