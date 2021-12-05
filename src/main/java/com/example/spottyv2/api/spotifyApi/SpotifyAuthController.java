@@ -1,5 +1,7 @@
 package com.example.spottyv2.api.spotifyApi;
 
+import com.example.spottyv2.Controllers.MakeUserController;
+import com.example.spottyv2.api.Serializer.JsonSerializer;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -55,6 +57,7 @@ public class SpotifyAuthController {
                 .show_dialog(true)
                 .build();
         final URI uri = authorizationCodeUriRequest.execute();
+
         return new RedirectView(uri.toString());
     }
 
@@ -86,6 +89,10 @@ public class SpotifyAuthController {
         User loggedUser = SpotifyUserController.getCurrentUser();
         String url = String.format("/home?id=%s", loggedUser.getId());
         response.sendRedirect(url);
+        //Saving the new spotify user to the Json file
+        JsonSerializer userSaver = new JsonSerializer();
+        MakeUserController userMaker = new MakeUserController();
+        userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), true));
 
         return spotifyApi.getAccessToken();
 

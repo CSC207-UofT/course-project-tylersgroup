@@ -42,9 +42,9 @@ public class User {
 
     /**
      * Updates the list of playlists this user has.
-     * @param playlistList is the new list of playlists.
+     * @param playlist is the new playlist to be added to the user's playlists.
      */
-    public void updatePlaylistList(List<Playlist> playlistList) {this.playlistList = playlistList;}
+    public void addPlaylist(Playlist playlist) {this.playlistList.add(playlist);}
 
 
     //public List<User> getFriendsList() {return friendsList;

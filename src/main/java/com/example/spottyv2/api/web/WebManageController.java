@@ -1,9 +1,10 @@
 package com.example.spottyv2.api.web;
 
 import com.example.spottyv2.Entities.Playlist;
-import com.example.spottyv2.api.Serializer.Serializer;
+import com.example.spottyv2.api.Serializer.JsonSerializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,12 +20,14 @@ public class WebManageController {
 
     @GetMapping(value = {"/manage", "/manage/?id={id}"})
     @ResponseBody
-    public ModelAndView manage(){
+    public ModelAndView manage(@PathVariable(required = false, name="id") String id){
         ModelAndView modelAndView = new ModelAndView("manage");
+
+
         //TODO: This needs to be moved to either a helper method or use case class. (For clean architecture)
-        Serializer getter = new Serializer();
+        JsonSerializer getter = new JsonSerializer();
         HashMap<String, String> out = new HashMap<>();
-        ArrayList<Playlist> playlists = getter.getPlaylists(); //TODO: BAD TO MANIPULATE ENTITY
+        ArrayList<Playlist> playlists = getter.getPlaylists(getter.loggedInUserInfo(id)); //TODO: BAD TO MANIPULATE ENTITY
 
         List<String> headers = Arrays.asList("Playlist Name", "Playlist", "Add to your spotify", "Get shareable link");
         List<Map<String, Object>> rows = new ArrayList<>();
