@@ -7,19 +7,9 @@ import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.Jsonable;
-import com.github.cliftonlabs.json_simple.Jsoner;
-
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
@@ -132,6 +122,9 @@ public class JsonSerializer {
 //        }
 //        return null; // if this doesn't work, move this into the exception catch statement
 //   }
+    public void SaveUser() {
+
+    }
 
 }
 

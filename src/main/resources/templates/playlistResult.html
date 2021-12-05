@@ -3,11 +3,27 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Testing WebInput form submission</title>
-    <link rel="stylesheet" href = "../static/css/playlistGen.css">
+    <link rel="stylesheet" href = "../static/css/playlistResult.css">
+
+    <style>
+        body {
+            margin: 10% 10%;
+            background-color: black;
+            background-image: radial-gradient(
+                    rgba(0, 150, 0, 0.75), black 120%
+            );
+            text-align: center;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+    </style>
 </head>
 <body>
 <h1>Generated Playlist!</h1>
-<p data-th-text="${'Generated playlist: ' + playlist}"></p>
+<p data-th-text="${'Playlist Generated!: ' + playlist}"></p>
 <a href="/home">Back to home</a>
 
 

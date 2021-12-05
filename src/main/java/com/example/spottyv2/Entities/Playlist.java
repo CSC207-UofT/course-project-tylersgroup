@@ -1,6 +1,8 @@
 package com.example.spottyv2.Entities;
 
 import java.io.Serializable; //remove?
+
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Playlist implements Jsonable, Serializable {
+public class Playlist {
 
     private List<Song> playlist;
 
@@ -25,7 +27,6 @@ public class Playlist implements Jsonable, Serializable {
         this.songUris = new ArrayList<>();
     }
 
-    // constructor for playlist with name
 
     /**
      * Construct a Playlist object with the given name
@@ -69,7 +70,6 @@ public class Playlist implements Jsonable, Serializable {
      * @return a statement containing the old name and the new changed name.
      */
     public String setPlaylistName(String newName) {
-        //change playlist name and return a string with the new name
         String oldName = this.getPlaylistName();
         this.playlistName = newName;
         return "Playlist " + oldName + " was renamed to: " + newName;
@@ -81,7 +81,6 @@ public class Playlist implements Jsonable, Serializable {
      * @return the playlist length
      */
     public int getPlaylistLength() {
-        // return length of playlist in terms of how many songs are in it
         return playlist.size();
     }
 
@@ -132,22 +131,11 @@ public class Playlist implements Jsonable, Serializable {
     }
 
 
-    @Override
-    public String toJson() {
-        JsonObject json = new JsonObject();
-        json.put("name", this.playlistName);
-        json.put("playlist array", this.playlist);
-        //should we add length, etc. ?
-        return json.toJson();
-    }
-
-    @Override
-    public void toJson(Writer writable) throws IOException {
-        try {
-            writable.write(this.toJson());
-        } catch (Exception ignored) {
-
-        }
-
+    @JsonValue
+    public String toJson(){
+        return "{" +
+                "playlistName='" + this.playlistName + '\'' +
+                ", songs="+ songUris +
+                '}';
     }
 }

@@ -1,6 +1,8 @@
 package com.example.spottyv2.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -123,6 +125,12 @@ public class Song implements Serializable {
         } else {
             return name + ", " + album + ", by: " + artist + ".";
         }
+    }
+    @JsonValue
+    public String toJson(){
+        return "{" +
+                "songURI='" + this.songUri + '\'' +
+                '}';
     }
 }
 
