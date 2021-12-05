@@ -2,6 +2,7 @@ package com.example.spottyv2.api.web;
 
 import com.example.spottyv2.Controllers.MakePlaylistController;
 import com.example.spottyv2.Entities.Playlist;
+import com.example.spottyv2.api.Serializer.JsonSerializer;
 import com.example.spottyv2.api.Serializer.Serializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  *
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class WebInputController {
 
 
-    @RequestMapping(value="/PlayGen", method = RequestMethod.POST)
+    @RequestMapping(value={"/PlayGen"}, method = RequestMethod.POST)
     public @ResponseBody
     RedirectView submitPost(HttpServletRequest request,
                             @ModelAttribute("WebInput") WebInput input,
@@ -42,8 +44,10 @@ public class WebInputController {
                 playlist = MakePlaylist.makePlaylistWeb(input.getInput(), "shortest");
             }
             //Initialize gateway class
-            Serializer write = new Serializer();
-            write.serialize(playlist);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.savePlaylistToUser(serializer.loggedInUserInfo(input.getId()), playlist);
+            //Serializer write = new Serializer();
+            //write.serialize(playlist);
 
             //Logging to console
             out = playlist.toString();
