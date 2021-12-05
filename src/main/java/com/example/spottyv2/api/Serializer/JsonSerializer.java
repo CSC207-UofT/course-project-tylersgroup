@@ -4,19 +4,10 @@ import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.Jsonable;
-import com.github.cliftonlabs.json_simple.Jsoner;
-
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
@@ -82,7 +73,7 @@ public class JsonSerializer {
     public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
+            return mapper.readValue(Paths.get("jsonables").toFile(), new TypeReference<List<User>>() {});
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,24 +89,10 @@ public class JsonSerializer {
         return currentUsername.equals(tempUsername);
     }
 
-    // deserializes and gets playlists in one go, maybe create a helper
-//    public ArrayList<Playlist> getPlaylist() {
-//        try {
-//            Reader reader = Files.newBufferedReader(Paths.get("SerializedPlaylists/jsonables"));
-//            JsonArray objects = Jsoner.deserializeMany(reader);
-//            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-//            // Mapper through spring?
-//            JsonArray array = (JsonArray) objects.get(0);
-//            ArrayList<Playlist> playlists = (ArrayList<Playlist>) array.stream()
-//                    .map(obj -> mapper.map(obj, Playlist.class))
-//                    .collect(Collectors.toList());
-//            reader.close();
-//            return playlists;
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        return null; // if this doesn't work, move this into the exception catch statement
-//   }
+    public void SaveUser() {
+
+    }
+
 
 }
 
