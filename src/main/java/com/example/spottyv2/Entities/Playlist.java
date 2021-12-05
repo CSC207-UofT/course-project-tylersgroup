@@ -135,6 +135,19 @@ public class Playlist {
         return s.toString();
     }
 
+//
+//    @Override
+//    public String toJson() {
+//        JsonObject json = new JsonObject();
+//        json.put("name", this.playlistName);
+//        json.put("playlist array", this.playlist);
+//        //should we add length, etc. ?
+//        return json.toJson();
+//    }
+    /**
+     * toJson to be used in serializing Playlist class
+     * @return the Json string of Playlist
+     */
 
     @JsonValue
     public String toJson(){
