@@ -1,12 +1,6 @@
 package com.example.spottyv2.Entities;
 
-//import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsonable;
-import java.io.IOException;
-import java.io.Writer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +36,9 @@ public class User {
 
     /**
      * Updates the list of playlists this user has.
-     * @param playlistList is the new list of playlists.
+     * @param playlist is the new playlist to be added to the user's playlists.
      */
-    public void updatePlaylistList(List<Playlist> playlistList) {this.playlistList = playlistList;}
+    public void addPlaylist(Playlist playlist) {this.playlistList.add(playlist);}
 
 
     //public List<User> getFriendsList() {return friendsList;

@@ -1,22 +1,16 @@
 package com.example.spottyv2.api.Serializer;
 
+import com.example.spottyv2.Controllers.MakeUserController;
+import com.example.spottyv2.Controllers.SavePlaylistController;
+import com.example.spottyv2.Controllers.UserController;
 import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.cliftonlabs.json_simple.JsonArray;
-import com.github.cliftonlabs.json_simple.Jsonable;
-import com.github.cliftonlabs.json_simple.Jsoner;
-
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class JsonSerializer {
 
@@ -32,7 +26,10 @@ public class JsonSerializer {
                 return user;
             }
         }
-        return new User(username, false);
+
+        MakeUserController makeUserController = new MakeUserController();
+        return makeUserController.makeUser(username, true);
+
     }
     /**
      * Saves the User loggedInUser to the Json file.
@@ -82,11 +79,11 @@ public class JsonSerializer {
     public List<User> readJson() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(Paths.get("jasonables").toFile(), new TypeReference<List<User>>() {});
+            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -96,6 +93,18 @@ public class JsonSerializer {
      */
     public Boolean comparator (String currentUsername, String tempUsername){
         return currentUsername.equals(tempUsername);
+    }
+
+    public void savePlaylistToUser(User user, Playlist playlist){
+        SavePlaylistController savePlaylistController = new SavePlaylistController();
+        if (savePlaylistController.savePlaylist(user, playlist)){
+            this.saveUser(user);
+        }
+    }
+
+    public ArrayList<Playlist> getPlaylists(User loggedInUser){
+        UserController uc = new UserController();
+        return uc.getPlaylists(loggedInUser);
     }
 
     // deserializes and gets playlists in one go, maybe create a helper
@@ -116,6 +125,9 @@ public class JsonSerializer {
 //        }
 //        return null; // if this doesn't work, move this into the exception catch statement
 //   }
+    public void SaveUser() {
+
+    }
 
 }
 
