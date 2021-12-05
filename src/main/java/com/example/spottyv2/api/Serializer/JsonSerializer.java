@@ -44,7 +44,9 @@ public class JsonSerializer {
                 break;
             }
         }
-        users.add(loggedInUser);
+        if (!loggedInUser.getDefaultUser()){
+            users.add(loggedInUser);
+        }
         usersToJson(users);
     }
     /**
