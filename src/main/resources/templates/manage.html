@@ -22,7 +22,15 @@
             font-size:3rem;
         }
 
-        .table{
+        .button{
+            background-color: #003308; /* Green */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            border: darkgreen; /* Green */
+            transition-duration: 0.4s;
+            text-align: center;
+            width: 200px;
+            height: 50px;
         }
 
 
@@ -33,6 +41,7 @@
 <body>
 
 <h1>Manage Playlists</h1>
+
 
 
 <!--<table style="width:60%">-->
@@ -62,7 +71,23 @@
     </tbody>
 </table>
 
+<div class="backButton">
+    <a id="home" href="">
+        <button class="button button1">Back</button>
+    </a>
+</div>
 
 </body>
+<script>
+    const queryString = window.location.search;
+    // console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id')
+    // console.log(id);
 
+    const home = document.getElementById("home");
+    home.href = `/home?id=${id}`
+    console.log(PlayGen.href)
+
+</script>
 </html>
