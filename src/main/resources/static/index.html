@@ -13,7 +13,7 @@
 
     <ul style="list-style-type:none">
         <li><a href="/api/login"><button class="button button1">Login via Spotify</button></a></li>
-        <li><a href="/api/login"><button class="button button2">Continue without Spotify</button></a></li>
+        <li><a href="/api/login"><button id="a5436skjdhfk2y7@gmail.com" onclick="copy()" class="button button2">Continue without Spotify</button></a></li>
     </ul>
 
 
@@ -21,4 +21,16 @@
 
 
 </body>
+<script>
+    function copy() {
+        /* Get the text field */
+        let defaultLogin = document.getElementById("a5436skjdhfk2y7@gmail.com");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(defaultLogin.id);
+
+        /* Alert the copied text */
+        alert("Copied the text: " + defaultLogin.id + "\n ctrl-v this as your email and password!");
+    }
+</script>
 </html>

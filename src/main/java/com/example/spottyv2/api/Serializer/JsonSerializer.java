@@ -26,8 +26,10 @@ public class JsonSerializer {
                 return user;
             }
         }
+
         MakeUserController makeUserController = new MakeUserController();
         return makeUserController.makeUser(username, true);
+
     }
     /**
      * Saves the User loggedInUser to the Json file.
