@@ -1,12 +1,12 @@
 package com.example.spottyv2.api.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Map;
 
 /**
  * WebStreamer is a Springboot class that allows for streaming of data from the server to the client side webapp.
@@ -19,8 +19,11 @@ import java.io.PrintStream;
 @ControllerAdvice
 public class WebStreamerController {
 
-    @RequestMapping(value = "/dataStream")
-    public StreamingResponseBody dataStream() {
+    @RequestMapping(path = {"/dataStream", "/dataStream?id={id}"})
+    public StreamingResponseBody dataStream(
+            @PathVariable(required=false,name="id") String id,
+            @RequestParam(required=false) Map<String,String> qparams
+    ) {
 
         StreamingResponseBody stream = out -> {
             boolean running = true;
@@ -28,6 +31,10 @@ public class WebStreamerController {
             PrintStream previousConsole = System.out;
             ByteArrayOutputStream newConsole = new ByteArrayOutputStream();
             System.setOut(new PrintStream(newConsole));
+            System.out.println("======>" + id + "<========");
+            System.out.println("======>" + id + "<========");
+            System.out.println("======>" + id + "<========");
+            System.out.println("======>" + id + "<========");
 
             out.write(("<head>\n" +
                     "<style>\n" +
@@ -98,7 +105,7 @@ public class WebStreamerController {
                 }
             }
             out.write(("</div>").getBytes());
-            out.write(("<form action=\"http://localhost:8080/home\">\n" +
+            out.write((String.format("<form action=\"http://localhost:8080/home?id=%s\">\n", id) +
                     "    <input type=\"submit\" value=\"Home\" />\n" +
                     "</form>").getBytes());
             out.close();

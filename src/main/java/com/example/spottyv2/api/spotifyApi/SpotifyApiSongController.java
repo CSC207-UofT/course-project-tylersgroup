@@ -53,8 +53,7 @@ public class SpotifyApiSongController {
 
     @GetMapping(value = "search-song")
     public static Track searchSong(String songName){
-        String capitalizedSongName = toTitleCase(songName);
-        capitalizedSongName.toLowerCase();
+        String capitalizedSongName = toTitleCase(songName).toLowerCase();
         try{
             int offset_temp = 1;
             while(offset_temp < 5000) {
