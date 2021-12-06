@@ -4,18 +4,21 @@ import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.playlists.*;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.google.gson.JsonArray;
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static com.example.spottyv2.api.spotifyApi.SpotifyAuthController.spotifyApi;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SpotifyApiPlaylistController {
 
-    SpotifyApiPlaylistController spotifyApiPlaylistController = new SpotifyApiPlaylistController();
+    //SpotifyApiPlaylistController spotifyApiPlaylistController = new SpotifyApiPlaylistController();
 
     /**
      * Get current user's list of playlists
@@ -49,20 +52,20 @@ public class SpotifyApiPlaylistController {
      * @param userId current user's ID
      * @param name New playlist's name in form of a string.
      */
-    @PostMapping(value = "save-playlist")
-    public Playlist SavePlaylistToSpotify(String userId, String name, com.example.spottyv2.Entities.Playlist toSave){
+    @PostMapping(value = "/save-playlist")
+    public boolean SavePlaylistToSpotify(String userId, String name, String[] songURIs){
         final CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, name)
                 .build();
         try {
             //creates an empty playlist in the user's spotify library
             final Playlist playlist = createPlaylistRequest.execute();
             //Populates the new playlist with songUris
-            spotifyApiPlaylistController.addItemsToPlaylist(playlist.getId(), toSave.getSongUriArray());
+            addItemsToPlaylist(playlist.getId(), songURIs);
             System.out.println("Saved!");
-            return playlist;
+            return true;
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
-            return null;
+            return false;
         }
     }
 
@@ -193,7 +196,7 @@ public class SpotifyApiPlaylistController {
 
     @PostMapping(value = "get-playlist-url")
     public ExternalUrl getPlaylistUrl(String playlist_id){
-        return spotifyApiPlaylistController.getPlaylist(playlist_id).getExternalUrls();
+        return getPlaylist(playlist_id).getExternalUrls();
     }
 
 

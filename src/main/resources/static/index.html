@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>SpottyApp</title>
     <link rel="stylesheet" href="css/index.css">
+    <style>
+        #email {
+            text-transform: lowercase;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -12,25 +18,30 @@
     <h1>Welcome to the SpottyApp</h1>
 
     <ul style="list-style-type:none">
-        <li><a href="/api/login"><button class="button button1">Login via Spotify</button></a></li>
-        <li><a href="/api/login"><button id="a5436skjdhfk2y7@gmail.com" onclick="copy()" class="button button2">Continue without Spotify</button></a></li>
-    </ul>
+        <li><a href="/api/login"><button class="button button1" onclick="copy()">Login via Spotify</button></a></li>
+        <li><a href="/api/login"><button id="a5436skjdhfk2y7@gmail.com" onclick="copy()" class="button button2">Continue without Spotify</button></a>
 
+        <li>We copied <strong id="email">a5436skjdhfk2y7@gmail.com</strong> to your clipboard. ctrl-v this as your email and password if you don't have a Spotify account!
+    </li>
+        </li>
+
+    </ul>
+    <input type="text" value="a5436skjdhfk2y7@gmail.com" id="input" hidden>
 
 </div>
+
 
 
 </body>
 <script>
     function copy() {
         /* Get the text field */
-        let defaultLogin = document.getElementById("a5436skjdhfk2y7@gmail.com");
-
+        let defaultLogin = document.getElementById("input");
+        defaultLogin.select();
         /* Copy the text inside the text field */
-        navigator.clipboard.writeText(defaultLogin.id);
+        window.focus();
+        navigator.clipboard.writeText(defaultLogin.value)
 
-        /* Alert the copied text */
-        alert("Copied the text: " + defaultLogin.id + "\n ctrl-v this as your email and password!");
     }
 </script>
 </html>
