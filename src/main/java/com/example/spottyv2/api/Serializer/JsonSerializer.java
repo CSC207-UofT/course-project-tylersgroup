@@ -5,6 +5,8 @@ import com.example.spottyv2.Controllers.SavePlaylistController;
 import com.example.spottyv2.Controllers.UserController;
 import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -49,7 +51,7 @@ public class JsonSerializer {
         //compare if the user is in users
         for (User user: users) {
             if (comparator(loggedInUser.getUsername(), user.getUsername())) {
-                users.remove(loggedInUser);
+                users.remove(user);
                 break;
             }
         }
@@ -96,12 +98,14 @@ public class JsonSerializer {
      */
     public List<User> readJson() {
         try {
-            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
-        } catch (Exception e) {
-            e.printStackTrace();
+            List<User> users = mapper.readValue(Paths.get("jsonables.json").toFile(), mapper.getTypeFactory().constructCollectionType(List.class, User.class));
+            return users;
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return new ArrayList<>();
     }
+
 
     /**
      * Helper method.
