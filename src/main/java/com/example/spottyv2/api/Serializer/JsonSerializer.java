@@ -65,7 +65,7 @@ public class JsonSerializer {
      */
     public void usersToJson(List<User> users) {
         try {
-            mapper.writeValue(Paths.get("jsonables.json").toFile(), users);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("jsonables.json").toFile(), users);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -123,6 +123,8 @@ public class JsonSerializer {
         UserController uc = new UserController();
         return uc.getPlaylists(loggedInUser);
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // deserializes and gets playlists in one go, maybe create a helper
 //    public ArrayList<Playlist> getPlaylist() {
