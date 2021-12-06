@@ -45,7 +45,7 @@ public class JsonSerializer {
         //compare if the user is in users
         for (User user: users) {
             if (comparator(loggedInUser.getUsername(), user.getUsername())) {
-                users.remove(loggedInUser);
+                users.remove(user);
                 break;
             }
         }
@@ -92,7 +92,8 @@ public class JsonSerializer {
      */
     public List<User> readJson() {
         try {
-            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
+            return mapper.readValue(Paths.get("jsonables.json").toFile(),
+                    mapper.getTypeFactory().constructCollectionType(List.class, User.class));
         } catch (Exception e) {
             e.printStackTrace();
         }

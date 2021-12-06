@@ -1,1 +1,53 @@
-[{"username":"josrs6iriebrpnw9omddwvoli,josrs6iriebrpnw9omddwvoli","playlistList":["{playlistName='This is a great day to code with friends ', songs=[, spotify:track:2teH8BAM9q2oSmBre5hiQM, , ]}"],"defaultUser":false}]
+[ {
+  "username" : "tzvdbz6p8bh6o4hv3q1l1rlvv",
+  "playlistList" : [ {
+    "playlist" : [ {
+      "id" : null,
+      "name" : "BABY MOON",
+      "artist" : "Doxa",
+      "album" : "BABY MOON",
+      "songUri" : "spotify:track:5fbqFJOGP3zqEhNNgli4ih",
+      "duration" : 131506,
+      "popularity" : 17.0,
+      "explicit" : true
+    } ],
+    "playlistName" : "baby moon ",
+    "playlistLength" : 1,
+    "songUriArray" : [ ],
+    "stringSongUri" : "[]"
+  }, {
+    "playlist" : [ {
+      "id" : null,
+      "name" : "We Are",
+      "artist" : "Hollywood Undead",
+      "album" : "We Are",
+      "songUri" : "spotify:track:05c0LG7DakbvX0gYbBHjPP",
+      "duration" : 274386,
+      "popularity" : 59.0,
+      "explicit" : true
+    }, {
+      "id" : null,
+      "name" : "All Young",
+      "artist" : "The Onlies",
+      "album" : "All Young",
+      "songUri" : "spotify:track:11y0nK19keH6J2T8bJpBEr",
+      "duration" : 158960,
+      "popularity" : 12.0,
+      "explicit" : false
+    }, {
+      "id" : null,
+      "name" : "",
+      "artist" : "",
+      "album" : "sample album",
+      "songUri" : "",
+      "duration" : -1,
+      "popularity" : -1.0,
+      "explicit" : false
+    } ],
+    "playlistName" : "we are all young and healthy ",
+    "playlistLength" : 3,
+    "songUriArray" : [ "spotify:track:05c0LG7DakbvX0gYbBHjPP", "spotify:track:11y0nK19keH6J2T8bJpBEr", "" ],
+    "stringSongUri" : "[spotify:track:05c0LG7DakbvX0gYbBHjPP, spotify:track:11y0nK19keH6J2T8bJpBEr, ]"
+  } ],
+  "defaultUser" : false
+} ]
