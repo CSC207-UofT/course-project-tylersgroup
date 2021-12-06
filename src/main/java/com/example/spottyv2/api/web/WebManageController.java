@@ -84,6 +84,7 @@ public class WebManageController {
         JsonSerializer getter = new JsonSerializer();
 
         if (!getter.loggedInUserInfo(id).getDefaultUser()){
+            try{
         ModelAndView mvc = new ModelAndView("manage");
 
         ArrayList<Playlist> playlists = getter.getPlaylists(getter.loggedInUserInfo(id));
@@ -96,7 +97,10 @@ public class WebManageController {
         mvc.addObject("userID", id);
 
 
-        return mvc;
+        return mvc;}
+            catch (IndexOutOfBoundsException error){
+                return new ModelAndView("noPlaylists");
+            }
         } else{
             return new ModelAndView("defaultManage");
         }

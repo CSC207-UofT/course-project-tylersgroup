@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+        <head>
+        <meta charset="UTF-8">
+        <title>Manage Playlist Screen</title>
+    <!--    <link rel="stylesheet" href="../static/css/manage.css">-->
+    <style>
+        body {
+            margin: 5% 10%;
+            background-color: black;
+            background-image: radial-gradient(
+                    rgba(0, 150, 0, 0.75), black 120%
+            );
+            text-align: center;
+
+            /* Terminal Text Style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+        h1 {
+            font-size:3rem;
+        }
+
+        .button{
+            background-color: #003308; /* Green */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            border: darkgreen; /* Green */
+            transition-duration: 0.4s;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+        }
+
+        .button:hover {
+            /* Mystery Green Color */
+            background-color: black;
+            background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+
+
+            /* Font color and style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        .divider{
+            height:auto;
+            display:inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Manage Playlists</h1>
+
+<h2>Generate some playlists using the "Generate Playlists" option on the home screen.</h2>
+
+
+<div class="backButton">
+    <a id="home" href="">
+        <button class="button button1">Back</button>
+    </a>
+</div>
+
+
+</body>
+<script>
+    const queryString = window.location.search;
+    // console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id')
+    // console.log(id);
+
+    const home = document.getElementById("home");
+    home.href = `/home?id=${id}`
+    console.log(PlayGen.href)
+
+    function deleteAll(){
+        alert("All Playlists deleted.")
+    }
+</script>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
