@@ -58,32 +58,45 @@
 
 
 
-<!--<table style="width:60%">-->
-<!--    <tr>-->
-<!--        <td>Playlist Name</td>-->
-<!--        <td>Songs</td>-->
-<!--        <td>Add to your spotify</td>-->
-<!--        <td>Get shareable link</td>-->
-<!--    </tr>-->
-<!--    <tr data-th-each="mapEntry : ${playlistMap}">-->
-<!--        <td data-th-text="${mapEntry.key}"></td>-->
-<!--        <td data-th-text="${mapEntry.value}"></td>-->
-<!--    </tr>-->
-<!--</table>-->
-
-<table style="width:70%">
-    <thead>
-    <tr class="headings">
-        <th data-th-each="header : ${headers}" class="column-title" data-th-text="${header}"></th>
+<table style="width:90%">
+    <tr>
+        <td>Playlist Name</td>
+        <td>Songs</td>
+        <td>Add to your spotify</td>
     </tr>
-    </thead>
+    <tr data-th-each="playlist : ${playlistList}">
+        <td data-th-text="${playlist.getPlaylistName()}"></td>
+        <td data-th-text="${playlist.toString()}"></td>
+        <td> <form id="form" action="http://localhost:8080/saveToSpotify" method="POST">
+            <div>
+                <input type="hidden" name="ID" id="id" data-th-value="${userID}" >
+            </div>
 
-    <tbody>
-    <tr class="even pointer" data-th-each="row : ${rows}" id="tablerow">
-        <td data-th-each="header : ${headers}" data-th-text="${row.get(header)}"></td>
+            <div>
+                <input type="hidden" name="name" id="name" data-th-value="${playlist.getPlaylistName()}">
+            </div>
+            <div>
+                <input type="hidden" name="playlistURIs" id="playlistURIs" data-th-value="${playlist.getStringSongUri()}" >
+            </div>
+            <button id="submit-btn">Save to Spotify</button>
+        </form>
+        </td>
     </tr>
-    </tbody>
 </table>
+
+<!--<table style="width:70%">-->
+<!--    <thead>-->
+<!--    <tr class="headings">-->
+<!--        <th data-th-each="header : ${headers}" class="column-title" data-th-text="${header}"></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+
+<!--    <tbody>-->
+<!--    <tr class="even pointer" data-th-each="row : ${rows}" id="tablerow">-->
+<!--        <td data-th-each="header : ${headers}" data-th-utext="${row.get(header)}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 
 <div class="backButton">
     <a id="home" href="">
