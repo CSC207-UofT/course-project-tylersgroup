@@ -44,10 +44,10 @@ public class WebInputController {
                 playlist = MakePlaylist.makePlaylistWeb(input.getInput(), "shortest");
             }
             //Initialize gateway class
-            //JsonSerializer serializer = new JsonSerializer();
-            //serializer.savePlaylistToUser(serializer.loggedInUserInfo(input.getId()), playlist);
-            Serializer write = new Serializer();
-            write.serialize(playlist);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.savePlaylistToUser(serializer.loggedInUserInfo(input.getId()), playlist);
+            //Serializer write = new Serializer();
+            //write.serialize(playlist);
 
             //Logging to console
             out = playlist.toString();
