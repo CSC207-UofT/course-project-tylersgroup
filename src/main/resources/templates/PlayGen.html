@@ -151,9 +151,9 @@
         <button id="submit-btn">Generate</button>
 </form>
 
- <p><span>&#9888;</span> WARNING: it may take 3-5 minutes to generate your playlist, this is normal. </p>
+ <p><span>&#9888;</span> WARNING: it may take 1-3 minutes to generate your playlist, this is normal. </p>
 
-<form action="http://localhost:8080/dataStream">
+<form id="form2" action="http://localhost:8080/dataStream">
     <input type="submit" value="Matrix mode" />
 </form>
 
@@ -168,8 +168,11 @@
     const idInput = document.getElementById("id");
     idInput.value = id;
 
-    // const form = document.getElementById("form");
-    // form.action = `http://localhost:8080/PlayGen?id=${idInput.value}`
+    const form = document.getElementById("form");
+    form.action = `/PlayGen?id=${idInput.value}`
+
+    const form2 = document.getElementById("form2");
+    form2.action = `/dataStream?id=${idInput.value}`
 
 </script>
 </html>

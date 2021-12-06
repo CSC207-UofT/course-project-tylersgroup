@@ -38,7 +38,7 @@
         ul{
             align-items: normal;
             background-color: transparent;
-            width: 20%;
+            width: 40%;
 
         }
 
@@ -104,7 +104,7 @@
     <ul>
         <li><a id="PlayGen" href="">Generate Playlist</a></li>
         <li><a id="manage" href="">Manage Playlists</a></li>
-        <li><a id="account" href="">Account Settings</a></li>
+        <li><a id="logout" href="" onclick="thankYou()">Logout + Exit to Spotify</a></li>
     </ul>
 
 </div>
@@ -121,11 +121,14 @@
 
     const PlayGen = document.getElementById("PlayGen");
     const manage = document.getElementById("manage");
-    const account = document.getElementById("account");
+    const logout = document.getElementById("logout");
     PlayGen.href = `/PlayGen?id=${id}`
     manage.href = `/manage?id=${id}`
-    account.href = `/account?id=${id}`
+    logout.href = `https://www.spotify.com/logout/`
     console.log(PlayGen.href)
 
+    function thankYou(){
+        alert("Thank you for using Spotiapp. Logging out and redirecting to Spotify...")
+    }
 </script>
 </html>

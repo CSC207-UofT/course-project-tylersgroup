@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Playlist {
+
 
     private List<Song> playlist;
 
@@ -43,6 +45,11 @@ public class Playlist {
         this.songUris = new ArrayList<>();
     }
 
+    public Playlist(String name, ArrayList<String> songURIs) {
+        this.playlist = new ArrayList<>();
+        this.playlistName = name;
+        this.songUris = songURIs;
+    }
 
     /**
      * Get a song at the specified index of the playlist.
@@ -96,6 +103,10 @@ public class Playlist {
         String[] uriArray = new String[songUris.size()];
         uriArray = songUris.toArray(uriArray);
         return uriArray;
+    }
+
+    public String getStringSongUri(){
+        return this.songUris.toString();
     }
 
 

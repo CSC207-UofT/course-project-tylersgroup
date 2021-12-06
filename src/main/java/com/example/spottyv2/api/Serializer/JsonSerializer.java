@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class JsonSerializer {
@@ -39,8 +38,8 @@ public class JsonSerializer {
         }
         MakeUserController makeUserController = new MakeUserController();
         return makeUserController.makeUser(username, true);
-    }
 
+    }
     /**
      * Saves the User loggedInUser to the Json file.
      * @param loggedInUser User that is currently logged-in in this system.
@@ -50,7 +49,7 @@ public class JsonSerializer {
         //compare if the user is in users
         for (User user: users) {
             if (comparator(loggedInUser.getUsername(), user.getUsername())) {
-                users.remove(user);
+                users.remove(loggedInUser);
                 break;
             }
         }
@@ -97,10 +96,7 @@ public class JsonSerializer {
      */
     public List<User> readJson() {
         try {
-            //List<User> users = mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
-            List<User> users = mapper.readValue(Paths.get("jsonables.json").toFile(), mapper.getTypeFactory().constructCollectionType(List.class, User.class));
-            System.out.println(users);
-            return users;
+            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
         } catch (Exception e) {
             e.printStackTrace();
         }
