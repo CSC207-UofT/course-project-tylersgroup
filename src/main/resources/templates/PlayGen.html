@@ -168,8 +168,13 @@
     const idInput = document.getElementById("id");
     idInput.value = id;
 
-    const form = document.getElementById("form");
-    form.action = `/PlayGen?id=${id}`
+
+    //const form = document.getElementById("form");
+    //form.action = `/PlayGen?id=${idInput.value}`
+
+    //const form = document.getElementById("form");
+    //form.action = `/PlayGen?id=${id}`
+
 
     const form2 = document.getElementById("form2");
     form2.action = `/dataStream?id=${id}`
