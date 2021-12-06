@@ -48,6 +48,10 @@ public class User {
      */
     public void addPlaylist(Playlist playlist) {this.playlistList.add(playlist);}
 
+    public void deleteAllPlaylists(){
+        this.playlistList = new ArrayList<>();
+    }
+
 
     //public List<User> getFriendsList() {return friendsList;
     //public List<Song> getBlacklist() {return blacklist;}

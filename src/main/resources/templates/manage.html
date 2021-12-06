@@ -49,6 +49,52 @@
             height:auto;
             display:inline-block;
         }
+        #submit-btn2{
+            background-color: #003308; /* Green */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            border: darkgreen; /* Green */
+            transition-duration: 0.4s;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+
+        }
+
+        #submit-btn2:hover{
+            /* Mystery Green Color */
+            background-color: black;
+            background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+
+
+            /* Font color and style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
+
+        #submit-btn{
+            background-color: #003308; /* Green */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            border: darkgreen; /* Green */
+            transition-duration: 0.4s;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+        }
+
+        #submit-btn:hover{
+            /* Mystery Green Color */
+            background-color: black;
+            background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+
+
+            /* Font color and style */
+            color: white;
+            font: 1.3rem Inconsolata, monospace;
+            text-shadow: 0 0 5px #C8C8C8;
+        }
     </style>
 </head>
 
@@ -93,11 +139,15 @@
 
 <div class="divider"></div>
 
-<div class="deleteAllButton">
-    <a id="deleteAll" href="">
-        <button class="button button2" onclick="deleteAll()">Delete All Playlists</button>
-    </a>
-</div>
+
+
+
+<form id="deleteForm" action="http://localhost:8080/deleteAll" method="POST">
+    <div>
+        <input type="hidden" name="ID" id="id2" data-th-value="${userID}" >
+    </div>
+    <button id="submit-btn2" onclick=deleteAll()>Delete all playlists</button>
+</form>
 
 
 </body>
@@ -111,6 +161,10 @@
     const home = document.getElementById("home");
     home.href = `/home?id=${id}`
     console.log(PlayGen.href)
+
+    // const deleteForm = document.getElementById("deleteForm");
+    // deleteForm.action =`/deleteAll`
+    // console.log(PlayGen.href)
 
     function deleteAll(){
         alert("All Playlists deleted.")

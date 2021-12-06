@@ -124,6 +124,11 @@ public class JsonSerializer {
         return uc.getPlaylists(loggedInUser);
     }
 
+    public void deleteUserPlaylists(User user){
+        user.deleteAllPlaylists();
+        this.saveUser(user);
+    }
+
 }
 
 
