@@ -9,7 +9,7 @@ import java.util.List;
 public class User {
 
     private final String username;
-    private final boolean isDefaultUser;
+    private boolean isDefaultUser;
 
     private List<Playlist> playlistList;
     //private List<User> friendsList;
@@ -66,6 +66,10 @@ public class User {
     }
 
     public boolean getDefaultUser() {return this.isDefaultUser;
+    }
+
+    public void setDefaultUser(boolean isDefaultUser){
+        this.isDefaultUser = isDefaultUser;
     }
 
 }

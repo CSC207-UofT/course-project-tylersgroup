@@ -73,7 +73,6 @@ public class WebManageController {
     @GetMapping(path = {"/manage", "/manage/{data}"})
     public ModelAndView user(@PathVariable(required=false,name="data") String data,
                      @RequestParam(required=false) Map<String,String> qparams) {
-        ModelAndView mvc = new ModelAndView("manage");
         qparams.forEach((a,b) -> {
             System.out.println(String.format("%s -> %s",a,b));
         });
@@ -83,6 +82,10 @@ public class WebManageController {
             System.out.println(data);
         }
         JsonSerializer getter = new JsonSerializer();
+
+        if (!getter.loggedInUserInfo(id).getDefaultUser()){
+        ModelAndView mvc = new ModelAndView("manage");
+
         ArrayList<Playlist> playlists = getter.getPlaylists(getter.loggedInUserInfo(id));
 
         //console log test
@@ -94,6 +97,9 @@ public class WebManageController {
 
 
         return mvc;
+        } else{
+            return new ModelAndView("defaultManage");
+        }
 
     }
 }

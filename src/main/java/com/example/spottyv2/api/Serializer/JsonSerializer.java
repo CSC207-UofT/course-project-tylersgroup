@@ -51,6 +51,8 @@ public class JsonSerializer {
         }
         if (!loggedInUser.getDefaultUser()){
             users.add(loggedInUser);
+        } else{
+            users.add(loggedInUser);
         }
         usersToJson(users);
     }
@@ -111,9 +113,10 @@ public class JsonSerializer {
 
     public void savePlaylistToUser(User user, Playlist playlist){
         SavePlaylistController savePlaylistController = new SavePlaylistController();
+        if (!user.getDefaultUser()){
         if (savePlaylistController.savePlaylist(user, playlist)){
             this.saveUser(user);
-        }
+        }}
     }
 
     public ArrayList<Playlist> getPlaylists(User loggedInUser){

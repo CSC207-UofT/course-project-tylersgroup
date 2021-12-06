@@ -90,13 +90,17 @@ public class SpotifyAuthController {
         User loggedUser = SpotifyUserController.getCurrentUser();
         String url = String.format("/home?id=%s", loggedUser.getId());
         response.sendRedirect(url);
+        System.out.println("ID: " + loggedUser.getId());
         //Saving the new spotify user to the Json file
         JsonSerializer userSaver = new JsonSerializer();
         MakeUserController userMaker = new MakeUserController();
-        if(loggedUser.getId().equals("a5436skjdhfk2y7@gmail.com")){
-        userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), false));}
-        else{
+        if(loggedUser.getId().contains("31zokwy2ll2xc6saipntzz2cy3lq")){
+        userSaver.saveUser(userMaker.makeUser(loggedUser.getId(), false));
+        System.out.println("Default user created");
+
+        } else{
             userSaver.saveUser(userSaver.loggedInUserInfo(loggedUser.getId()));
+            System.out.println("Spotify user created");
 
         }
 
