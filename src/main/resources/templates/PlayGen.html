@@ -65,7 +65,7 @@
         }
 
         input[name="input"]{
-            width: 40%;
+            width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
             box-sizing: border-box;
@@ -134,16 +134,15 @@
 <h1>Playlist Generator</h1>
 
 
-<form id="form" action="http://localhost:8080/PlayGen" method="POST">
+<form name="form" id="form" action="http://localhost:8080/PlayGen" method="POST">
     <div>
-        <label for="input">Please input a sentence:</label>
-        <input name="input" id="input">
+        <label for="input">Please input a sentence with at least 2 words. <br> (a-z, A-Z and space only; Only use space between words):</label>
+        <input name="input" id="input" required="required" maxlength="100" pattern="^[a-zA-Z]+ [a-zA-Z ]+[a-zA-Z ]*[a-zA-Z]$">
     </div>
-
     <div>
         <label for="num">Generate a long playlist or a short playlist!</label>
-        <button name="num" id="num" type="submit" value=1>Generate Long Playlist</button>
-        <button name="num" id="num1" type="submit" value=2>Generate Short Playlist</button>
+        <button name="num" id="num" type="submit" value=1> Generate Long Playlist</button>
+        <button name="num" id="num1" type="submit" value=2 >Generate Short Playlist</button>
     </div>
     <div>
         <label for="id"></label>
@@ -153,7 +152,7 @@
 </form>
 
  <p><span>&#9888;</span> WARNING: it may take 1-3 minutes to generate your playlist, this is normal. </p>
-1
+
 <form id="form2" action="http://localhost:8080/dataStream">
     <input type="submit" value="Matrix mode" />
 </form>
@@ -179,6 +178,5 @@
 
     const form2 = document.getElementById("form2");
     form2.action = `/dataStream?id=${id}`
-
 </script>
 </html>
