@@ -12,6 +12,7 @@ public class Playlist {
 
     private String playlistName;
     private List<String> songUris;
+    private String stringSongUri;
 
 
     /**
@@ -39,6 +40,7 @@ public class Playlist {
         this.playlist = new ArrayList<>();
         this.playlistName = name;
         this.songUris = songURIs;
+        this.stringSongUri = songURIs.toString();
     }
 
     /**
@@ -95,8 +97,16 @@ public class Playlist {
         return uriArray;
     }
 
+    public void setSongUris(String[] songUris){
+        this.songUris = List.of(songUris);
+    }
+
     public String getStringSongUri(){
-        return this.songUris.toString();
+        return stringSongUri;
+    }
+
+    public void setStringSongUri(String uri){
+        this.stringSongUri = uri;
     }
 
 
@@ -106,6 +116,7 @@ public class Playlist {
     public void addSong(Song song){
         playlist.add(song);
         this.songUris.add(song.getSongUri());
+        this.stringSongUri = this.songUris.toString();
         System.out.println(song.getName() + "was added to the playlist.");
     }
     /**

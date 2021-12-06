@@ -38,7 +38,7 @@ public class WebInput {
 
     public void setId(String id) {
 
-        id = id.split("[,]", 2)[0];
+        //id = id.split("[,]", 2)[0];
         System.out.println("=========>" + id + "=========*********====");
         this.id = id; }
 

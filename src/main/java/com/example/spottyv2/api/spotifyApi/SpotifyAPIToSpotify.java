@@ -1,21 +1,15 @@
 package com.example.spottyv2.api.spotifyApi;
 
 import com.example.spottyv2.api.web.ManagerContainer;
-import com.example.spottyv2.api.web.WebInput;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
-import com.wrapper.spotify.model_objects.specification.Playlist;
-import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
-import org.apache.hc.core5.http.ParseException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
-import static com.example.spottyv2.api.spotifyApi.SpotifyAuthController.spotifyApi;
 @Controller
 public class SpotifyAPIToSpotify {
 
