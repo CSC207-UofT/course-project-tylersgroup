@@ -45,6 +45,10 @@
             text-shadow: 0 0 5px #C8C8C8;
         }
 
+        .divider{
+            height:auto;
+            display:inline-block;
+        }
     </style>
 </head>
 
@@ -87,6 +91,15 @@
     </a>
 </div>
 
+<div class="divider"></div>
+
+<div class="deleteAllButton">
+    <a id="deleteAll" href="">
+        <button class="button button2" onclick="deleteAll()">Delete All Playlists</button>
+    </a>
+</div>
+
+
 </body>
 <script>
     const queryString = window.location.search;
@@ -99,5 +112,8 @@
     home.href = `/home?id=${id}`
     console.log(PlayGen.href)
 
+    function deleteAll(){
+        alert("All Playlists deleted.")
+    }
 </script>
 </html>
