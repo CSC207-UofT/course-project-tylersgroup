@@ -1,9 +1,11 @@
 package com.example.spottyv2.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     private final String username;
@@ -19,6 +21,12 @@ public class User {
     public User(String username, boolean isDefaultUser){
         this.isDefaultUser = isDefaultUser;
         this.username = username;
+        this.playlistList = new ArrayList<>();
+    }
+
+    public User(){
+        this.username = "";
+        this.isDefaultUser = false;
         this.playlistList = new ArrayList<>();
     }
 
@@ -59,7 +67,20 @@ public class User {
                 ", playlistList=" + playlistList +
                 '}';
     }
+//    @JsonValue
+//    public String toJson(){
+//        return "User{" +
+//                "username='" + username + '\'' +
+//                ", playlistList=" + playlistList +
+//                '}';
+//    }
 
     public boolean getDefaultUser() {return this.isDefaultUser;
     }
+
+//    @SuppressWarnings("unchecked")
+//    @JsonProperty("playlistList")
+//    private void unpackNested(Map<String,List> playlists) {
+//        this.playlistList = (List<Playlist>) playlists.get("playlistList");
+//    }
 }

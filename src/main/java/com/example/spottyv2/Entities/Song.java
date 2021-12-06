@@ -61,7 +61,6 @@ public class Song implements Serializable {
 
     /**
      * Temporary song constructor only for name and artist for phase 0
-     *
      */
     public Song(String name, String artist){
         this.name = name;
@@ -144,11 +143,22 @@ public class Song implements Serializable {
             return name + ", " + album + ", by: " + artist + ".";
         }
     }
-    @JsonValue
-    public String toJson(){
-        return "{" +
-                "songURI='" + this.songUri + '\'' +
-                '}';
-    }
+//    /**
+//     * toJson to be used in serializing Song class
+//     * @return the Json string of Song containing songUri
+//     */
+//    @JsonValue
+//    public String toJson(){
+//        return "{" +
+//                "song-id='" + this.id + '\'' +
+//                "song-name='" + this.name + '\'' +
+//                "song-artist='" + this.artist + '\'' +
+//                "song-duration='" + this.duration + '\'' +
+//                "song-album='" + this.album + '\'' +
+//                "song-explicit='" + this.explicit + '\'' +
+//                "song-popularity='" + this.popularity + '\'' +
+//                "songURI='" + this.songUri + '\'' +
+//                '}';
+//    }
 }
 

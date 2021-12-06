@@ -2,6 +2,8 @@ package com.example.spottyv2.Entities;
 
 import java.io.Serializable; //remove?
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
@@ -9,14 +11,18 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
-public class Playlist implements Serializable{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Playlist {
+
 
     private List<Song> playlist;
 
     private String playlistName;
     private List<String> songUris;
+
 
     /**
      * Construct a Playlist object with no name given
@@ -112,6 +118,12 @@ public class Playlist implements Serializable{
         this.songUris.add(song.getSongUri());
         System.out.println(song.getName() + "was added to the playlist.");
     }
+    /**
+     * Getter method for list of songs.
+     */
+    public List<Song> getPlaylist() {
+        return playlist;
+    }
 
     //TODO: Override should implement Comparable. Uncomment this method for now
 //    @Override
@@ -144,12 +156,31 @@ public class Playlist implements Serializable{
         return s.toString();
     }
 
+//    @SuppressWarnings("unchecked")
+//    @JsonProperty("playlist")
+//    private void unpackNested(Map<String,List> songs) {
+//        this.playlist = (List<Song>) songs.get("playlist");
+//    }
 
-    @JsonValue
-    public String toJson(){
-        return "{" +
-                "playlistName='" + this.playlistName + '\'' +
-                ", songs="+ songUris +
-                '}';
-    }
+//
+//    @Override
+//    public String toJson() {
+//        JsonObject json = new JsonObject();
+//        json.put("name", this.playlistName);
+//        json.put("playlist array", this.playlist);
+//        //should we add length, etc. ?
+//        return json.toJson();
+//    }
+    /**
+     * toJson to be used in serializing Playlist class
+     * @return the Json string of Playlist
+     */
+
+//    @JsonValue
+//    public String toJson(){
+//        return "{" +
+//                "playlistName='" + this.playlistName + '\'' +
+//                ", songs="+ songUris +
+//                '}';
+//    }
 }

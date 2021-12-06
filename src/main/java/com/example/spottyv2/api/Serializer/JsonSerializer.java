@@ -5,14 +5,26 @@ import com.example.spottyv2.Controllers.SavePlaylistController;
 import com.example.spottyv2.Controllers.UserController;
 import com.example.spottyv2.Entities.Playlist;
 import com.example.spottyv2.Entities.User;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsonSerializer {
+    private ObjectMapper mapper;
+
+    public JsonSerializer(){
+        mapper = new ObjectMapper();
+    }
 
     /**
      * Takes in username that is unique to the currently logged-in user, and returns an instantiated User entity.
@@ -26,7 +38,6 @@ public class JsonSerializer {
                 return user;
             }
         }
-
         MakeUserController makeUserController = new MakeUserController();
         return makeUserController.makeUser(username, true);
 
@@ -40,7 +51,7 @@ public class JsonSerializer {
         //compare if the user is in users
         for (User user: users) {
             if (comparator(loggedInUser.getUsername(), user.getUsername())) {
-                users.remove(loggedInUser);
+                users.remove(user);
                 break;
             }
         }
@@ -55,9 +66,8 @@ public class JsonSerializer {
      * @param users list of User to be written to Json file
      */
     public void usersToJson(List<User> users) {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(Paths.get("jsonables.json").toFile(), users);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("jsonables.json").toFile(), users);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -65,12 +75,20 @@ public class JsonSerializer {
 
     // https://stackoverflow.com/questions/13514570/jackson-best-way-writes-a-java-list-to-a-json-array
     public void playlistToJson(List<Playlist> playlists){
-        final ObjectMapper mapper = new ObjectMapper();
         try{
             mapper.writeValue(Paths.get("jsonables.json").toFile(), playlists);
         } catch (IOException ioException){
             ioException.printStackTrace();
         }
+    }
+
+    public String playlistToJsonArray(Playlist playlist){
+        try{
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(playlist);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**
@@ -79,14 +97,15 @@ public class JsonSerializer {
      * @return a Java list of User
      */
     public List<User> readJson() {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(Paths.get("jsonables.json").toFile(), new TypeReference<List<User>>() {});
-        } catch (Exception e) {
-            e.printStackTrace();
+            List<User> users = mapper.readValue(Paths.get("jsonables.json").toFile(), mapper.getTypeFactory().constructCollectionType(List.class, User.class));
+            return users;
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return new ArrayList<>();
     }
+
 
     /**
      * Helper method.
@@ -109,6 +128,8 @@ public class JsonSerializer {
         return uc.getPlaylists(loggedInUser);
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     // deserializes and gets playlists in one go, maybe create a helper
 //    public ArrayList<Playlist> getPlaylist() {
 //        try {
@@ -127,9 +148,20 @@ public class JsonSerializer {
 //        }
 //        return null; // if this doesn't work, move this into the exception catch statement
 //   }
-    public void SaveUser() {
+
+    public void writeJson(User user) throws IOException {
+        JsonNode rootNode = mapper.createObjectNode();
+        JsonNode playlistNode = mapper.createArrayNode();
+        for (Playlist playlist: user.getPlaylistList()){
+            ((ArrayNode)playlistNode).add(playlistToJsonArray(playlist));
+        }
+        ((ObjectNode) rootNode).put("username", user.getUsername());
+        ((ObjectNode) rootNode).put("playlistList", playlistNode);
+        mapper.writeValue(Paths.get("jsonables.json").toFile(), rootNode);
 
     }
+
+
 
 }
 
