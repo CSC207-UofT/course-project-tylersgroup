@@ -36,7 +36,11 @@ public class WebInput {
 
     public String getId(){ return this.id; }
 
-    public void setId(String id) {this.id = id; }
+    public void setId(String id) {
+
+        id = id.split("[,]", 2)[0];
+        System.out.println("=========>" + id + "=========*********====");
+        this.id = id; }
 
     public void setNum(int num) {
         this.num = num;
@@ -50,7 +54,7 @@ public class WebInput {
     public String toString() {
         return "WebInput{" +
                 "input='" + input + '\'' +
-                ", num=" + num +
+                ", num=" + num + ", id=" + id  +
                 '}';
     }
 }
