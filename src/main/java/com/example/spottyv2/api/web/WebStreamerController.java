@@ -106,7 +106,7 @@ public class WebStreamerController {
             }
             out.write(("</div>").getBytes());
             out.write((String.format("<form action=\"http://localhost:8080/home?id=%s\">\n", id) +
-                    "    <input type=\"submit\" value=\"Home\" />\n" +
+                    "    <input type=\"button\" value=\"Home\" onclick=\"history.go(-2)\"/>\n" +
                     "</form>").getBytes());
             out.close();
         };
