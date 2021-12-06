@@ -1,5 +1,5 @@
 [ {
-  "username" : "alphaturtle3621",
+  "username" : "tzvdbz6p8bh6o4hv3q1l1rlvv",
   "playlistList" : [ {
     "playlist" : [ {
       "id" : null,
@@ -8,7 +8,7 @@
       "album" : "BABY MOON",
       "songUri" : "spotify:track:5fbqFJOGP3zqEhNNgli4ih",
       "duration" : 131506,
-      "popularity" : 17.0,
+      "popularity" : 18.0,
       "explicit" : true
     } ],
     "playlistName" : "baby moon ",
@@ -18,27 +18,33 @@
   }, {
     "playlist" : [ {
       "id" : null,
-      "name" : "The Feels",
-      "artist" : "melvitto",
-      "album" : "The Feels",
-      "songUri" : "spotify:track:7Cl1rpIsQk4EFU2pmSKaC1",
-      "duration" : 219093,
-      "popularity" : 62.0,
+      "name" : "Moon Baby",
+      "artist" : "Liyah Knight",
+      "album" : "Moon Baby",
+      "songUri" : "spotify:track:1zWq4Pd6eTwTSIInxSMLUD",
+      "duration" : 208901,
+      "popularity" : 23.0,
       "explicit" : false
-    }, {
+    } ],
+    "playlistName" : "moon baby ",
+    "stringSongUri" : "[spotify:track:1zWq4Pd6eTwTSIInxSMLUD]",
+    "playlistLength" : 1,
+    "songUriArray" : [ ]
+  }, {
+    "playlist" : [ {
       "id" : null,
-      "name" : "BABY MOON",
-      "artist" : "Doxa",
-      "album" : "BABY MOON",
-      "songUri" : "spotify:track:5fbqFJOGP3zqEhNNgli4ih",
-      "duration" : 131506,
-      "popularity" : 17.0,
+      "name" : "Rainy Day",
+      "artist" : "Zacari",
+      "album" : "Rainy Day",
+      "songUri" : "spotify:track:5Puv2qaFDY6fmzAV7fBitu",
+      "duration" : 190312,
+      "popularity" : 51.0,
       "explicit" : true
     } ],
-    "playlistName" : "the feels baby moon ",
-    "stringSongUri" : "[spotify:track:7Cl1rpIsQk4EFU2pmSKaC1, spotify:track:5fbqFJOGP3zqEhNNgli4ih]",
-    "playlistLength" : 2,
-    "songUriArray" : [ "spotify:track:7Cl1rpIsQk4EFU2pmSKaC1", "spotify:track:5fbqFJOGP3zqEhNNgli4ih" ]
+    "playlistName" : "rainy day ",
+    "stringSongUri" : "[spotify:track:5Puv2qaFDY6fmzAV7fBitu]",
+    "playlistLength" : 1,
+    "songUriArray" : [ "spotify:track:5Puv2qaFDY6fmzAV7fBitu" ]
   } ],
   "defaultUser" : false
 } ]
