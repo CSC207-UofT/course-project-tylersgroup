@@ -1,17 +1,7 @@
 package com.example.spottyv2.Entities;
-
-import java.io.Serializable; //remove?
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.github.cliftonlabs.json_simple.JsonObject;
-import com.github.cliftonlabs.json_simple.Jsonable;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -155,32 +145,4 @@ public class Playlist {
         }
         return s.toString();
     }
-
-//    @SuppressWarnings("unchecked")
-//    @JsonProperty("playlist")
-//    private void unpackNested(Map<String,List> songs) {
-//        this.playlist = (List<Song>) songs.get("playlist");
-//    }
-
-//
-//    @Override
-//    public String toJson() {
-//        JsonObject json = new JsonObject();
-//        json.put("name", this.playlistName);
-//        json.put("playlist array", this.playlist);
-//        //should we add length, etc. ?
-//        return json.toJson();
-//    }
-    /**
-     * toJson to be used in serializing Playlist class
-     * @return the Json string of Playlist
-     */
-
-//    @JsonValue
-//    public String toJson(){
-//        return "{" +
-//                "playlistName='" + this.playlistName + '\'' +
-//                ", songs="+ songUris +
-//                '}';
-//    }
 }

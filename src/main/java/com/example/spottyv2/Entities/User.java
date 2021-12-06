@@ -62,25 +62,10 @@ public class User {
      **/
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", playlistList=" + playlistList +
-                '}';
+        return this.username + " has " + this.playlistList.size() + " playlists saved.";
     }
-//    @JsonValue
-//    public String toJson(){
-//        return "User{" +
-//                "username='" + username + '\'' +
-//                ", playlistList=" + playlistList +
-//                '}';
-//    }
 
     public boolean getDefaultUser() {return this.isDefaultUser;
     }
 
-//    @SuppressWarnings("unchecked")
-//    @JsonProperty("playlistList")
-//    private void unpackNested(Map<String,List> playlists) {
-//        this.playlistList = (List<Playlist>) playlists.get("playlistList");
-//    }
 }
