@@ -160,19 +160,19 @@
 </body>
 <script>
     const queryString = window.location.search;
-    // console.log(queryString);
+    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id')
-    // console.log(id);
+    console.log(id);
 
     const idInput = document.getElementById("id");
     idInput.value = id;
 
     const form = document.getElementById("form");
-    form.action = `/PlayGen?id=${idInput.value}`
+    form.action = `/PlayGen?id=${id}`
 
     const form2 = document.getElementById("form2");
-    form2.action = `/dataStream?id=${idInput.value}`
+    form2.action = `/dataStream?id=${id}`
 
 </script>
 </html>
