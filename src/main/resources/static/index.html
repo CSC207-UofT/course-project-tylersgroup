@@ -18,10 +18,10 @@
     <h1>Welcome to the SpottyApp</h1>
 
     <ul style="list-style-type:none">
-        <li><a href="/api/login"><button class="button button1">Login via Spotify</button></a></li>
+        <li><a href="/api/login"><button class="button button1" onclick="copy()">Login via Spotify</button></a></li>
         <li><a href="/api/login"><button id="a5436skjdhfk2y7@gmail.com" onclick="copy()" class="button button2">Continue without Spotify</button></a>
 
-        <li>We copied <strong id="email">a5436skjdhfk2y7@gmail.com</strong> to your clipboard. ctrl-v this as your email and password!
+        <li>We copied <strong id="email">a5436skjdhfk2y7@gmail.com</strong> to your clipboard. ctrl-v this as your email and password if you don't have a Spotify account!
     </li>
         </li>
 
@@ -41,12 +41,6 @@
         /* Copy the text inside the text field */
         window.focus();
         navigator.clipboard.writeText(defaultLogin.value)
-        //     .then(
-        //     v => alert("Copied the text: " + defaultLogin.value + "\nctrl-v this as your email and password!"),
-        //     e => alert(defaultLogin.value + "is your email and password\n" + e)
-        // )
-
-        /* Alert the copied text */
 
     }
 </script>

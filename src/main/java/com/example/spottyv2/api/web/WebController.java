@@ -21,11 +21,7 @@ public class WebController {
     @GetMapping(path = {"/home", "/home?id={id}"})
     public String home(@PathVariable(required=false,name="id") String id,
                           @RequestParam(required=false) Map<String,String> qparams) {
-        for (Map.Entry<String, String> entry : qparams.entrySet()) {
-            String a = entry.getKey();
-            String b = entry.getValue();
-            System.out.println(String.format("%s -> %s", a, b));
-        }
+
         if (id != null) {
             System.out.println(id);
         }
